@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,42 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Bersafar custom colors
+				sand: {
+					DEFAULT: '#F5F1E6',
+					50: '#FEFCF8',
+					100: '#F5F1E6',
+					200: '#EDE6D4',
+					300: '#E4DAC2',
+					400: '#DCCEB0',
+					500: '#D3C29E'
+				},
+				spiritual: {
+					DEFAULT: '#0A5F38',
+					50: '#E8F5F0',
+					100: '#C7E8D6',
+					200: '#9BD8BB',
+					300: '#6FC8A0',
+					400: '#4FB887',
+					500: '#2FA86E',
+					600: '#0A5F38',
+					700: '#085030',
+					800: '#064128',
+					900: '#043220'
+				},
+				gold: {
+					DEFAULT: '#D4AF37',
+					50: '#FBF8E8',
+					100: '#F6F0CC',
+					200: '#EDE199',
+					300: '#E4D266',
+					400: '#DAC34A',
+					500: '#D4AF37',
+					600: '#B8942D',
+					700: '#9C7A23',
+					800: '#806019',
+					900: '#64460F'
 				}
 			},
 			borderRadius: {
@@ -84,11 +121,45 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'slide-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateX(-20px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateX(0)'
+					}
+				},
+				'pulse-gentle': {
+					'0%, 100%': {
+						opacity: '1'
+					},
+					'50%': {
+						opacity: '0.8'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.6s ease-out',
+				'slide-in': 'slide-in 0.5s ease-out',
+				'pulse-gentle': 'pulse-gentle 2s ease-in-out infinite'
+			},
+			fontFamily: {
+				'sf': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'system-ui', 'sans-serif'],
 			}
 		}
 	},
