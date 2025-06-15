@@ -24,10 +24,7 @@ const StepGuide = () => {
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-8">
         {/* Header */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-sf font-bold mb-7 text-white text-center drop-shadow">
-          Kenapa{" "}
-          <span className="font-semibold text-gold-300 bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent">
-            Bersafar?
-          </span>
+          Bersafar bersama kami
         </h2>
         {/* Steps content */}
         <div className="grid md:grid-cols-3 gap-6">
