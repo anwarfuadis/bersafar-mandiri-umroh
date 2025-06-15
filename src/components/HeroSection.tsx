@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -22,7 +21,7 @@ const HeroSection = () => {
           loop
           playsInline
         >
-          <source src="https://player.vimeo.com/external/352682821.sd.mp4?s=556589965e44b81e5f63e4c88f77126358bc5e9c&profile_id=164" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/2675515/2675515-hd_1920_1080_24fps.mp4" type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
           Your browser does not support the video tag.
         </video>
