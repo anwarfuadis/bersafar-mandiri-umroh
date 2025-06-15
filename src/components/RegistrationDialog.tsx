@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -6,8 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import Stepper from "./Stepper";
 import SearchableCitySelect from "./SearchableCitySelect";
-import { ArrowRight } from "lucide-react";
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const ESTIMASI_OPTIONS = [
@@ -94,10 +94,10 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
     return nomorHp;
   }
 
-  // Modern checklist chip for Estimasi
+  // Modern checklist chip for Estimasi, same as kebutuhan
   function renderEstimasiChecklist() {
     return (
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-2">
         {ESTIMASI_OPTIONS.map(opt => {
           const selected = estimasi === opt.value;
           return (
@@ -106,28 +106,14 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
               type="button"
               onClick={() => setEstimasi(opt.value)}
               className={cn(
-                "group flex items-center gap-2 px-5 py-2 rounded-xl border-2 font-semibold text-green-700 min-w-[116px] bg-white transition-all duration-150 shadow",
+                "px-4 py-2 rounded-full text-sm font-medium border-2 transition-all flex items-center gap-2",
                 selected
-                  ? "border-green-500 bg-green-50 shadow-green-100 ring-2 ring-green-200 scale-105"
-                  : "border-gray-200 text-gray-500 hover:text-green-600 hover:border-green-400 hover:bg-green-50 active:scale-95"
+                  ? "bg-green-800 text-white border-green-900 shadow"
+                  : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-green-50"
               )}
-              style={{
-                boxShadow: selected
-                  ? "0 2px 16px 0 rgba(34,197,94,0.08)"
-                  : undefined,
-              }}
             >
-              <span
-                className={cn(
-                  "block w-5 h-5 flex items-center justify-center rounded-full border-2 transition-all duration-150",
-                  selected
-                    ? "border-green-500 bg-green-500"
-                    : "border-gray-300 bg-white group-hover:border-green-400"
-                )}
-              >
-                {selected && <Check className="w-4 h-4 text-white stroke-[2.5]" />}
-              </span>
-              <span className="whitespace-nowrap">{opt.label}</span>
+              {selected && <Check className="w-4 h-4 mr-1" />}
+              {opt.label}
             </button>
           );
         })}
@@ -155,11 +141,14 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
               className="absolute inset-0 w-full h-full object-cover rounded-l-2xl"
               draggable={false}
             />
+            {/* 
+            REMOVED: 
             <div className="absolute bottom-0 left-0 w-full py-3 bg-gradient-to-t from-sand-100/90 to-sand-100/10 flex justify-center">
               <p className="text-center text-base font-semibold text-spiritual-700 drop-shadow-sm">
                 Pendaftaran Akun Bersafar
               </p>
             </div>
+            */}
           </div>
           {/* Main form content (Right side, scrollable) */}
           <div className="flex-1 py-8 px-4 md:px-10 overflow-y-auto max-h-[560px] min-w-[280px]">
@@ -175,15 +164,15 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
               {step === 1 ? (
                 <>
                   <div>
-                    <Label htmlFor="nama">Nama Lengkap</Label>
+                    <Label htmlFor="nama" className="font-extrabold text-base text-spiritual-800 mb-1 block">Nama Lengkap</Label>
                     <Input id="nama" value={nama} onChange={e => setNama(e.target.value)} required />
                   </div>
                   <div>
-                    <Label htmlFor="kota">Kota Asal</Label>
+                    <Label htmlFor="kota" className="font-extrabold text-base text-spiritual-800 mb-1 block">Kota Asal</Label>
                     <SearchableCitySelect value={kota} onChange={setKota} required />
                   </div>
                   <div>
-                    <Label htmlFor="nomorHp">Nomor Telepon</Label>
+                    <Label htmlFor="nomorHp" className="font-extrabold text-base text-spiritual-800 mb-1 block">Nomor Telepon</Label>
                     <div className="flex items-center">
                       <span className="px-3 py-2 bg-slate-100 border border-r-0 border-gray-200 text-gray-500 rounded-l-md select-none font-semibold">+62</span>
                       <Input
@@ -210,11 +199,11 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
               ) : (
                 <>
                   <div>
-                    <Label className="mb-1 block">Estimasi Umroh</Label>
+                    <Label className="font-extrabold text-base text-spiritual-800 mb-1 block">Estimasi Umroh</Label>
                     {renderEstimasiChecklist()}
                   </div>
                   <div>
-                    <Label htmlFor="budget" className="mb-1 block">Budget Kamu (Rp Juta)</Label>
+                    <Label htmlFor="budget" className="font-extrabold text-base text-spiritual-800 mb-1 block">Budget Kamu (Rp Juta)</Label>
                     <div className="flex items-center space-x-4">
                       <input
                         id="budget"
@@ -233,7 +222,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
                     <div className="text-xs text-muted mt-1">{budget < MIN_BUDGET ? "Minimal Rp 15.000.000" : ""}</div>
                   </div>
                   <div>
-                    <Label className="mb-1 block">Kebutuhan Umroh</Label>
+                    <Label className="font-extrabold text-base text-spiritual-800 mb-1 block">Kebutuhan Umroh</Label>
                     <div className="flex flex-wrap gap-2">
                       {KEBUTUHAN_OPTIONS.map(opt => (
                         <button
@@ -243,7 +232,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
                           className={cn(
                             "px-4 py-2 rounded-full text-sm font-medium border-2 transition-all",
                             kebutuhan.includes(opt.value)
-                              ? "bg-gradient-to-r from-green-400 to-green-600 text-white border-green-600 shadow"
+                              ? "bg-green-800 text-white border-green-900 shadow"
                               : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-green-50"
                           )}
                         >
@@ -284,3 +273,4 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
 };
 
 export default RegistrationDialog;
+
