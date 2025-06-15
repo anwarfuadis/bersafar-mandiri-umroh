@@ -7,6 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Stepper from "./Stepper";
 import SearchableCitySelect from "./SearchableCitySelect";
 import { ArrowRight } from "lucide-react";
+import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const ESTIMASI_OPTIONS = [
