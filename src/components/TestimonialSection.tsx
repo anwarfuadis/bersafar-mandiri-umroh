@@ -64,8 +64,8 @@ const TestimonialSection = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-sf font-light text-white mb-6">
+        <div className="text-center mb-12 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-sf font-light text-white mb-3">
             Kata <span className="font-semibold text-gold-300 bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent">Mereka</span>
           </h2>
           <p className="text-lg md:text-xl text-spiritual-100 max-w-4xl mx-auto leading-relaxed">
@@ -74,8 +74,8 @@ const TestimonialSection = () => {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
+        {/* Testimonials Grid - Made smaller */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12">
           {testimonials.map((testimonial, index) => (
             <div 
               key={testimonial.id}
@@ -85,36 +85,36 @@ const TestimonialSection = () => {
                 transform: `translateY(${scrollY * 0.03}px)`
               }}
             >
-              <div className="relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 md:p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105 hover:shadow-2xl border border-white/20 hover:border-white/30 min-h-[400px] flex flex-col group-hover:translate-y-[-8px]">
+              <div className="relative bg-white/10 backdrop-blur-xl rounded-xl p-4 md:p-5 hover:bg-white/15 transition-all duration-500 hover:scale-105 hover:shadow-2xl border border-white/20 hover:border-white/30 min-h-[320px] flex flex-col group-hover:translate-y-[-4px]">
                 {/* Glassmorphism glow effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 {/* User Info Section */}
-                <div className="flex items-start space-x-4 mb-6 relative z-10">
-                  <div className="text-4xl md:text-5xl flex-shrink-0 transform group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-start space-x-3 mb-4 relative z-10">
+                  <div className="text-3xl md:text-4xl flex-shrink-0 transform group-hover:scale-110 transition-transform duration-300">
                     {testimonial.avatar}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h4 className="text-xl md:text-2xl font-sf font-bold text-white leading-tight mb-1">
+                    <h4 className="text-lg md:text-xl font-sf font-bold text-white leading-tight mb-1">
                       {testimonial.name}, {testimonial.age}
                     </h4>
-                    <p className="text-spiritual-200 font-sf text-sm md:text-base opacity-80">
+                    <p className="text-spiritual-200 font-sf text-sm opacity-80">
                       {testimonial.location}
                     </p>
                   </div>
                 </div>
 
                 {/* Quote Section */}
-                <div className="flex-1 mb-6 relative z-10">
-                  <blockquote className="text-lg md:text-xl text-white font-sf leading-relaxed font-medium">
+                <div className="flex-1 mb-4 relative z-10">
+                  <blockquote className="text-base md:text-lg text-white font-sf leading-relaxed font-medium">
                     "{testimonial.quote}"
                   </blockquote>
                 </div>
 
                 {/* Rating Section */}
-                <div className="mb-4 relative z-10">
-                  <div className="flex items-center justify-center mb-2">
-                    <div className="text-gold-300 text-xl md:text-2xl tracking-wide">
+                <div className="mb-3 relative z-10">
+                  <div className="flex items-center justify-center">
+                    <div className="text-gold-300 text-lg md:text-xl tracking-wide">
                       ★★★★★
                     </div>
                   </div>
@@ -122,8 +122,8 @@ const TestimonialSection = () => {
 
                 {/* Service Tag */}
                 <div className="text-center relative z-10">
-                  <div className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-spiritual-600/80 to-spiritual-700/80 backdrop-blur-sm border border-spiritual-500/30 rounded-full">
-                    <span className="text-sm md:text-base text-spiritual-100 font-sf font-medium">
+                  <div className="inline-flex items-center justify-center px-3 py-1.5 bg-gradient-to-r from-spiritual-600/80 to-spiritual-700/80 backdrop-blur-sm border border-spiritual-500/30 rounded-full">
+                    <span className="text-xs md:text-sm text-spiritual-100 font-sf font-medium">
                       {testimonial.service}
                     </span>
                   </div>
@@ -133,8 +133,8 @@ const TestimonialSection = () => {
           ))}
         </div>
 
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12">
+        {/* Stats Section - Increased spacing and z-index */}
+        <div className="relative z-20 grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12 bg-spiritual-800/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-spiritual-600/20">
           {[
             { number: "1000+", label: "Jamaah Terlayani" },
             { number: "4.9", label: "Rating Kepuasan" },
@@ -142,7 +142,7 @@ const TestimonialSection = () => {
             { number: "100%", label: "Visa Approval" }
           ].map((stat, index) => (
             <div key={index} className="text-center animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-              <div className="text-3xl md:text-4xl lg:text-5xl font-sf font-bold text-gold-300 mb-2 bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent">
+              <div className="text-2xl md:text-3xl lg:text-4xl font-sf font-bold text-gold-300 mb-2 bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent">
                 {stat.number}
               </div>
               <div className="text-spiritual-200 font-sf text-sm md:text-base">
