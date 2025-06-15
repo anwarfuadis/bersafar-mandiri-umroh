@@ -1,22 +1,16 @@
-
 import { useEffect, useState } from "react";
-
 const Footer = () => {
   const [scrollY, setScrollY] = useState(0);
-
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-sand-100 via-sand-200 to-spiritual-800">
+  return <footer className="relative overflow-hidden bg-gradient-to-b from-sand-100 via-sand-200 to-spiritual-800">
       {/* Parallax desert horizon */}
-      <div 
-        className="absolute inset-0 opacity-30"
-        style={{ transform: `translateY(${scrollY * 0.2}px)` }}
-      >
+      <div className="absolute inset-0 opacity-30" style={{
+      transform: `translateY(${scrollY * 0.2}px)`
+    }}>
         <div className="absolute bottom-0 w-full h-64 bg-gradient-to-t from-spiritual-900 via-spiritual-700 to-transparent"></div>
         <div className="absolute bottom-16 left-10 w-16 h-16 bg-gold-400 rounded-full opacity-50"></div>
         <div className="absolute bottom-32 right-20 w-12 h-12 bg-gold-300 rounded-full opacity-40"></div>
@@ -52,13 +46,11 @@ const Footer = () => {
               Layanan
             </h4>
             <ul className="space-y-3">
-              {["Penerbangan", "Hotel", "Visa Umroh", "Mutawif", "Asuransi"].map((item, index) => (
-                <li key={index}>
+              {["Penerbangan", "Hotel", "Visa Umroh", "Mutawif", "Asuransi"].map((item, index) => <li key={index}>
                   <a href="#" className="text-spiritual-600 font-sf hover:text-spiritual-800 transition-colors">
                     {item}
                   </a>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -68,13 +60,11 @@ const Footer = () => {
               Panduan
             </h4>
             <ul className="space-y-3">
-              {["Cara Pesan", "Syarat & Ketentuan", "FAQ", "Tips Umroh", "Blog"].map((item, index) => (
-                <li key={index}>
+              {["Cara Pesan", "Syarat & Ketentuan", "FAQ", "Tips Umroh", "Blog"].map((item, index) => <li key={index}>
                   <a href="#" className="text-spiritual-600 font-sf hover:text-spiritual-800 transition-colors">
                     {item}
                   </a>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -131,17 +121,15 @@ const Footer = () => {
 
         {/* Islamic decoration */}
         <div className="text-center mt-8 pt-8 border-t border-spiritual-200">
-          <div className="text-gold-600 text-2xl mb-2">☪️</div>
-          <p className="text-spiritual-600 font-sf italic">
+          
+          <p className="font-sf italic text-zinc-200">
             "Dan sempurnakanlah ibadah haji dan umroh karena Allah"
           </p>
-          <p className="text-spiritual-500 font-sf text-sm mt-2">
+          <p className="font-sf text-sm mt-2 text-zinc-300">
             - Al-Baqarah: 196
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
