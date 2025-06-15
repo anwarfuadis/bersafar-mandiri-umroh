@@ -1,18 +1,10 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import RealisticCloud from "./RealisticCloud";
 
 // --- Background image ---
 const HERO_BG =
   "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?auto=format&fit=crop&w=1200&q=80";
-
-// Realistic transparent PNG cloud images from Unsplash (CC0)
-const CLOUD_IMAGES = [
-  "https://pngimg.com/uploads/cloud/cloud_PNG16.png",
-  "https://pngimg.com/uploads/cloud/cloud_PNG25.png",
-  "https://pngimg.com/uploads/cloud/cloud_PNG28.png",
-  "https://pngimg.com/uploads/cloud/cloud_PNG8.png"
-];
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -23,55 +15,6 @@ const HeroSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // More random, natural clouds for realism
-  const clouds = [
-    {
-      top: "9%",
-      left: "6%",
-      speed: 0.22,
-      scale: 1.2,
-      zIndex: 5,
-      opacity: 0.85,
-      img: CLOUD_IMAGES[0]
-    },
-    {
-      top: "28%",
-      left: "68%",
-      speed: 0.33,
-      scale: 0.9,
-      zIndex: 6,
-      opacity: 0.73,
-      img: CLOUD_IMAGES[1]
-    },
-    {
-      top: "16%",
-      left: "42%",
-      speed: -0.19,
-      scale: 1.1,
-      zIndex: 4,
-      opacity: 0.62,
-      img: CLOUD_IMAGES[2]
-    },
-    {
-      top: "12%",
-      left: "50%",
-      speed: 0.27,
-      scale: 1,
-      zIndex: 7,
-      opacity: 0.52,
-      img: CLOUD_IMAGES[3]
-    },
-    {
-      top: "34%",
-      left: "17%",
-      speed: -0.14,
-      scale: 0.8,
-      zIndex: 4,
-      opacity: 0.91,
-      img: CLOUD_IMAGES[1]
-    }
-  ];
-
   return (
     <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
@@ -81,28 +24,6 @@ const HeroSection = () => {
     >
       {/* Realistic background overlay for color harmony */}
       <div className="absolute inset-0 bg-gradient-to-b from-sky-300/40 via-amber-50/60 to-sand-100/90 mix-blend-multiply" aria-hidden="true"></div>
-
-      {/* Realistic Animated Clouds */}
-      <div className="absolute inset-0 pointer-events-none select-none z-0">
-        {clouds.map((cloud, idx) => (
-          <RealisticCloud
-            key={idx}
-            src={cloud.img}
-            style={{
-              top: cloud.top,
-              left: cloud.left,
-              transform: `translateX(${scrollY * cloud.speed}px) scale(${cloud.scale})`,
-              opacity: cloud.opacity,
-              zIndex: cloud.zIndex,
-              transition: "transform 0.4s cubic-bezier(0.51,0.09,0.58,1), opacity 1.5s",
-              filter: "blur(0.5px)",
-              width: "180px",
-              maxWidth: "30vw",
-              minWidth: "90px"
-            }}
-          />
-        ))}
-      </div>
 
       {/* Content */}
       <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
@@ -155,3 +76,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
