@@ -36,45 +36,74 @@ const StepGuide = () => {
               <table className="w-full text-sm md:text-base text-white">
                 <thead>
                   <tr className="bg-gradient-to-r from-gold-400/30 to-sand-400/20">
-                    <th className="py-4 px-4 text-left font-bold text-gold-200 tracking-wider">Aspek</th>
-                    <th className="py-4 px-4 text-left font-bold text-gold-300">Umrah Mandiri (Bersafar)</th>
+                    <th className="py-4 px-4 text-left font-bold text-gold-200/50 tracking-wider blur-sm">Aspek</th>
+                    <th className="py-4 px-4 text-left font-bold text-gold-300 relative">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-3 h-3 bg-gradient-to-r from-gold-400 to-gold-500 rounded-full animate-pulse-gentle shadow-lg"></div>
+                        <span className="bg-gradient-to-r from-gold-300 to-gold-400 bg-clip-text text-transparent">
+                          Umrah Mandiri (Bersafar)
+                        </span>
+                        <div className="absolute -top-1 -right-1 w-2 h-2 bg-gold-400 rounded-full animate-ping"></div>
+                      </div>
+                    </th>
                     <th className="py-4 px-4 text-left font-bold text-sand-200">Umrah via Travel Agent</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Harga</td>
-                    <td className="py-4 px-4 text-gold-200 font-bold">Mulai Rp 18 jutaan</td>
+                    <td className="py-4 px-4 font-semibold text-white/50 blur-sm">Harga</td>
+                    <td className="py-4 px-4 text-gold-200 font-bold relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-gold-500/10 to-transparent rounded"></div>
+                      <span className="relative z-10">Mulai Rp 18 jutaan</span>
+                    </td>
                     <td className="py-4 px-4 text-sand-200 font-bold">Mulai Rp 26 jutaan</td>
                   </tr>
                   <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Jadwal</td>
-                    <td className="py-4 px-4 font-bold text-green-300">Bebas atur sendiri</td>
+                    <td className="py-4 px-4 font-semibold text-white/50 blur-sm">Jadwal</td>
+                    <td className="py-4 px-4 font-bold text-green-300 relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-gold-500/10 to-transparent rounded"></div>
+                      <span className="relative z-10">Bebas atur sendiri</span>
+                    </td>
                     <td className="py-4 px-4 text-white/80">Ikut jadwal rombongan</td>
                   </tr>
                   <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Akomodasi</td>
-                    <td className="py-4 px-4 font-bold text-green-300">Pilih sendiri</td>
+                    <td className="py-4 px-4 font-semibold text-white/50 blur-sm">Akomodasi</td>
+                    <td className="py-4 px-4 font-bold text-green-300 relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-gold-500/10 to-transparent rounded"></div>
+                      <span className="relative z-10">Pilih sendiri</span>
+                    </td>
                     <td className="py-4 px-4 text-white/80">Sudah ditentukan travel</td>
                   </tr>
                   <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Transportasi Lokal</td>
-                    <td className="py-4 px-4 text-gold-200">Patungan bareng, lebih hemat</td>
+                    <td className="py-4 px-4 font-semibold text-white/50 blur-sm">Transportasi Lokal</td>
+                    <td className="py-4 px-4 text-gold-200 relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-gold-500/10 to-transparent rounded"></div>
+                      <span className="relative z-10">Patungan bareng, lebih hemat</span>
+                    </td>
                     <td className="py-4 px-4 text-white/80">Sudah termasuk paket</td>
                   </tr>
                   <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Handling Bandara</td>
-                    <td className="py-4 px-4 text-white/80">Tanpa handling</td>
+                    <td className="py-4 px-4 font-semibold text-white/50 blur-sm">Handling Bandara</td>
+                    <td className="py-4 px-4 text-white/80 relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-gold-500/10 to-transparent rounded"></div>
+                      <span className="relative z-10">Jika dibutuhkan saja</span>
+                    </td>
                     <td className="py-4 px-4 text-green-300">Ada petugas bantu</td>
                   </tr>
                   <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Kebebasan</td>
-                    <td className="py-4 px-4 font-bold text-green-300">Lebih fleksibel</td>
+                    <td className="py-4 px-4 font-semibold text-white/50 blur-sm">Kebebasan</td>
+                    <td className="py-4 px-4 font-bold text-green-300 relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-gold-500/10 to-transparent rounded"></div>
+                      <span className="relative z-10">Lebih fleksibel</span>
+                    </td>
                     <td className="py-4 px-4 text-white/80">Terikat itinerary grup</td>
                   </tr>
                   <tr>
-                    <td className="py-4 px-4 font-semibold">Pendamping (Mutawif)</td>
-                    <td className="py-4 px-4 text-white">Jika dibutuhkan saja</td>
+                    <td className="py-4 px-4 font-semibold text-white/50 blur-sm">Pendamping (Mutawif)</td>
+                    <td className="py-4 px-4 text-white relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-gold-500/10 to-transparent rounded"></div>
+                      <span className="relative z-10">Jika dibutuhkan saja</span>
+                    </td>
                     <td className="py-4 px-4 text-green-300">Ada pembimbing tetap</td>
                   </tr>
                 </tbody>
