@@ -54,7 +54,7 @@ const TestimonialSection = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-3 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-sf font-light text-white mb-6">
             Kata <span className="font-medium text-gold-300">Mereka</span>
           </h2>
@@ -78,7 +78,7 @@ const TestimonialSection = () => {
                 animationDelay: `${index * 0.2}s`
               }}
             >
-              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105 border border-white/20 min-h-[300px] flex flex-col">
+              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105 border border-white/20 h-[350px] flex flex-col">
                 {/* User Info Section */}
                 <div className="flex items-start space-x-4 mb-6 flex-shrink-0">
                   <div className="text-4xl flex-shrink-0">{testimonial.avatar}</div>
@@ -93,7 +93,7 @@ const TestimonialSection = () => {
                 </div>
 
                 {/* Quote Section - Takes available space */}
-                <div className="flex-1 mb-6">
+                <div className="flex-1 mb-6 flex items-start">
                   <blockquote className="text-lg text-white font-sf leading-relaxed">
                     "{testimonial.quote}"
                   </blockquote>
