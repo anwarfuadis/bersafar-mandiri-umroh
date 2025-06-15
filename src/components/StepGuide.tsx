@@ -73,6 +73,21 @@ const StepGuide = () => {
   const canScrollLeft = activeStep > 1;
   const canScrollRight = activeStep < steps.length;
 
+  // Helper to apply green gradient to icon using SVG linearGradient in <defs>
+  const GradientIcon = ({ Icon }: { Icon: any }) => (
+    <svg width={44} height={44} className="mx-auto mb-2" viewBox="0 0 44 44" fill="none">
+      <defs>
+        <linearGradient id="icon-step-gradient" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#2FA86E" />
+          <stop offset="1" stopColor="#0A5F38" />
+        </linearGradient>
+      </defs>
+      <g>
+        <Icon size={40} stroke="url(#icon-step-gradient)" color="url(#icon-step-gradient)" />
+      </g>
+    </svg>
+  );
+
   return (
     <section className="relative py-20 overflow-hidden bg-gradient-to-b from-sand-50 to-white">
       {/* Parallax background elements */}
@@ -130,14 +145,42 @@ const StepGuide = () => {
             <ChevronRight size={24} />
           </button>
 
-          {/* Progress Line */}
-          <div className="absolute top-16 left-12 right-12 h-1 bg-sand-200 rounded-full">
-            <div
-              className="h-full bg-gradient-to-r from-spiritual-600 to-gold-500 rounded-full transition-all duration-500"
-              style={{
-                width: `${(activeStep / steps.length) * 100}%`
-              }}
-            ></div>
+          {/* Progress Bar with Step Numbers */}
+          <div className="relative flex flex-col items-center mb-6">
+            <div className="relative w-full max-w-3xl h-6 flex items-center">
+              <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-2 bg-sand-200 rounded-full z-0"></div>
+              <div
+                className="absolute left-0 top-1/2 -translate-y-1/2 h-2 bg-gradient-to-r from-spiritual-600 to-gold-500 rounded-full z-10 transition-all duration-500"
+                style={{
+                  width: `${(activeStep / steps.length) * 100}%`
+                }}
+              ></div>
+              {/* Step number indicators */}
+              <div className="relative flex justify-between items-center w-full z-20 px-3">
+                {steps.map((step, idx) => (
+                  <div
+                    key={step.id}
+                    className={`
+                      flex flex-col items-center
+                      ${activeStep === step.id ? "font-bold text-spiritual-700" : "text-spiritual-400"}
+                      transition-all duration-300
+                    `}
+                  >
+                    <span
+                      className={`
+                        flex items-center justify-center w-8 h-8 
+                        rounded-full text-base font-sf
+                        ${activeStep === step.id ? "bg-gradient-to-r from-spiritual-600 to-gold-500 text-white shadow-md" : "bg-white border border-sand-200"}
+                        mb-1
+                        transition-all duration-300
+                      `}
+                    >
+                      {step.id}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Steps Container */}
@@ -162,23 +205,9 @@ const StepGuide = () => {
                     animationDelay: `${index * 0.1}s`
                   }}
                 >
-                  {/* Step Circle with Number and Icon Separated Horizontally */}
-                  <div
-                    className={`w-40 h-16 rounded-full mx-auto flex flex-row items-center justify-center gap-4 mb-4 transition-all duration-300 text-xl font-bold font-sf
-                      ${
-                        activeStep === step.id
-                          ? "bg-gradient-to-r from-spiritual-600 to-spiritual-700 text-white shadow-lg scale-110"
-                          : activeStep > step.id
-                          ? "bg-gold-400 text-white"
-                          : "bg-sand-200 text-spiritual-600"
-                      }
-                    `}
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">{step.id}</span>
-                      <span className="border-l border-white/30 h-8 mx-1"></span>
-                      <Icon size={28} className="mt-0.5" />
-                    </div>
+                  {/* Step Icon Only, No Number or Background */}
+                  <div className="flex justify-center mb-3">
+                    <GradientIcon Icon={Icon} />
                   </div>
 
                   {/* Step Content */}
