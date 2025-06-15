@@ -2,11 +2,10 @@
 import HeroSection from "@/components/HeroSection";
 import StepGuide from "@/components/StepGuide";
 import ServicesShowcase from "@/components/ServicesShowcase";
-// Removed TestimonialSection import
+import TestimonialSection from "@/components/TestimonialSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import StickyHeader from "@/components/StickyHeader";
-import FloatingServiceButton from "@/components/FloatingServiceButton";
 
 const Index = () => {
   return (
@@ -15,10 +14,9 @@ const Index = () => {
       <HeroSection />
       <StepGuide />
       <ServicesShowcase />
-      {/* TestimonialSection removed */}
+      <TestimonialSection />
       <FAQSection />
       <Footer />
-      <FloatingServiceButton />
     </div>
   );
 };

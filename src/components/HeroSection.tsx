@@ -1,24 +1,13 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import RegistrationModal from "@/components/RegistrationModal";
 
 // --- Background image ---
 const HERO_BG =
   "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?auto=format&fit=crop&w=1200&q=80";
 
-// SVG desert: deeper brown and large
-const DARK_DESERT_SVG = `
-<svg viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path fill="#A47343" fill-opacity="1"
-    d="M0,288L120,272C240,256,480,224,720,218.7C960,213,1200,235,1320,245.3L1440,256V320H1320C1200,320,960,320,720,320C480,320,240,320,120,320H0V288Z"/>
-  <path fill="#C29D77" fill-opacity="0.5"
-    d="M0,256L120,245.3C240,235,480,213,720,224C960,235,1200,277,1320,293.3L1440,320V0H1320C1200,0,960,0,720,0C480,0,240,0,120,0H0V256Z"/>
-</svg>
-`;
-
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
-  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -26,52 +15,71 @@ const HeroSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // For accessibility: bring desert SVG to front only at bottom
-  const desertParallax = {
-    transform: `translateY(${scrollY * 0.15}px)`,
-  };
-
   return (
     <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        background: `linear-gradient(to bottom, #2A2923 65%, #A47343 100%)`
+        background: `url(${HERO_BG}) center center / cover no-repeat`
       }}
     >
-      {/* Background with a darker, subtle overlay for daytime desert */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1c1710]/80 via-[#513f28]/70 to-[#9c794d]/85 z-0" aria-hidden="true"></div>
-      {/* Main Unsplash Image for sky */}
-      <div className="absolute inset-0 z-0"
-        style={{
-          background: `url(${HERO_BG}) center top / cover no-repeat`,
-          opacity: 0.44
-        }} aria-hidden="true"></div>
-      {/* Parallax desert SVG */}
-      <div
-        className="absolute left-0 right-0 bottom-0 z-10 pointer-events-none select-none"
-        style={desertParallax}
+      {/* 1. Realistic background overlay for color harmony */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-10" 
         aria-hidden="true"
-        dangerouslySetInnerHTML={{ __html: DARK_DESERT_SVG}}
+        style={{
+          background: "linear-gradient(180deg, rgba(81,166,211,0.35) 0%, rgba(255,249,227,0.62) 55%, rgba(245,193,113,0.7) 94%)",
+        }}
+      ></div>
+      {/* 2. Animated "desert" sand at the BOTTOM */}
+      <div
+        className="absolute left-0 w-full h-48 md:h-60 bottom-0 z-20 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          // The shape and color of the animated "desert"
+          background:
+            "radial-gradient(ellipse at 50% 94%, #EDDDA1 90%, #DAC34A 100%)",
+          opacity: 1,
+          filter: "blur(0.5px)"
+        }}
+      >
+        <div
+          className="w-full h-full"
+          style={{
+            animation: "desertWave 4s linear infinite alternate"
+          }}
+        />
+        <style>
+          {`
+          @keyframes desertWave {
+            0% { transform: translateY(8px) scaleX(1); }
+            50% { transform: translateY(0px) scaleX(1.02);}
+            100% { transform: translateY(12px) scaleX(0.98);}
+          }
+          `}
+        </style>
+      </div>
+
+      {/* 3. Overlay gradient directly under content for darker sand under text */}
+      <div
+        className="absolute left-1/2 transform -translate-x-1/2 top-0 w-full max-w-5xl h-96 z-30 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 20%, rgba(234,198,92, 0.35) 98%)"
+        }}
       />
 
-      {/* Content */}
-      <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
+      {/* 4. Hero Content */}
+      <div className="relative z-40 text-center px-6 max-w-5xl mx-auto">
         <div className="animate-fade-in">
           {/* Brand Name */}
           <div className="mb-8">
-            <h1 className="text-6xl md:text-8xl font-sf text-[#ecd4ad] mb-2 leading-tight tracking-tight font-bold drop-shadow-xl" style={{
-              background: "linear-gradient(99deg, #ecd4ad 50%, #b4885e 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text"
-            }}>
+            <h1 className="text-6xl md:text-8xl font-sf text-white mb-2 leading-tight tracking-tight font-bold drop-shadow-2xl">
               Bersafar
             </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-yellow-700 mx-auto rounded-full shadow-lg"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full shadow-lg"></div>
           </div>
 
           {/* Main Tagline */}
-          <p className="text-xl md:text-2xl mb-4 font-sf font-semibold text-white drop-shadow-lg">
+          <p className="text-xl md:text-2xl mb-4 font-sf font-semibold text-white drop-shadow-none">
             Platform Umroh Mandiri Pertama Di Indonesia
           </p>
 
@@ -80,28 +88,30 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-amber-600 to-yellow-800 hover:from-yellow-700 hover:to-yellow-900 text-slate-900 px-10 py-6 text-lg font-sf font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 border-2 border-amber-400/30"
-              onClick={() => setOpenModal(true)}
-            >
+            <Button size="lg" className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-10 py-6 text-lg font-sf font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 border-2 border-gold-400/30">
               Mulai Perjalananmu
             </Button>
+          </div>
+
+          <div className="mt-16 text-center">
+            <p className="text-sm font-sf uppercase tracking-wider mb-4 text-gray-100 drop-shadow-lg">
+              IN PARTERSHIP WITH
+            </p>
+            <div className="flex justify-center items-center space-x-8 opacity-80">
+              {/* Add logos if needed */}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Register Modal */}
-      <RegistrationModal open={openModal} onOpenChange={setOpenModal} />
-
-      {/* Scroll indicator (optional, but not a desert color to keep sand clear) */}
+      {/* 5. Scroll indicator */}
       <div
-        className="absolute bottom-8 left-1/2 animate-bounce opacity-80 z-20"
+        className="absolute bottom-8 left-1/2 animate-bounce opacity-80 z-40"
         style={{
           transform: `translateX(-50%) translateY(${scrollY * 0.1}px)`
         }}
       >
-        {/* Arrow indicator, if desired */}
+        {/* Optionally add a down arrow SVG */}
       </div>
     </section>
   );
