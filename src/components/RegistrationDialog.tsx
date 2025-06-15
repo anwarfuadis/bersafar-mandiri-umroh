@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import Stepper from "./Stepper";
-import SearchableCitySelect from "./SearchableCitySelect";
 import { ArrowRight, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -42,7 +41,6 @@ const MIN_BUDGET = 15; // juta
 const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => {
   const [step, setStep] = useState(1);
   const [nama, setNama] = useState("");
-  const [kota, setKota] = useState("");
   const [nomorHp, setNomorHp] = useState("");
   const [estimasi, setEstimasi] = useState(ESTIMASI_OPTIONS[0].value);
   const [budget, setBudget] = useState(0);
@@ -61,7 +59,6 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
     if (!open) {
       setStep(1);
       setNama("");
-      setKota("");
       setNomorHp("");
       setEstimasi(ESTIMASI_OPTIONS[0].value);
       setBudget(0);
@@ -73,7 +70,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
 
   function handleNextStep(e: React.FormEvent) {
     e.preventDefault();
-    if (nama && kota && nomorHp) {
+    if (nama && nomorHp) {
       setStep(2);
     }
   }
@@ -95,7 +92,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
 
   // Helper for step 1 validation
   function isStepOneValid() {
-    return !!nama && !!kota && !!nomorHp;
+    return !!nama && !!nomorHp;
   }
 
   // Adjust stepper to only allow step 2 click if step 1 is valid
@@ -187,10 +184,6 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
                   <div>
                     <Label htmlFor="nama" className="font-extrabold text-base text-spiritual-800 mb-1 block">Nama Lengkap</Label>
                     <Input id="nama" value={nama} onChange={e => setNama(e.target.value)} required />
-                  </div>
-                  <div>
-                    <Label htmlFor="kota" className="font-extrabold text-base text-spiritual-800 mb-1 block">Kota Asal</Label>
-                    <SearchableCitySelect value={kota} onChange={setKota} required />
                   </div>
                   <div>
                     <Label htmlFor="nomorHp" className="font-extrabold text-base text-spiritual-800 mb-1 block">Nomor Telepon</Label>
