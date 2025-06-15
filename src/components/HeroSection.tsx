@@ -1,15 +1,14 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import AuthModal from "@/components/AuthModal";
-import { ArrowRight } from "lucide-react";
+import RegistrationDialog from "@/components/RegistrationDialog";
 
 // --- Background image ---
 const HERO_BG =
   "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?auto=format&fit=crop&w=1200&q=80";
 
 const HeroSection = () => {
-  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
   // Attach scroll event
@@ -50,10 +49,10 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-10 py-6 text-lg font-sf font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 border-2 border-gold-400/30"
-              onClick={() => setAuthModalOpen(true)}
+            <Button size="lg" className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-10 py-6 text-lg font-sf font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 border-2 border-gold-400/30"
+              onClick={() => setDialogOpen(true)}
             >
-              Mulai Perjalananmu <ArrowRight className="ml-2 h-5 w-5" />
+              Mulai Perjalananmu
             </Button>
           </div>
 
@@ -77,7 +76,7 @@ const HeroSection = () => {
       >
         {/* Optionally add a down arrow SVG */}
       </div>
-      <AuthModal open={authModalOpen} onOpenChange={setAuthModalOpen} />
+      <RegistrationDialog open={dialogOpen} onOpenChange={setDialogOpen} />
     </section>
   );
 };

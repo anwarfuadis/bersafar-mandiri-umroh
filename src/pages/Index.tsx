@@ -1,8 +1,8 @@
 
 import HeroSection from "@/components/HeroSection";
-import StepByStepSection from "@/components/StepByStepSection";
 import StepGuide from "@/components/StepGuide";
 import ServicesShowcase from "@/components/ServicesShowcase";
+// Removed: import TestimonialSection from "@/components/TestimonialSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import StickyHeader from "@/components/StickyHeader";
@@ -13,9 +13,9 @@ const Index = () => {
     <div className="min-h-screen">
       <StickyHeader />
       <HeroSection />
-      <StepByStepSection />
       <StepGuide />
       <ServicesShowcase />
+      {/* <TestimonialSection /> removed */}
       <FAQSection />
       <Footer />
       <FloatingCartButton />
