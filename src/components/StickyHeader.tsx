@@ -1,10 +1,10 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import RegistrationDialog from "@/components/RegistrationDialog";
+import AuthModal from "@/components/AuthModal";
 
 const StickyHeader = () => {
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
 
   useEffect(() => {
@@ -17,8 +17,8 @@ const StickyHeader = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Ensure header is visible if dialogOpen is true
-  const headerVisible = showHeader || dialogOpen;
+  // Ensure header is visible if authModalOpen is true
+  const headerVisible = showHeader || authModalOpen;
 
   return (
     <>
@@ -39,14 +39,14 @@ const StickyHeader = () => {
           {/* CTA Button */}
           <Button 
             size="default" 
-            className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-6 py-2 font-sf font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
-            onClick={() => setDialogOpen(true)}
+            className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-6 py-2 font-sf font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
+            onClick={() => setAuthModalOpen(true)}
           >
             Mulai Perjalananmu
           </Button>
         </div>
       </header>
-      <RegistrationDialog open={dialogOpen} onOpenChange={setDialogOpen} />
+      <AuthModal open={authModalOpen} onOpenChange={setAuthModalOpen} />
     </>
   );
 };
