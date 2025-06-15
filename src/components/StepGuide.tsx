@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { ArrowRight, Check, Compass, DollarSign, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -59,22 +60,7 @@ const StepGuide = () => {
           </Button>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4">
-          {[
-            { number: "1000+", label: "Jamaah Terlayani" },
-            { number: "24/7", label: "Customer Support" },
-            { number: "100%", label: "Visa Approval" }
-          ].map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-2xl md:text-3xl font-sf font-bold text-gold-300 mb-1">
-                {stat.number}
-              </div>
-              <div className="text-spiritual-100 font-sf text-sm">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Removed the stats block here */}
       </div>
     </section>
   );
