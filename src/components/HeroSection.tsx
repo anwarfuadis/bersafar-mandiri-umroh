@@ -16,9 +16,18 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-sf font-light text-spiritual-800 mb-6 leading-tight">
+          {/* Brand Logo/Name */}
+          <div className="mb-8">
+            <h1 className="text-6xl md:text-8xl font-sf font-light text-spiritual-800 mb-2 tracking-tight">
+              Bersafar
+            </h1>
+            <div className="w-24 h-1 bg-gradient-to-r from-spiritual-600 to-gold-500 mx-auto rounded-full"></div>
+          </div>
+          
+          {/* Main Tagline */}
+          <h2 className="text-4xl md:text-6xl font-sf font-light text-spiritual-800 mb-6 leading-tight">
             Umroh <span className="font-medium text-spiritual-600">Mandiri</span>
-          </h1>
+          </h2>
           
           <p className="text-xl md:text-2xl text-spiritual-700 mb-4 font-sf font-light">
             Sesimpel yang Kamu Bayangkan
@@ -30,7 +39,7 @@ const HeroSection = () => {
             Visa, hotel, penerbangan, dan mutawif - semuanya à la carte.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <Button 
               size="lg" 
               className="bg-spiritual-600 hover:bg-spiritual-700 text-white px-8 py-6 text-lg font-sf font-medium rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
@@ -47,13 +56,22 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          <div className="mt-16 text-center">
-            <p className="text-sm text-spiritual-500 font-sf uppercase tracking-wider mb-4">
-              Dipercaya oleh 1000+ jamaah
-            </p>
-            <div className="flex justify-center items-center space-x-8 opacity-60">
-              <div className="text-gold-600 text-2xl">★★★★★</div>
-              <div className="text-spiritual-600 font-sf font-medium">4.9/5</div>
+          {/* Trust Indicators */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+            <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/70 transition-all duration-300">
+              <div className="text-gold-600 text-3xl mb-2">★★★★★</div>
+              <div className="text-spiritual-600 font-sf font-medium text-lg">4.9/5</div>
+              <div className="text-sm text-spiritual-500 font-sf">Rating Kepuasan</div>
+            </div>
+            
+            <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/70 transition-all duration-300">
+              <div className="text-spiritual-600 font-sf font-bold text-2xl mb-2">1000+</div>
+              <div className="text-sm text-spiritual-500 font-sf">Jamaah Terlayani</div>
+            </div>
+            
+            <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/70 transition-all duration-300">
+              <div className="text-spiritual-600 font-sf font-bold text-2xl mb-2">100%</div>
+              <div className="text-sm text-spiritual-500 font-sf">Visa Approval</div>
             </div>
           </div>
         </div>

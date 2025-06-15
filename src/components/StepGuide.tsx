@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 const steps = [
@@ -8,169 +8,172 @@ const steps = [
     icon: "📅",
     title: "Rencanakan",
     description: "Tentukan tanggal & anggaran",
-    action: "Budget Calculator",
-    price: null
+    details: "Gunakan budget calculator kami untuk merencanakan perjalanan"
   },
   {
     id: 2,
-    icon: "✈️",
+    icon: "✈️", 
     title: "Terbang",
     description: "Cari penerbangan ke Jeddah/Madinah",
-    action: "Cari Penerbangan",
-    price: "Mulai Rp 8,5JT"
+    details: "Booking tiket pesawat dengan harga terbaik"
   },
   {
     id: 3,
     icon: "🛂",
-    title: "Visa & Dokumen",
+    title: "Visa & Dokumen", 
     description: "Urus visa Umroh & asuransi",
-    action: "Proses Visa",
-    price: "Rp 1,2JT"
+    details: "Visa processing: Rp 1.2JT - 100% approval rate"
   },
   {
     id: 4,
     icon: "🏨",
     title: "Menginap",
-    description: "Pilih hotel dekat Masjidil Haram/Nabawi",
-    action: "Pilih Hotel",
-    price: "Mulai Rp 500rb/malam"
+    description: "Pilih hotel dekat Masjidil Haram/Nabawi", 
+    details: "Hotel booking dengan lokasi strategis"
   },
   {
     id: 5,
     icon: "🧕",
     title: "Bimbingan",
     description: "Temukan mutawif berpengalaman",
-    action: "Cari Mutawif",
-    price: "Rp 2,5JT"
+    details: "Mutawif guide hiring dengan pengalaman 10+ tahun"
   }
 ];
 
 const StepGuide = () => {
-  const [currentStep, setCurrentStep] = useState<number | null>(null);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative py-20 overflow-hidden bg-gradient-to-b from-sand-100 to-sand-200">
+      {/* Background elements */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+      >
+        <div className="absolute top-20 right-10 w-32 h-32 bg-spiritual-200 rounded-full"></div>
+        <div className="absolute bottom-40 left-20 w-24 h-24 bg-gold-200 rounded-full"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-sf font-light text-spiritual-800 mb-6">
-            Lima Langkah <span className="font-medium text-spiritual-600">Mudah</span>
+            Panduan <span className="font-medium text-spiritual-600">Umroh Mandiri</span>
           </h2>
-          <p className="text-xl text-spiritual-600 mb-8 max-w-3xl mx-auto">
-            Di step mana kamu sekarang? Klik untuk langsung ke layanan yang kamu butuhkan.
+          <p className="text-xl text-spiritual-700 max-w-3xl mx-auto mb-8">
+            5 langkah simpel untuk memulai perjalanan spiritualmu
+          </p>
+          <p className="text-lg text-spiritual-600 font-sf font-medium">
+            Di step mana kamu sekarang?
           </p>
         </div>
 
-        {/* Horizontal Scroller */}
-        <div className="relative">
-          <div className="flex space-x-6 overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory">
+        {/* Steps - Horizontal Scroller */}
+        <div className="relative mb-12">
+          <div className="flex overflow-x-auto pb-6 space-x-6 scrollbar-hide">
             {steps.map((step, index) => (
-              <div 
+              <div
                 key={step.id}
-                className={`flex-shrink-0 w-80 bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer snap-center border-2 ${
+                className={`flex-shrink-0 w-80 cursor-pointer transition-all duration-300 ${
                   currentStep === step.id 
-                    ? 'border-spiritual-400 scale-105' 
-                    : 'border-sand-200 hover:border-spiritual-200'
+                    ? 'transform scale-105' 
+                    : 'hover:scale-102'
                 }`}
-                onClick={() => setCurrentStep(currentStep === step.id ? null : step.id)}
+                onClick={() => setCurrentStep(step.id)}
               >
-                {/* Step indicator */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-spiritual-100 rounded-full flex items-center justify-center text-spiritual-600 font-sf font-medium">
-                      {step.id}
-                    </div>
-                    <div className="text-4xl">{step.icon}</div>
+                <div className={`relative p-8 rounded-3xl border-2 transition-all duration-300 ${
+                  currentStep === step.id
+                    ? 'bg-white border-spiritual-400 shadow-xl'
+                    : 'bg-white/80 border-spiritual-200 hover:border-spiritual-300 shadow-lg'
+                }`}>
+                  {/* Step number */}
+                  <div className="absolute -top-4 -left-4 w-8 h-8 bg-spiritual-600 text-white rounded-full flex items-center justify-center font-sf font-bold text-sm">
+                    {step.id}
                   </div>
-                  
-                  {step.price && (
-                    <div className="text-right">
-                      <div className="text-sm text-spiritual-500 font-sf">Mulai dari</div>
-                      <div className="text-lg font-sf font-semibold text-spiritual-700">{step.price}</div>
+
+                  {/* Icon */}
+                  <div className="text-4xl mb-4 text-center">
+                    {step.icon}
+                  </div>
+
+                  {/* Content */}
+                  <div className="text-center">
+                    <h3 className="text-xl font-sf font-semibold text-spiritual-800 mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-spiritual-600 mb-4 leading-relaxed">
+                      {step.description}
+                    </p>
+                    <p className="text-sm text-spiritual-500 font-sf">
+                      {step.details}
+                    </p>
+                  </div>
+
+                  {/* Active indicator */}
+                  {currentStep === step.id && (
+                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+                      <div className="w-3 h-3 bg-spiritual-600 rounded-full animate-pulse"></div>
                     </div>
                   )}
-                </div>
-
-                {/* Content */}
-                <div className="mb-6">
-                  <h3 className="text-2xl font-sf font-semibold text-spiritual-800 mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-spiritual-600 font-sf leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-
-                {/* Action button */}
-                <Button 
-                  className={`w-full py-3 font-sf font-medium rounded-xl transition-all duration-300 ${
-                    currentStep === step.id
-                      ? 'bg-spiritual-600 hover:bg-spiritual-700 text-white'
-                      : 'bg-spiritual-50 hover:bg-spiritual-100 text-spiritual-700'
-                  }`}
-                >
-                  {step.action}
-                </Button>
-
-                {/* Progress indicator */}
-                <div className="mt-6 flex space-x-1">
-                  {steps.map((_, i) => (
-                    <div 
-                      key={i}
-                      className={`h-1 flex-1 rounded-full transition-all duration-300 ${
-                        i <= index ? 'bg-spiritual-400' : 'bg-sand-200'
-                      }`}
-                    />
-                  ))}
                 </div>
               </div>
             ))}
           </div>
+        </div>
 
-          {/* Navigation arrows for desktop */}
-          <div className="hidden md:flex absolute top-1/2 -translate-y-1/2 -left-4">
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="w-12 h-12 rounded-full border-spiritual-200 hover:border-spiritual-400 hover:bg-spiritual-50"
-            >
-              ←
-            </Button>
-          </div>
-          <div className="hidden md:flex absolute top-1/2 -translate-y-1/2 -right-4">
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="w-12 h-12 rounded-full border-spiritual-200 hover:border-spiritual-400 hover:bg-spiritual-50"
-            >
-              →
-            </Button>
+        {/* Progress Bar */}
+        <div className="flex justify-center mb-12">
+          <div className="flex items-center space-x-2">
+            {steps.map((step, index) => (
+              <div key={step.id} className="flex items-center">
+                <div 
+                  className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
+                    currentStep >= step.id 
+                      ? 'bg-spiritual-600' 
+                      : 'bg-spiritual-300 hover:bg-spiritual-400'
+                  }`}
+                  onClick={() => setCurrentStep(step.id)}
+                />
+                {index < steps.length - 1 && (
+                  <div className={`w-8 h-0.5 mx-1 transition-all duration-300 ${
+                    currentStep > step.id ? 'bg-spiritual-600' : 'bg-spiritual-300'
+                  }`} />
+                )}
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Progress save CTA */}
-        <div className="text-center mt-12">
-          <p className="text-spiritual-600 font-sf mb-4">
-            Simpan progres perjalananmu dengan mendaftar
-          </p>
+        {/* CTA */}
+        <div className="text-center">
           <Button 
-            variant="outline"
-            className="border-2 border-gold-400 text-gold-700 hover:bg-gold-50 px-6 py-3 font-sf font-medium rounded-xl"
+            size="lg" 
+            className="bg-spiritual-600 hover:bg-spiritual-700 text-white px-8 py-6 text-lg font-sf font-medium rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-            Daftar Gratis
+            Lanjutkan ke Step {currentStep}
           </Button>
         </div>
       </div>
 
-      <style jsx>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+      {/* Custom scrollbar styles */}
+      <style>
+        {`
+          .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+        `}
+      </style>
     </section>
   );
 };
