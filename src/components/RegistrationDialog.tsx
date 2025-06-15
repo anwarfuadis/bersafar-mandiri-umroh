@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -94,7 +93,28 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
     return nomorHp;
   }
 
-  // Modern checklist chip for Estimasi, same as kebutuhan
+  // Helper for step 1 validation
+  function isStepOneValid() {
+    return !!nama && !!kota && !!nomorHp;
+  }
+
+  // Adjust stepper to only allow step 2 click if step 1 is valid
+  function handleStepperClick(nextStep: number) {
+    if (nextStep === 1) {
+      setStep(1);
+    } else if (nextStep === 2 && isStepOneValid()) {
+      setStep(2);
+    }
+    // Ignore all other cases
+  }
+
+  // For thousands separator (Indonesian)
+  function formatIDRCurrency(num: number) {
+    // 15 -> 15.000.000
+    return `${num.toLocaleString("id-ID")}.000`;
+  }
+
+  // Modern checklist chip for Estimasi, matching kebutuhan style and color!
   function renderEstimasiChecklist() {
     return (
       <div className="flex flex-wrap gap-2">
@@ -141,22 +161,18 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
               className="absolute inset-0 w-full h-full object-cover rounded-l-2xl"
               draggable={false}
             />
-            {/* 
-            REMOVED: 
-            <div className="absolute bottom-0 left-0 w-full py-3 bg-gradient-to-t from-sand-100/90 to-sand-100/10 flex justify-center">
-              <p className="text-center text-base font-semibold text-spiritual-700 drop-shadow-sm">
-                Pendaftaran Akun Bersafar
-              </p>
-            </div>
-            */}
           </div>
           {/* Main form content (Right side, scrollable) */}
           <div className="flex-1 py-8 px-4 md:px-10 overflow-y-auto max-h-[560px] min-w-[280px]">
             <DialogHeader>
               <DialogTitle className="font-bold mb-3 text-center text-2xl">Pendaftaran Akun</DialogTitle>
             </DialogHeader>
-            {/* Stepper */}
-            <Stepper step={step} setStep={setStep} labels={REGISTRATION_STEPS} />
+            {/* Stepper -- update click logic */}
+            <Stepper
+              step={step}
+              setStep={handleStepperClick}
+              labels={REGISTRATION_STEPS}
+            />
             <form
               className="space-y-6"
               onSubmit={step === 1 ? handleNextStep : handleSubmit}
@@ -191,7 +207,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
                   <Button
                     type="submit"
                     className="w-full mt-4 bg-gradient-to-r from-gold-500 to-gold-600 text-spiritual-900 font-bold text-base py-3 rounded-lg hover:scale-105 flex items-center justify-center gap-2"
-                    disabled={!nama || !kota || !nomorHp}
+                    disabled={!isStepOneValid()}
                   >
                     Selanjutnya <ArrowRight className="ml-1 size-5" />
                   </Button>
@@ -203,8 +219,10 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
                     {renderEstimasiChecklist()}
                   </div>
                   <div>
-                    <Label htmlFor="budget" className="font-extrabold text-base text-spiritual-800 mb-1 block">Budget Kamu (Rp Juta)</Label>
-                    <div className="flex items-center space-x-4">
+                    {/* Remove (Rp Juta) as requested */}
+                    <Label htmlFor="budget" className="font-extrabold text-base text-spiritual-800 mb-1 block">Budget Kamu</Label>
+                    {/* Display Rp and nominal in a flex row and align midline */}
+                    <div className="flex items-center space-x-3">
                       <input
                         id="budget"
                         type="range"
@@ -212,11 +230,17 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
                         max={100}
                         value={budget}
                         onChange={e => setBudget(Number(e.target.value))}
-                        className="w-full accent-green-500"
+                        className="w-full accent-green-800 [&::-webkit-slider-thumb]:bg-green-800 [&::-webkit-slider-thumb]:border-green-900 [&::-webkit-slider-thumb]:shadow [&::-webkit-slider-thumb]:shadow-green-900 
+                          [&::-webkit-slider-runnable-track]:bg-green-200 
+                          [&::-moz-range-thumb]:bg-green-800 [&::-moz-range-thumb]:border-green-900
+                          [&::-moz-range-track]:bg-green-200
+                          [&::-ms-fill-upper]:bg-green-200
+                          [&::-ms-fill-lower]:bg-green-200"
                         step={1}
                       />
-                      <span className="block min-w-[90px] font-bold text-green-700">
-                        Rp {budgetPinValue().toLocaleString("id-ID")}000000
+                      <span className="flex min-w-[130px] font-bold text-green-700 items-center gap-1 justify-end">
+                        <span>Rp</span>
+                        <span style={{ letterSpacing: "0.05em" }}>{formatIDRCurrency(budgetPinValue())}</span>
                       </span>
                     </div>
                     <div className="text-xs text-muted mt-1">{budget < MIN_BUDGET ? "Minimal Rp 15.000.000" : ""}</div>
@@ -273,4 +297,3 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
 };
 
 export default RegistrationDialog;
-
