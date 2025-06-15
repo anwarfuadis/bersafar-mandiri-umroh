@@ -63,7 +63,7 @@ const TestimonialSection = () => {
           </p>
         </div>
 
-        {/* Testimonials Grid - Fixed alignment */}
+        {/* Fixed Testimonials Grid */}
         <div 
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
           style={{ 
@@ -73,32 +73,41 @@ const TestimonialSection = () => {
           {testimonials.map((testimonial, index) => (
             <div 
               key={testimonial.id}
-              className="group h-full"
+              className="group"
               style={{ 
                 animationDelay: `${index * 0.2}s`
               }}
             >
-              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105 border border-white/20 h-full flex flex-col">
-                <div className="flex items-center space-x-4 mb-6">
+              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105 border border-white/20 min-h-[300px] flex flex-col">
+                {/* User Info Section */}
+                <div className="flex items-start space-x-4 mb-6 flex-shrink-0">
                   <div className="text-4xl flex-shrink-0">{testimonial.avatar}</div>
-                  <div className="min-w-0">
-                    <h4 className="text-xl font-sf font-semibold text-white">
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-xl font-sf font-semibold text-white leading-tight">
                       {testimonial.name}, {testimonial.age}
                     </h4>
-                    <p className="text-spiritual-200 font-sf text-sm">
+                    <p className="text-spiritual-200 font-sf text-sm mt-1">
                       {testimonial.location}
                     </p>
                   </div>
                 </div>
 
-                <blockquote className="text-lg text-white font-sf leading-relaxed mb-6 flex-grow">
-                  "{testimonial.quote}"
-                </blockquote>
+                {/* Quote Section - Takes available space */}
+                <div className="flex-1 mb-6">
+                  <blockquote className="text-lg text-white font-sf leading-relaxed">
+                    "{testimonial.quote}"
+                  </blockquote>
+                </div>
 
-                <div className="flex items-center justify-between mt-auto">
-                  <div className="text-gold-300 text-xl">★★★★★</div>
-                  <div className="text-sm text-spiritual-200 font-sf">
-                    {testimonial.service}
+                {/* Bottom Section - Fixed at bottom */}
+                <div className="flex-shrink-0 space-y-3">
+                  <div className="flex items-center justify-center">
+                    <div className="text-gold-300 text-xl">★★★★★</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-sm text-spiritual-200 font-sf bg-spiritual-700/30 px-3 py-1 rounded-full inline-block">
+                      {testimonial.service}
+                    </div>
                   </div>
                 </div>
               </div>
