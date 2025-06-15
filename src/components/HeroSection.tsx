@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -36,7 +37,7 @@ const HeroSection = () => {
           </div>
 
           {/* Main Tagline */}
-          <p className="text-xl md:text-2xl mb-4 font-sf font-semibold text-white">
+          <p className="text-xl md:text-2xl mb-4 font-sf font-semibold text-amber-400 drop-shadow-lg">
             Platform Umroh Mandiri Pertama Di Indonesia
           </p>
 
@@ -75,3 +76,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
