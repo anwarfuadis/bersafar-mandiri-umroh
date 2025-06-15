@@ -64,7 +64,7 @@ const TestimonialSection = () => {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {testimonials.map((testimonial, index) => (
             <div 
               key={testimonial.id}
@@ -74,11 +74,12 @@ const TestimonialSection = () => {
                 animationDelay: `${index * 0.2}s`
               }}
             >
-              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105 border border-white/20">
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="text-4xl">{testimonial.avatar}</div>
-                  <div>
-                    <h4 className="text-xl font-sf font-semibold text-white">
+              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 hover:bg-white/15 transition-all duration-500 hover:scale-105 border border-white/20 h-full flex flex-col">
+                {/* User Info */}
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="text-3xl flex-shrink-0">{testimonial.avatar}</div>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-lg font-sf font-semibold text-white truncate">
                       {testimonial.name}, {testimonial.age}
                     </h4>
                     <p className="text-spiritual-200 font-sf text-sm">
@@ -87,13 +88,15 @@ const TestimonialSection = () => {
                   </div>
                 </div>
 
-                <blockquote className="text-lg text-white font-sf leading-relaxed mb-6">
+                {/* Quote */}
+                <blockquote className="text-base text-white font-sf leading-relaxed mb-6 flex-grow">
                   "{testimonial.quote}"
                 </blockquote>
 
-                <div className="flex items-center justify-between">
-                  <div className="text-gold-300 text-xl">★★★★★</div>
-                  <div className="text-sm text-spiritual-200 font-sf">
+                {/* Rating and Service */}
+                <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                  <div className="text-gold-300 text-lg">★★★★★</div>
+                  <div className="text-xs text-spiritual-200 font-sf bg-white/5 px-3 py-1 rounded-full">
                     {testimonial.service}
                   </div>
                 </div>
@@ -103,12 +106,12 @@ const TestimonialSection = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div className="animate-fade-in">
             <div className="text-3xl md:text-4xl font-sf font-bold text-gold-300 mb-2">
               1000+
             </div>
-            <div className="text-spiritual-200 font-sf">
+            <div className="text-spiritual-200 font-sf text-sm md:text-base">
               Jamaah Terlayani
             </div>
           </div>
@@ -116,7 +119,7 @@ const TestimonialSection = () => {
             <div className="text-3xl md:text-4xl font-sf font-bold text-gold-300 mb-2">
               4.9
             </div>
-            <div className="text-spiritual-200 font-sf">
+            <div className="text-spiritual-200 font-sf text-sm md:text-base">
               Rating Kepuasan
             </div>
           </div>
@@ -124,7 +127,7 @@ const TestimonialSection = () => {
             <div className="text-3xl md:text-4xl font-sf font-bold text-gold-300 mb-2">
               24/7
             </div>
-            <div className="text-spiritual-200 font-sf">
+            <div className="text-spiritual-200 font-sf text-sm md:text-base">
               Customer Support
             </div>
           </div>
@@ -132,7 +135,7 @@ const TestimonialSection = () => {
             <div className="text-3xl md:text-4xl font-sf font-bold text-gold-300 mb-2">
               100%
             </div>
-            <div className="text-spiritual-200 font-sf">
+            <div className="text-spiritual-200 font-sf text-sm md:text-base">
               Visa Approval
             </div>
           </div>

@@ -89,22 +89,22 @@ const StepGuide = () => {
               <div 
                 key={step.id}
                 className={`flex-shrink-0 w-64 cursor-pointer transition-all duration-300 ${
-                  activeStep === step.id ? 'scale-105' : 'hover:scale-102'
+                  activeStep === step.id ? 'transform scale-105' : 'hover:scale-102'
                 }`}
                 onClick={() => setActiveStep(step.id)}
                 style={{ 
                   animationDelay: `${index * 0.1}s`
                 }}
               >
-                {/* Step Circle - Fixed size to prevent cropping */}
-                <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto transition-all duration-300 ${
+                {/* Step Circle - Fixed size with proper padding to prevent cropping */}
+                <div className={`w-20 h-20 rounded-full flex items-center justify-center mb-4 mx-auto transition-all duration-300 ${
                   activeStep === step.id 
-                    ? 'bg-gradient-to-r from-spiritual-600 to-spiritual-700 text-white shadow-lg' 
+                    ? 'bg-gradient-to-r from-spiritual-600 to-spiritual-700 text-white shadow-lg transform scale-110' 
                     : activeStep > step.id
                     ? 'bg-gold-400 text-white'
                     : 'bg-sand-200 text-spiritual-600'
                 }`}>
-                  <span className="text-2xl leading-none">{step.icon}</span>
+                  <span className="text-2xl leading-none select-none">{step.icon}</span>
                 </div>
 
                 {/* Step Content */}
