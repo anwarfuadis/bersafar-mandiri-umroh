@@ -1,28 +1,18 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import RealisticCloud from "./RealisticCloud";
 
-// --- NEW: Realistic background image (Unsplash desert) ---
+// --- Background image ---
 const HERO_BG =
   "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?auto=format&fit=crop&w=1200&q=80";
 
-// --- Cloud SVG stays for parallax effect ---
-function CloudSVG({ style = {}, className = "" }) {
-  return (
-    <svg
-      width="120"
-      height="60"
-      viewBox="0 0 120 60"
-      fill="none"
-      className={className}
-      style={style}
-      aria-hidden="true"
-    >
-      <ellipse cx="33" cy="38" rx="33" ry="18" fill="#fff" fillOpacity="0.7" />
-      <ellipse cx="70" cy="28" rx="28" ry="16" fill="#fff" fillOpacity="0.75" />
-      <ellipse cx="85" cy="41" rx="20" ry="13" fill="#fff" fillOpacity="0.65" />
-    </svg>
-  );
-}
+// Realistic transparent PNG cloud images from Unsplash (CC0)
+const CLOUD_IMAGES = [
+  "https://pngimg.com/uploads/cloud/cloud_PNG16.png",
+  "https://pngimg.com/uploads/cloud/cloud_PNG25.png",
+  "https://pngimg.com/uploads/cloud/cloud_PNG28.png",
+  "https://pngimg.com/uploads/cloud/cloud_PNG8.png"
+];
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -33,74 +23,82 @@ const HeroSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Keep clouds for gentle motion
+  // More random, natural clouds for realism
   const clouds = [
     {
-      top: "12%",
-      left: "8%",
-      speed: 0.2,
+      top: "9%",
+      left: "6%",
+      speed: 0.22,
       scale: 1.2,
       zIndex: 5,
-      opacity: 0.78,
+      opacity: 0.85,
+      img: CLOUD_IMAGES[0]
     },
     {
-      top: "30%",
-      left: "70%",
-      speed: 0.3,
-      scale: 0.75,
+      top: "28%",
+      left: "68%",
+      speed: 0.33,
+      scale: 0.9,
       zIndex: 6,
-      opacity: 0.7,
+      opacity: 0.73,
+      img: CLOUD_IMAGES[1]
     },
     {
-      top: "22%",
-      left: "40%",
-      speed: -0.1,
-      scale: 1,
+      top: "16%",
+      left: "42%",
+      speed: -0.19,
+      scale: 1.1,
       zIndex: 4,
-      opacity: 0.65,
+      opacity: 0.62,
+      img: CLOUD_IMAGES[2]
     },
     {
-      top: "10%",
-      left: "55%",
-      speed: 0.22,
+      top: "12%",
+      left: "50%",
+      speed: 0.27,
       scale: 1,
       zIndex: 7,
-      opacity: 0.5,
+      opacity: 0.52,
+      img: CLOUD_IMAGES[3]
     },
     {
-      top: "37%",
-      left: "20%",
-      speed: -0.12,
-      scale: 0.9,
+      top: "34%",
+      left: "17%",
+      speed: -0.14,
+      scale: 0.8,
       zIndex: 4,
-      opacity: 0.85,
-    },
+      opacity: 0.91,
+      img: CLOUD_IMAGES[1]
+    }
   ];
 
   return (
     <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        background: `url(${HERO_BG}) center center / cover no-repeat`,
+        background: `url(${HERO_BG}) center center / cover no-repeat`
       }}
     >
       {/* Realistic background overlay for color harmony */}
       <div className="absolute inset-0 bg-gradient-to-b from-sky-300/40 via-amber-50/60 to-sand-100/90 mix-blend-multiply" aria-hidden="true"></div>
 
-      {/* Gentle Animated Clouds */}
+      {/* Realistic Animated Clouds */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
         {clouds.map((cloud, idx) => (
-          <CloudSVG
+          <RealisticCloud
             key={idx}
+            src={cloud.img}
             style={{
-              position: "absolute",
               top: cloud.top,
               left: cloud.left,
               transform: `translateX(${scrollY * cloud.speed}px) scale(${cloud.scale})`,
               opacity: cloud.opacity,
               zIndex: cloud.zIndex,
-              transition: "transform 0.2s",
+              transition: "transform 0.4s cubic-bezier(0.51,0.09,0.58,1), opacity 1.5s",
               filter: "blur(0.5px)",
+              width: "180px",
+              maxWidth: "30vw",
+              minWidth: "90px"
             }}
           />
         ))}
@@ -143,11 +141,11 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator retains simple bounce */}
+      {/* Scroll indicator */}
       <div
         className="absolute bottom-8 left-1/2 animate-bounce opacity-80 z-20"
         style={{
-          transform: `translateX(-50%) translateY(${scrollY * 0.1}px)`,
+          transform: `translateX(-50%) translateY(${scrollY * 0.1}px)`
         }}
       >
         {/* Optionally add a down arrow SVG */}
