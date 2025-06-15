@@ -76,9 +76,7 @@ const HeroSection = () => {
               Mulai Perjalananmu
             </Button>
             
-            <Button variant="outline" size="lg" className="border-2 border-sand-200/50 hover:bg-white/10 backdrop-blur-sm px-10 py-6 text-lg font-sf font-medium rounded-2xl transition-all duration-300 hover:scale-105 text-gray-50">
-              Lihat Layanan
-            </Button>
+            
           </div>
 
           <div className="mt-16 text-center">
