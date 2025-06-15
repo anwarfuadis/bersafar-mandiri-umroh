@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -29,7 +30,26 @@ const HeroSection = () => {
         <div className="animate-fade-in">
           {/* Brand Name */}
           <div className="mb-8">
-            <h1 className="text-6xl md:text-8xl font-sf text-white mb-2 leading-tight tracking-tight font-bold drop-shadow-2xl">
+            <h1
+              className="
+                text-7xl 
+                md:text-[8.5rem]
+                font-sf 
+                font-extrabold 
+                leading-[0.95]
+                tracking-tight 
+                mb-2
+                bg-gradient-to-br
+                from-[#EDE6D4] via-[#DAC34A] to-[#806019]
+                bg-clip-text 
+                text-transparent 
+                drop-shadow-lg
+                "
+              style={{
+                textShadow:
+                  "0 4px 32px rgba(238, 217, 114, 0.19), 0 2px 30px #E4D26622"
+              }}
+            >
               Bersafar
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full shadow-lg"></div>
@@ -75,3 +95,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
