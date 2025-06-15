@@ -28,6 +28,7 @@ interface RegistrationDialogProps {
 }
 
 const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => {
+  const [step, setStep] = useState(1);
   const [nama, setNama] = useState("");
   const [kota, setKota] = useState("");
   const [nomorHp, setNomorHp] = useState("");
@@ -43,92 +44,134 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
     }
   }
 
+  function handleDialogChange(open: boolean) {
+    if (!open) {
+      setStep(1);
+      setNama("");
+      setKota("");
+      setNomorHp("");
+      setEstimasi(ESTIMASI_OPTIONS[0].value);
+      setBudget(15);
+      setKebutuhan([]);
+    }
+    onOpenChange(open);
+  }
+
+  function handleNextStep(e: React.FormEvent) {
+    e.preventDefault();
+    // Simple validation for first step: required fields
+    if (nama && kota && nomorHp) {
+      setStep(2);
+    }
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    // handle registration here (e.g., show a toast)
+    onOpenChange(false);
+    setStep(1);
+    // Optionally, reset fields if desired
+  }
+
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={handleDialogChange}>
       <DialogContent className="max-w-lg">
         <DialogHeader>
-          <DialogTitle className="font-bold mb-2 text-center">Form Pendaftaran Umroh Mandiri</DialogTitle>
+          <DialogTitle className="font-bold mb-2 text-center">Pendaftaran Akun</DialogTitle>
         </DialogHeader>
         <form
           className="space-y-5 pt-1"
-          onSubmit={(e) => {
-            e.preventDefault();
-            // TODO: handle submit (maybe toast)
-            onOpenChange(false);
-          }}
+          onSubmit={step === 1 ? handleNextStep : handleSubmit}
         >
-          <div>
-            <Label htmlFor="nama">Nama Lengkap</Label>
-            <Input id="nama" value={nama} onChange={e => setNama(e.target.value)} required />
-          </div>
-          <div>
-            <Label htmlFor="kota">Kota Asal</Label>
-            <Input id="kota" value={kota} onChange={e => setKota(e.target.value)} required />
-          </div>
-          <div>
-            <Label htmlFor="nomorHp">Nomor Telepon</Label>
-            <Input id="nomorHp" type="tel" value={nomorHp} onChange={e => setNomorHp(e.target.value)} required />
-          </div>
-          {/* Estimasi */}
-          <div>
-            <Label className="mb-1 block">Estimasi Umroh</Label>
-            <RadioGroup
-              value={estimasi}
-              onValueChange={setEstimasi}
-              className="flex flex-wrap gap-3"
-            >
-              {ESTIMASI_OPTIONS.map(opt => (
-                <Label
-                  key={opt.value}
-                  className="flex items-center gap-2 cursor-pointer bg-slate-100 px-3 py-2 rounded-lg text-gray-800 font-medium"
+          {step === 1 ? (
+            <>
+              <div>
+                <Label htmlFor="nama">Nama Lengkap</Label>
+                <Input id="nama" value={nama} onChange={e => setNama(e.target.value)} required />
+              </div>
+              <div>
+                <Label htmlFor="kota">Kota Asal</Label>
+                <Input id="kota" value={kota} onChange={e => setKota(e.target.value)} required />
+              </div>
+              <div>
+                <Label htmlFor="nomorHp">Nomor Telepon</Label>
+                <Input id="nomorHp" type="tel" value={nomorHp} onChange={e => setNomorHp(e.target.value)} required />
+              </div>
+              <Button
+                type="submit"
+                className="w-full mt-2 bg-gradient-to-r from-gold-500 to-gold-600 text-spiritual-900 font-bold text-base py-3 rounded-lg hover:scale-105"
+                disabled={!nama || !kota || !nomorHp}
+              >
+                Selanjutnya
+              </Button>
+            </>
+          ) : (
+            <>
+              {/* Estimasi */}
+              <div>
+                <Label className="mb-1 block">Estimasi Umroh</Label>
+                <RadioGroup
+                  value={estimasi}
+                  onValueChange={setEstimasi}
+                  className="flex flex-wrap gap-3"
                 >
-                  <RadioGroupItem value={opt.value} />
-                  {opt.label}
-                </Label>
-              ))}
-            </RadioGroup>
-          </div>
-          {/* Budget */}
-          <div>
-            <Label htmlFor="budget" className="mb-1 block">Budget Kamu (Rp Juta)</Label>
-            <div className="flex items-center space-x-3">
-              <input
-                id="budget"
-                type="range"
-                min={15}
-                max={100}
-                value={budget}
-                onChange={e => setBudget(Number(e.target.value))}
-                className="w-full accent-green-500"
-              />
-              <span className="block min-w-[60px] font-bold text-green-700">Rp {budget}Jt</span>
-            </div>
-          </div>
-          {/* Kebutuhan */}
-          <div>
-            <Label className="mb-1 block">Kebutuhan Umroh</Label>
-            <div className="flex flex-wrap gap-2">
-              {KEBUTUHAN_OPTIONS.map(opt => (
-                <button
-                  key={opt.value}
-                  type="button"
-                  onClick={() => handleKebutuhanSelect(opt.value)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium border-2 transition-all
-                    ${
-                      kebutuhan.includes(opt.value)
-                        ? "bg-gradient-to-r from-green-400 to-green-600 text-white border-green-600 shadow"
-                        : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-green-50"
-                    }
-                  `}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-          </div>
-          <Button className="w-full mt-2 bg-gradient-to-r from-gold-500 to-gold-600 text-spiritual-900 font-bold text-base py-3 rounded-lg hover:scale-105">
-            Daftar Sekarang
-          </Button>
+                  {ESTIMASI_OPTIONS.map(opt => (
+                    <Label
+                      key={opt.value}
+                      className="flex items-center gap-2 cursor-pointer bg-slate-100 px-3 py-2 rounded-lg text-gray-800 font-medium"
+                    >
+                      <RadioGroupItem value={opt.value} />
+                      {opt.label}
+                    </Label>
+                  ))}
+                </RadioGroup>
+              </div>
+              {/* Budget */}
+              <div>
+                <Label htmlFor="budget" className="mb-1 block">Budget Kamu (Rp Juta)</Label>
+                <div className="flex items-center space-x-3">
+                  <input
+                    id="budget"
+                    type="range"
+                    min={15}
+                    max={100}
+                    value={budget}
+                    onChange={e => setBudget(Number(e.target.value))}
+                    className="w-full accent-green-500"
+                  />
+                  <span className="block min-w-[60px] font-bold text-green-700">Rp {budget}Jt</span>
+                </div>
+              </div>
+              {/* Kebutuhan */}
+              <div>
+                <Label className="mb-1 block">Kebutuhan Umroh</Label>
+                <div className="flex flex-wrap gap-2">
+                  {KEBUTUHAN_OPTIONS.map(opt => (
+                    <button
+                      key={opt.value}
+                      type="button"
+                      onClick={() => handleKebutuhanSelect(opt.value)}
+                      className={`px-4 py-2 rounded-full text-sm font-medium border-2 transition-all
+                        ${
+                          kebutuhan.includes(opt.value)
+                            ? "bg-gradient-to-r from-green-400 to-green-600 text-white border-green-600 shadow"
+                            : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-green-50"
+                        }
+                      `}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <Button
+                type="submit"
+                className="w-full mt-2 bg-gradient-to-r from-gold-500 to-gold-600 text-spiritual-900 font-bold text-base py-3 rounded-lg hover:scale-105"
+              >
+                Bismillah, Daftar
+              </Button>
+            </>
+          )}
         </form>
       </DialogContent>
     </Dialog>
