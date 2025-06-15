@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -34,6 +33,22 @@ const services = [
     features: ["Berpengalaman 10+ tahun", "Bahasa Indonesia", "Grup kecil max 15 orang"],
     startingPrice: "Rp 2,5JT",
     popular: false
+  },
+  {
+    icon: "🚌",
+    title: "Transportasi Lokal",
+    description: "Layanan transportasi dalam kota Makkah dan Madinah untuk kemudahan mobilitas ibadah.",
+    features: ["AC dan nyaman", "Driver berpengalaman", "Fleksibel sesuai kebutuhan"],
+    startingPrice: "Rp 300rb/hari",
+    popular: false
+  },
+  {
+    icon: "🛄",
+    title: "Handling Bandara",
+    description: "Bantuan pengurusan di bandara dari check-in hingga sampai tujuan dengan aman.",
+    features: ["Bantuan check-in", "Escort sampai gate", "Penjemputan arrival"],
+    startingPrice: "Rp 500rb",
+    popular: false
   }
 ];
 
@@ -58,6 +73,7 @@ const ServicesShowcase = () => {
             mb-16
             flex gap-6 overflow-x-auto scroll-smooth scroll-pl-6 snap-x snap-mandatory pb-4
             md:grid md:grid-cols-2 md:gap-8 md:overflow-x-visible md:snap-none md:pb-0
+            lg:grid-cols-3
           "
         >
           {services.map((service, index) => (
