@@ -36,7 +36,7 @@ const HeroSection = () => {
           </div>
 
           {/* Main Tagline */}
-          <p className="text-xl md:text-2xl mb-4 font-sf font-semibold text-spiritual-800 drop-shadow-lg">
+          <p className="text-xl md:text-2xl mb-4 font-sf font-semibold text-white">
             Platform Umroh Mandiri Pertama Di Indonesia
           </p>
 
