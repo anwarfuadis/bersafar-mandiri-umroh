@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -161,18 +162,23 @@ const StepGuide = () => {
                     animationDelay: `${index * 0.1}s`
                   }}
                 >
-                  {/* Step Circle with Number and Icon */}
+                  {/* Step Circle with Number and Icon Separated Horizontally */}
                   <div
-                    className={`w-16 h-16 rounded-full flex flex-col items-center justify-center mb-4 mx-auto transition-all duration-300 text-xl font-bold font-sf ${
-                      activeStep === step.id
-                        ? "bg-gradient-to-r from-spiritual-600 to-spiritual-700 text-white shadow-lg transform scale-110"
-                        : activeStep > step.id
-                        ? "bg-gold-400 text-white"
-                        : "bg-sand-200 text-spiritual-600"
-                    }`}
+                    className={`w-40 h-16 rounded-full mx-auto flex flex-row items-center justify-center gap-4 mb-4 transition-all duration-300 text-xl font-bold font-sf
+                      ${
+                        activeStep === step.id
+                          ? "bg-gradient-to-r from-spiritual-600 to-spiritual-700 text-white shadow-lg scale-110"
+                          : activeStep > step.id
+                          ? "bg-gold-400 text-white"
+                          : "bg-sand-200 text-spiritual-600"
+                      }
+                    `}
                   >
-                    <span className="text-2xl mb-0.5">{step.id}</span>
-                    <Icon size={24} className="mt-1" />
+                    <div className="flex items-center gap-2">
+                      <span className="text-2xl">{step.id}</span>
+                      <span className="border-l border-white/30 h-8 mx-1"></span>
+                      <Icon size={28} className="mt-0.5" />
+                    </div>
                   </div>
 
                   {/* Step Content */}
@@ -234,3 +240,4 @@ const StepGuide = () => {
 };
 
 export default StepGuide;
+
