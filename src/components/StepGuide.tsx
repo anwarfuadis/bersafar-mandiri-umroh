@@ -166,7 +166,7 @@ const StepGuide = () => {
             <h3 className="text-2xl font-sf font-semibold text-spiritual-800 mb-4">
               Siap Umrah Mandiri Sekarang?
             </h3>
-            <p className="text-spiritual-600 font-sf mb-6">Umroh sekarang bisa lebih hemat jutaan rupiah lewat Bersafar</p>
+            <p className="text-spiritual-600 font-sf mb-6">Umroh bisa lebih hemat jutaan Rupiah lewat Bersafar</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-gradient-to-r from-spiritual-600 to-spiritual-700 hover:from-spiritual-700 hover:to-spiritual-800 text-white px-8 py-3 text-lg font-sf font-medium rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">Join Waiting List</Button>
               <Button variant="outline" size="lg" className="border-2 border-spiritual-300 text-spiritual-700 hover:bg-spiritual-50 px-8 py-3 text-lg font-sf font-medium rounded-2xl transition-all duration-300">Tanya Dulu</Button>
