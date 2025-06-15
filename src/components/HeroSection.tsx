@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import RegistrationDialog from "@/components/RegistrationDialog";
 
@@ -12,7 +12,7 @@ const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
 
   // Attach scroll event
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
