@@ -1,67 +1,11 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
-const MOSQUE_COLOR = "#dac34a";
+// --- NEW: Realistic background image (Unsplash desert) ---
+const HERO_BG =
+  "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?auto=format&fit=crop&w=1200&q=80";
 
-// Simple stylized mosque SVG
-function MosqueSVG() {
-  return (
-    <svg
-      viewBox="0 0 600 300"
-      fill="none"
-      className="w-full h-full"
-      style={{ position: "absolute", bottom: 0, left: 0, right: 0 }}
-      aria-hidden="true"
-    >
-      {/* Main dome */}
-      <ellipse
-        cx="300"
-        cy="190"
-        rx="95"
-        ry="50"
-        fill={MOSQUE_COLOR}
-        stroke="#B8942D"
-        strokeWidth="4"
-      />
-      {/* Left dome */}
-      <ellipse
-        cx="175"
-        cy="220"
-        rx="45"
-        ry="28"
-        fill={MOSQUE_COLOR}
-        stroke="#B8942D"
-        strokeWidth="3"
-      />
-      {/* Right dome */}
-      <ellipse
-        cx="425"
-        cy="220"
-        rx="45"
-        ry="28"
-        fill={MOSQUE_COLOR}
-        stroke="#B8942D"
-        strokeWidth="3"
-      />
-      {/* Left minaret */}
-      <rect x="130" y="130" width="18" height="110" fill={MOSQUE_COLOR} stroke="#B8942D" strokeWidth="3" />
-      <rect x="134" y="112" width="10" height="18" fill={MOSQUE_COLOR} stroke="#B8942D" strokeWidth="2" />
-      {/* Right minaret */}
-      <rect x="452" y="130" width="18" height="110" fill={MOSQUE_COLOR} stroke="#B8942D" strokeWidth="3" />
-      <rect x="456" y="112" width="10" height="18" fill={MOSQUE_COLOR} stroke="#B8942D" strokeWidth="2" />
-      {/* Mosque base */}
-      <rect x="120" y="240" width="360" height="40" fill="#e4dac2" stroke="#B8942D" strokeWidth="4" rx="10"/>
-      {/* Mosque door */}
-      <rect x="275" y="240" width="50" height="40" fill="#b8942d" rx="8"/>
-      {/* Crescent moon on main dome */}
-      <path d="M300 135 Q308 140 300 155 Q292 140 300 135" stroke="#fff8dc" strokeWidth="3" fill="none"/>
-      <circle cx="300" cy="134" r="5" fill="#fff8dc"/>
-    </svg>
-  );
-}
-
-// SVG for a simple soft cloud
+// --- Cloud SVG stays for parallax effect ---
 function CloudSVG({ style = {}, className = "" }) {
   return (
     <svg
@@ -85,11 +29,11 @@ const HeroSection = () => {
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Move clouds horizontally based on scroll position (parallax)
+  // Keep clouds for gentle motion
   const clouds = [
     {
       top: "12%",
@@ -134,9 +78,17 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-sky-300/90 via-sky-200/70 to-sand-100">
-      {/* Animated Clouds */}
-      <div className="absolute inset-0 pointer-events-none z-0 select-none">
+    <section
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{
+        background: `url(${HERO_BG}) center center / cover no-repeat`,
+      }}
+    >
+      {/* Realistic background overlay for color harmony */}
+      <div className="absolute inset-0 bg-gradient-to-b from-sky-300/40 via-amber-50/60 to-sand-100/90 mix-blend-multiply" aria-hidden="true"></div>
+
+      {/* Gentle Animated Clouds */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0">
         {clouds.map((cloud, idx) => (
           <CloudSVG
             key={idx}
@@ -154,11 +106,6 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Animated Stylized Mosque at the bottom */}
-      <div className="absolute left-0 right-0 bottom-0 z-10 w-full h-[32vh] md:h-[37vh] pointer-events-none select-none animate-fade-in">
-        <MosqueSVG />
-      </div>
-
       {/* Content */}
       <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
         <div className="animate-fade-in">
@@ -169,10 +116,12 @@ const HeroSection = () => {
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full shadow-lg"></div>
           </div>
-          
+
           {/* Main Tagline */}
-          <p className="text-xl md:text-2xl mb-4 font-sf font-semibold text-amber-400 drop-shadow-lg">Platform Umroh Mandiri Pertama Di Indonesia</p>
-          
+          <p className="text-xl md:text-2xl mb-4 font-sf font-semibold text-amber-400 drop-shadow-lg">
+            Platform Umroh Mandiri Pertama Di Indonesia
+          </p>
+
           <p className="text-lg text-white mb-12 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg">
             Pilih Layanan Sesuai Kebutuhan Umroh Mandiri Kamu
           </p>
@@ -184,7 +133,9 @@ const HeroSection = () => {
           </div>
 
           <div className="mt-16 text-center">
-            <p className="text-sm font-sf uppercase tracking-wider mb-4 text-gray-100 drop-shadow-lg">IN PARTERSHIP WITH</p>
+            <p className="text-sm font-sf uppercase tracking-wider mb-4 text-gray-100 drop-shadow-lg">
+              IN PARTERSHIP WITH
+            </p>
             <div className="flex justify-center items-center space-x-8 opacity-80">
               {/* Add logos if needed */}
             </div>
@@ -192,14 +143,14 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator with parallax */}
-      <div 
-        className="absolute bottom-8 left-1/2 animate-bounce opacity-70 z-20"
+      {/* Scroll indicator retains simple bounce */}
+      <div
+        className="absolute bottom-8 left-1/2 animate-bounce opacity-80 z-20"
         style={{
-          transform: `translateX(-50%) translateY(${scrollY * 0.1}px)`
+          transform: `translateX(-50%) translateY(${scrollY * 0.1}px)`,
         }}
       >
-        {/* You could add a down arrow SVG here for scroll hint */}
+        {/* Optionally add a down arrow SVG */}
       </div>
     </section>
   );
