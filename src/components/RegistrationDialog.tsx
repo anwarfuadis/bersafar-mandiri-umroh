@@ -165,7 +165,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
             />
           </div>
           {/* Main form content (Right side, scrollable) */}
-          <div className="flex-1 py-8 px-4 md:px-10 overflow-y-auto max-h-[560px] min-w-[280px]">
+          <div className="flex-1 py-8 px-4 md:px-10 overflow-y-auto max-h-[560px] min-w-[280px] relative">
             <DialogHeader>
               <DialogTitle className="font-bold mb-3 text-center text-2xl">Pendaftaran Akun</DialogTitle>
             </DialogHeader>
@@ -202,9 +202,19 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
                       />
                     </div>
                   </div>
+                  {/* Remove the old button position, add new absolute button */}
+                  <div className="mt-4" />
                   <Button
                     type="submit"
-                    className="w-full mt-4 bg-gradient-to-r from-gold-500 to-gold-600 text-spiritual-900 font-bold text-base py-3 rounded-lg hover:scale-105 flex items-center justify-center gap-2"
+                    variant="ghost"
+                    className={cn(
+                      "fixed md:absolute right-5 md:right-8 bottom-7 md:bottom-8 z-10 rounded-full shadow-none border-none",
+                      "font-bold text-base",
+                      (!isStepOneValid() ? "opacity-30 pointer-events-none" : "")
+                    )}
+                    style={{
+                      transition: "opacity 0.2s",
+                    }}
                     disabled={!isStepOneValid()}
                   >
                     Selanjutnya <ArrowRight className="ml-1 size-5" />
@@ -236,7 +246,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
                           [&::-ms-fill-lower]:bg-green-200"
                         step={1}
                       />
-                      <span className="flex min-w-[100px] font-bold text-green-700 items-center gap-1 justify-end">
+                      <span className="flex min-w-[80px] font-bold text-green-700 items-center gap-1 justify-end">
                         <span>Rp</span>
                         <span style={{ letterSpacing: "0.05em" }}>{formatJuta(budgetPinValue())}</span>
                       </span>
