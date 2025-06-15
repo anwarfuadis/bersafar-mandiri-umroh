@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -20,20 +21,9 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          // The following ensures only the first 10 seconds play and then loop
-          onLoadedMetadata={e => {
-            const video = e.currentTarget;
-            video.currentTime = 0;
-          }}
-          onTimeUpdate={e => {
-            const video = e.currentTarget;
-            if (video.currentTime > 10) {
-              video.currentTime = 0;
-            }
-          }}
         >
-          <source src="https://cdn.coverr.co/videos/coverr-nabawi-mosque-1706829608561?token=eyJhbGciOiJIUzI1NiJ9.eyJrZXkiOiJ2aWRlb3MvY292ZXJyLW5hYmF3aS1tb3NxdWUtMTcwNjgyOTYwODU2MSIsImV4cCI6MTg3MzMyNjk2MH0.qWZePSjMLrKKWPEWN73tMd8oKq2WGK2gmQCADzkbKsk" type="video/mp4" />
-          {/* If the above doesn't play, upload your own Nabawi Mosque video and update the src */}
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
           Your browser does not support the video tag.
         </video>
         {/* Dark overlay for better text readability */}
