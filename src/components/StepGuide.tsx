@@ -1,5 +1,6 @@
+
 import React, { useEffect, useState } from "react";
-import { ArrowRight, Check, Compass, DollarSign, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -26,30 +27,7 @@ const StepGuide = () => {
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-sf font-bold mb-7 text-white text-center drop-shadow">
           Bersafar bersama kami
         </h2>
-        {/* Steps content */}
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="rounded-xl bg-white/10 backdrop-blur p-6 border border-white/20 text-white shadow-lg">
-            <div className="mb-3">
-              <Compass className="w-9 h-9 text-gold-300" />
-            </div>
-            <h3 className="font-bold text-lg mb-2">Langkah Mudah</h3>
-            <p className="text-white/90 mb-0 leading-relaxed text-base">Pilih layanan, atur sesuai kebutuhan. Gak pake ribet!</p>
-          </div>
-          <div className="rounded-xl bg-white/10 backdrop-blur p-6 border border-white/20 text-white shadow-lg">
-            <div className="mb-3">
-              <DollarSign className="w-9 h-9 text-gold-300" />
-            </div>
-            <h3 className="font-bold text-lg mb-2">Harga Transparan</h3>
-            <p className="text-white/90 mb-0 leading-relaxed text-base">Mulai dari <span className="font-semibold text-gold-300">Rp 18 juta</span> (bandingkan dengan travel agent <span className="text-white/70 line-through">Rp 26 juta</span>).</p>
-          </div>
-          <div className="rounded-xl bg-white/10 backdrop-blur p-6 border border-white/20 text-white shadow-lg">
-            <div className="mb-3">
-              <Sparkles className="w-9 h-9 text-gold-300" />
-            </div>
-            <h3 className="font-bold text-lg mb-2">Fleksibel & Bebas Pilih</h3>
-            <p className="text-white/90 mb-0 leading-relaxed text-base">Ambil layanan yang kamu mau saja, bebas tanpa paket wajib.</p>
-          </div>
-        </div>
+        {/* Removed the three feature cards for Langkah Mudah, Harga Transparan, Fleksibel & Bebas Pilih */}
 
         {/* Comparison Table */}
         <div className="mt-10 flex justify-center">
@@ -92,8 +70,6 @@ const StepGuide = () => {
             Mulai Umrah Mandiri <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
-
-        {/* Removed the stats block here */}
       </div>
     </section>
   );
