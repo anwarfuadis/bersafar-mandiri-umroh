@@ -146,6 +146,11 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
     return Math.max(budget, MIN_BUDGET);
   }
 
+  // Helper for showing as "Rp 15 juta"
+  function formatJuta(num: number) {
+    return `${num} juta`;
+  }
+
   return (
     <Dialog open={open} onOpenChange={handleDialogChange}>
       <DialogContent
@@ -238,12 +243,12 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
                           [&::-ms-fill-lower]:bg-green-200"
                         step={1}
                       />
-                      <span className="flex min-w-[130px] font-bold text-green-700 items-center gap-1 justify-end">
+                      <span className="flex min-w-[100px] font-bold text-green-700 items-center gap-1 justify-end">
                         <span>Rp</span>
-                        <span style={{ letterSpacing: "0.05em" }}>{formatIDRCurrency(budgetPinValue())}</span>
+                        <span style={{ letterSpacing: "0.05em" }}>{formatJuta(budgetPinValue())}</span>
                       </span>
                     </div>
-                    <div className="text-xs text-muted mt-1">{budget < MIN_BUDGET ? "Minimal Rp 15.000.000" : ""}</div>
+                    <div className="text-xs text-muted mt-1">{budget < MIN_BUDGET ? "Minimal Rp 15 juta" : ""}</div>
                   </div>
                   <div>
                     <Label className="font-extrabold text-base text-spiritual-800 mb-1 block">Kebutuhan Umroh</Label>
