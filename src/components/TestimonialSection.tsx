@@ -116,7 +116,7 @@ const TestimonialSection = () => {
         </div>
 
         {/* Stats Section - Increased top margin for more space */}
-        <div className="relative z-20 grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12 bg-spiritual-800/30 backdrop-blur-sm p-6 md:p-8 border border-spiritual-600/20 mt-16 rounded-sm my-[229px]">
+        <div className="relative z-20 grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12 bg-spiritual-800/30 backdrop-blur-sm p-6 md:p-8 border border-spiritual-600/20 mt-16 rounded-sm my-0">
           {[{
           number: "1000+",
           label: "Jamaah Terlayani"
