@@ -1,6 +1,7 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const steps = [
   {
@@ -43,12 +44,29 @@ const steps = [
 const StepGuide = () => {
   const [activeStep, setActiveStep] = useState(1);
   const [scrollY, setScrollY] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToStep = (direction: 'left' | 'right') => {
+    if (!scrollContainerRef.current) return;
+    
+    const container = scrollContainerRef.current;
+    const stepWidth = 320; // 64 (w-64) + 32 (space-x-8) + 16 (padding)
+    const scrollAmount = direction === 'left' ? -stepWidth : stepWidth;
+    
+    container.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+  };
+
+  const canScrollLeft = activeStep > 1;
+  const canScrollRight = activeStep < steps.length;
 
   return (
     <section className="relative py-20 overflow-hidden bg-gradient-to-b from-sand-50 to-white">
@@ -73,18 +91,43 @@ const StepGuide = () => {
           </p>
         </div>
 
-        {/* Horizontal Step Guide */}
+        {/* Horizontal Step Guide with Navigation */}
         <div className="relative">
+          {/* Navigation Buttons */}
+          <button
+            onClick={() => scrollToStep('left')}
+            className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white shadow-lg border border-sand-200 transition-all duration-300 ${
+              canScrollLeft ? 'hover:bg-sand-50 text-spiritual-600' : 'opacity-50 cursor-not-allowed text-spiritual-300'
+            }`}
+            disabled={!canScrollLeft}
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          <button
+            onClick={() => scrollToStep('right')}
+            className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white shadow-lg border border-sand-200 transition-all duration-300 ${
+              canScrollRight ? 'hover:bg-sand-50 text-spiritual-600' : 'opacity-50 cursor-not-allowed text-spiritual-300'
+            }`}
+            disabled={!canScrollRight}
+          >
+            <ChevronRight size={24} />
+          </button>
+
           {/* Progress Line */}
-          <div className="absolute top-16 left-0 right-0 h-1 bg-sand-200 rounded-full">
+          <div className="absolute top-16 left-12 right-12 h-1 bg-sand-200 rounded-full">
             <div 
               className="h-full bg-gradient-to-r from-spiritual-600 to-gold-500 rounded-full transition-all duration-500"
               style={{ width: `${(activeStep / steps.length) * 100}%` }}
             ></div>
           </div>
 
-          {/* Steps */}
-          <div className="flex overflow-x-auto pb-8 space-x-8 md:space-x-12">
+          {/* Steps Container */}
+          <div 
+            ref={scrollContainerRef}
+            className="flex overflow-x-auto pb-8 space-x-8 md:space-x-12 px-12 scrollbar-hide"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {steps.map((step, index) => (
               <div 
                 key={step.id}
@@ -96,15 +139,15 @@ const StepGuide = () => {
                   animationDelay: `${index * 0.1}s`
                 }}
               >
-                {/* Step Circle */}
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 mx-auto transition-all duration-300 ${
+                {/* Step Circle - Fixed cropping issue */}
+                <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto transition-all duration-300 ${
                   activeStep === step.id 
-                    ? 'bg-gradient-to-r from-spiritual-600 to-spiritual-700 text-white shadow-lg' 
+                    ? 'bg-gradient-to-r from-spiritual-600 to-spiritual-700 text-white shadow-lg transform scale-110' 
                     : activeStep > step.id
                     ? 'bg-gold-400 text-white'
                     : 'bg-sand-200 text-spiritual-600'
-                }`}>
-                  <span className="text-xl">{step.icon}</span>
+                } overflow-visible`}>
+                  <span className="text-2xl">{step.icon}</span>
                 </div>
 
                 {/* Step Content */}

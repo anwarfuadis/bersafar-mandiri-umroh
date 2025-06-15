@@ -63,21 +63,25 @@ const TestimonialSection = () => {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Testimonials Grid - Fixed alignment */}
+        <div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          style={{ 
+            transform: `translateY(${scrollY * 0.05}px)`
+          }}
+        >
           {testimonials.map((testimonial, index) => (
             <div 
               key={testimonial.id}
-              className="group"
+              className="group h-full"
               style={{ 
-                transform: `translateY(${scrollY * 0.05 * (index + 1)}px)`,
                 animationDelay: `${index * 0.2}s`
               }}
             >
-              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105 border border-white/20">
+              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105 border border-white/20 h-full flex flex-col">
                 <div className="flex items-center space-x-4 mb-6">
-                  <div className="text-4xl">{testimonial.avatar}</div>
-                  <div>
+                  <div className="text-4xl flex-shrink-0">{testimonial.avatar}</div>
+                  <div className="min-w-0">
                     <h4 className="text-xl font-sf font-semibold text-white">
                       {testimonial.name}, {testimonial.age}
                     </h4>
@@ -87,11 +91,11 @@ const TestimonialSection = () => {
                   </div>
                 </div>
 
-                <blockquote className="text-lg text-white font-sf leading-relaxed mb-6">
+                <blockquote className="text-lg text-white font-sf leading-relaxed mb-6 flex-grow">
                   "{testimonial.quote}"
                 </blockquote>
 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mt-auto">
                   <div className="text-gold-300 text-xl">★★★★★</div>
                   <div className="text-sm text-spiritual-200 font-sf">
                     {testimonial.service}
