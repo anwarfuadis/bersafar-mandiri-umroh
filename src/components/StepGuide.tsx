@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   CalendarCheck,
-  Passport,
+  IdCard,
   Globe,
   Plane,
   Hotel,
@@ -22,7 +22,7 @@ const steps = [
     id: 2,
     title: "Buat Paspor (jika belum punya)",
     description: "Urus di Kantor Imigrasi terdekat.\nWaktu proses: ±1 minggu.",
-    icon: Passport,
+    icon: IdCard,
   },
   {
     id: 3,
