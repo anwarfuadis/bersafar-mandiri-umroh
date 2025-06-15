@@ -63,20 +63,22 @@ const TestimonialSection = () => {
           </p>
         </div>
 
-        {/* Testimonials Grid - Fixed Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <div 
               key={testimonial.id}
-              className="group animate-fade-in"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              className="group"
+              style={{ 
+                transform: `translateY(${scrollY * 0.05 * (index + 1)}px)`,
+                animationDelay: `${index * 0.2}s`
+              }}
             >
-              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105 border border-white/20 h-full flex flex-col">
-                {/* Header with avatar and info */}
-                <div className="flex items-start space-x-4 mb-6">
-                  <div className="text-4xl flex-shrink-0">{testimonial.avatar}</div>
-                  <div className="min-w-0 flex-1">
-                    <h4 className="text-xl font-sf font-semibold text-white mb-1">
+              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105 border border-white/20">
+                <div className="flex items-center space-x-4 mb-6">
+                  <div className="text-4xl">{testimonial.avatar}</div>
+                  <div>
+                    <h4 className="text-xl font-sf font-semibold text-white">
                       {testimonial.name}, {testimonial.age}
                     </h4>
                     <p className="text-spiritual-200 font-sf text-sm">
@@ -85,15 +87,13 @@ const TestimonialSection = () => {
                   </div>
                 </div>
 
-                {/* Quote - Main content */}
-                <blockquote className="text-lg text-white font-sf leading-relaxed mb-6 flex-grow">
+                <blockquote className="text-lg text-white font-sf leading-relaxed mb-6">
                   "{testimonial.quote}"
                 </blockquote>
 
-                {/* Footer with rating and service */}
-                <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                  <div className="text-gold-300 text-lg">★★★★★</div>
-                  <div className="text-sm text-spiritual-200 font-sf bg-white/10 px-3 py-1 rounded-full">
+                <div className="flex items-center justify-between">
+                  <div className="text-gold-300 text-xl">★★★★★</div>
+                  <div className="text-sm text-spiritual-200 font-sf">
                     {testimonial.service}
                   </div>
                 </div>
@@ -102,27 +102,40 @@ const TestimonialSection = () => {
           ))}
         </div>
 
-        {/* Stats Grid - Better Layout */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-          {[
-            { number: "1000+", label: "Jamaah Terlayani" },
-            { number: "4.9", label: "Rating Kepuasan" },
-            { number: "24/7", label: "Customer Support" },
-            { number: "100%", label: "Visa Approval" }
-          ].map((stat, index) => (
-            <div 
-              key={index}
-              className="animate-fade-in bg-white/5 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="text-3xl md:text-4xl font-sf font-bold text-gold-300 mb-2">
-                {stat.number}
-              </div>
-              <div className="text-spiritual-200 font-sf text-sm">
-                {stat.label}
-              </div>
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center">
+          <div className="animate-fade-in">
+            <div className="text-3xl md:text-4xl font-sf font-bold text-gold-300 mb-2">
+              1000+
             </div>
-          ))}
+            <div className="text-spiritual-200 font-sf">
+              Jamaah Terlayani
+            </div>
+          </div>
+          <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <div className="text-3xl md:text-4xl font-sf font-bold text-gold-300 mb-2">
+              4.9
+            </div>
+            <div className="text-spiritual-200 font-sf">
+              Rating Kepuasan
+            </div>
+          </div>
+          <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <div className="text-3xl md:text-4xl font-sf font-bold text-gold-300 mb-2">
+              24/7
+            </div>
+            <div className="text-spiritual-200 font-sf">
+              Customer Support
+            </div>
+          </div>
+          <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <div className="text-3xl md:text-4xl font-sf font-bold text-gold-300 mb-2">
+              100%
+            </div>
+            <div className="text-spiritual-200 font-sf">
+              Visa Approval
+            </div>
+          </div>
         </div>
       </div>
     </section>
