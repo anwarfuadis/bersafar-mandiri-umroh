@@ -52,14 +52,23 @@ const ServicesShowcase = () => {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        {/* Services Horizontal Scroll on Mobile, Grid on Desktop */}
+        <div 
+          className="
+            mb-16
+            flex gap-6 overflow-x-auto scroll-smooth scroll-pl-6 snap-x snap-mandatory pb-4
+            md:grid md:grid-cols-2 md:gap-8 md:overflow-x-visible md:snap-none md:pb-0
+          "
+        >
           {services.map((service, index) => (
             <Card 
               key={index}
-              className={`relative overflow-hidden transition-all duration-500 hover:shadow-xl hover:scale-105 ${
-                service.popular ? 'ring-2 ring-gold-400' : ''
-              }`}
+              className={`
+                relative overflow-hidden transition-all duration-500 hover:shadow-xl hover:scale-105 
+                ${service.popular ? 'ring-2 ring-gold-400' : ''}
+                min-w-[80vw] max-w-xs snap-center md:min-w-0 md:max-w-none
+                bg-white md:bg-white
+              `}
             >
               {service.popular && (
                 <div className="absolute top-4 right-4 bg-gold-500 text-white text-xs font-sf font-semibold px-3 py-1 rounded-full">
@@ -115,42 +124,33 @@ const ServicesShowcase = () => {
           ))}
         </div>
 
-        {/* Benefits section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div className="p-6 animate-slide-in">
-            <div className="w-16 h-16 bg-spiritual-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">🎯</span>
-            </div>
-            <h4 className="text-xl font-sf font-semibold text-spiritual-800 mb-3">
-              Fleksibilitas Penuh
-            </h4>
-            <p className="text-spiritual-600 font-sf">
-              Pilih layanan sesuai kebutuhan. Tidak ada paket yang memaksa.
+        {/* CTA Section - Testimonial style, green gradient */}
+        <div className="
+          mt-12 md:mt-20
+          rounded-2xl
+          px-6 md:px-12 py-10 md:py-14
+          bg-gradient-to-br from-spiritual-700 via-spiritual-600 to-spiritual-800
+          shadow-lg relative overflow-hidden
+          flex flex-col md:flex-row items-center justify-between gap-10 animate-fade-in
+        ">
+          {/* Decorative glow */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute left-4 top-4 w-32 h-32 bg-gradient-to-br from-gold-200/40 to-gold-400/20 rounded-full blur-2xl"></div>
+            <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-br from-gold-300/20 to-sand-400/10 rounded-full blur-xl"></div>
+          </div>
+          <div className="relative z-10 flex-1 text-center md:text-left">
+            <span className="uppercase text-xs tracking-wide font-semibold text-gold-300/90">Siap Umrah Mandiri Sekarang?</span>
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-sf font-bold mb-4 mt-2 text-white drop-shadow">
+              Jadikan Perjalanan <span className="text-gold-300">Ibadah-mu</span> Lebih Mudah & Transparan
+            </h3>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl font-sf leading-relaxed mb-0">
+              Pilih sendiri penerbangan, hotel, visa umroh, mutawif & lainnya sesuai kebutuhanmu. Semua layanan bisa kamu pesan terpisah, mudah, dan terjangkau.
             </p>
           </div>
-
-          <div className="p-6 animate-slide-in" style={{ animationDelay: '0.2s' }}>
-            <div className="w-16 h-16 bg-spiritual-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">💰</span>
-            </div>
-            <h4 className="text-xl font-sf font-semibold text-spiritual-800 mb-3">
-              Harga Transparan
-            </h4>
-            <p className="text-spiritual-600 font-sf">
-              Tidak ada biaya tersembunyi. Apa yang kamu lihat, itulah yang kamu bayar.
-            </p>
-          </div>
-
-          <div className="p-6 animate-slide-in" style={{ animationDelay: '0.4s' }}>
-            <div className="w-16 h-16 bg-spiritual-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">🤝</span>
-            </div>
-            <h4 className="text-xl font-sf font-semibold text-spiritual-800 mb-3">
-              Support 24/7
-            </h4>
-            <p className="text-spiritual-600 font-sf">
-              Tim support siap membantu kapan saja, termasuk saat di Tanah Suci.
-            </p>
+          <div className="relative z-10">
+            <Button className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-bold text-base py-5 px-10 rounded-full hover:scale-105 transition-all duration-300 shadow-md">
+              Mulai Sekarang
+            </Button>
           </div>
         </div>
       </div>
