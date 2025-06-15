@@ -13,96 +13,94 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Enhanced Gradient Background - darker gradient with more white at bottom */}
-      <div className="absolute inset-0 bg-gradient-to-b from-spiritual-800 via-spiritual-900/90 to-spiritual-700/60"></div>
-      
-      {/* Enhanced Parallax Background with more noticeable Islamic Elements */}
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
+          Your browser does not support the video tag.
+        </video>
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/60"></div>
+      </div>
+
+      {/* Enhanced Parallax Background with Islamic Elements */}
       <div 
-        className="absolute inset-0 opacity-40 z-0" 
+        className="absolute inset-0 opacity-20 z-10" 
         style={{
           transform: `translateY(${scrollY * 0.5}px)`
         }}
       >
-        {/* Mosque Silhouette */}
-        <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-spiritual-900/80 to-transparent">
-          <div className="absolute bottom-0 left-1/4 w-16 h-32 bg-spiritual-900/70 rounded-t-full"></div>
-          <div className="absolute bottom-0 left-1/3 w-20 h-40 bg-spiritual-900/70 rounded-t-full"></div>
-          <div className="absolute bottom-0 right-1/3 w-18 h-36 bg-spiritual-900/70 rounded-t-full"></div>
-          <div className="absolute bottom-0 right-1/4 w-14 h-28 bg-spiritual-900/70 rounded-t-full"></div>
-        </div>
-        
-        {/* Enhanced Floating Geometric Patterns - behind content */}
+        {/* Floating Geometric Patterns */}
         <div 
-          className="absolute top-20 left-10 w-32 h-32 border-4 border-gold-300/60 rounded-full animate-pulse-gentle shadow-xl" 
+          className="absolute top-20 left-10 w-32 h-32 border-4 border-gold-300/40 rounded-full animate-pulse-gentle" 
           style={{
             transform: `translateY(${scrollY * 0.3}px)`
           }}
         ></div>
         <div 
-          className="absolute bottom-40 right-20 w-24 h-24 border-4 border-sand-200/60 rounded-full animate-pulse-gentle shadow-xl" 
+          className="absolute bottom-40 right-20 w-24 h-24 border-4 border-sand-200/40 rounded-full animate-pulse-gentle" 
           style={{
             animationDelay: '1s',
             transform: `translateY(${scrollY * 0.4}px)`
           }}
         ></div>
         <div 
-          className="absolute top-1/2 left-1/4 w-16 h-16 border-4 border-gold-200/60 transform rotate-45 animate-pulse-gentle shadow-xl" 
+          className="absolute top-1/2 left-1/4 w-16 h-16 border-4 border-gold-200/40 transform rotate-45 animate-pulse-gentle" 
           style={{
             animationDelay: '2s',
             transform: `rotate(45deg) translateY(${scrollY * 0.2}px)`
           }}
         ></div>
         
-        {/* Additional geometric shapes - enhanced visibility */}
+        {/* Additional geometric shapes */}
         <div 
-          className="absolute top-1/3 right-1/6 w-20 h-20 border-4 border-gold-400/50 transform rotate-12 shadow-xl" 
+          className="absolute top-1/3 right-1/6 w-20 h-20 border-4 border-gold-400/30 transform rotate-12" 
           style={{
             transform: `rotate(12deg) translateY(${scrollY * 0.35}px)`
           }}
         ></div>
         <div 
-          className="absolute bottom-1/3 left-1/6 w-28 h-28 border-4 border-sand-300/50 rounded-full shadow-xl" 
+          className="absolute bottom-1/3 left-1/6 w-28 h-28 border-4 border-sand-300/30 rounded-full" 
           style={{
             transform: `translateY(${scrollY * 0.25}px)`
           }}
         ></div>
         <div 
-          className="absolute top-1/4 left-2/3 w-12 h-12 bg-gold-300/30 transform rotate-45 shadow-xl" 
+          className="absolute top-1/4 left-2/3 w-12 h-12 bg-gold-300/20 transform rotate-45" 
           style={{
             transform: `rotate(45deg) translateY(${scrollY * 0.45}px)`
           }}
         ></div>
         <div 
-          className="absolute bottom-1/4 right-2/3 w-36 h-36 border-4 border-spiritual-400/40 rounded-full shadow-xl" 
+          className="absolute bottom-1/4 right-2/3 w-36 h-36 border-4 border-spiritual-400/20 rounded-full" 
           style={{
             transform: `translateY(${scrollY * 0.15}px)`
           }}
         ></div>
       </div>
 
-      {/* Enhanced Dark Parallax Overlay for better contrast */}
-      <div 
-        className="absolute inset-0 bg-gradient-radial from-spiritual-900/30 via-spiritual-900/40 to-spiritual-900/60 z-1" 
-        style={{
-          transform: `translateY(${scrollY * 0.3}px)`
-        }}
-      ></div>
-
       {/* Content */}
       <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
         <div className="animate-fade-in">
           {/* Brand Name */}
           <div className="mb-8">
-            <h1 className="text-6xl md:text-8xl font-sf text-white mb-2 leading-tight tracking-tight font-bold">
+            <h1 className="text-6xl md:text-8xl font-sf text-white mb-2 leading-tight tracking-tight font-bold drop-shadow-2xl">
               Bersafar
             </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full shadow-lg"></div>
           </div>
           
           {/* Main Tagline */}
-          <p className="text-xl md:text-2xl mb-4 font-sf font-semibold text-amber-400">Platform Umroh Mandiri Pertama Di Indonesia</p>
+          <p className="text-xl md:text-2xl mb-4 font-sf font-semibold text-amber-400 drop-shadow-lg">Platform Umroh Mandiri Pertama Di Indonesia</p>
           
-          <p className="text-lg text-white mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-lg text-white mb-12 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg">
             Pilih Layanan Sesuai Kebutuhan Umroh Mandiri Kamu
           </p>
 
@@ -113,7 +111,7 @@ const HeroSection = () => {
           </div>
 
           <div className="mt-16 text-center">
-            <p className="text-sm font-sf uppercase tracking-wider mb-4 text-gray-100">IN PARTERSHIP WITH</p>
+            <p className="text-sm font-sf uppercase tracking-wider mb-4 text-gray-100 drop-shadow-lg">IN PARTERSHIP WITH</p>
             <div className="flex justify-center items-center space-x-8 opacity-80">
               
               
