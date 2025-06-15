@@ -1,7 +1,8 @@
+
 import HeroSection from "@/components/HeroSection";
 import StepGuide from "@/components/StepGuide";
 import ServicesShowcase from "@/components/ServicesShowcase";
-import TestimonialSection from "@/components/TestimonialSection";
+// Removed: import TestimonialSection from "@/components/TestimonialSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import StickyHeader from "@/components/StickyHeader";
@@ -14,7 +15,7 @@ const Index = () => {
       <HeroSection />
       <StepGuide />
       <ServicesShowcase />
-      <TestimonialSection />
+      {/* <TestimonialSection /> removed */}
       <FAQSection />
       <Footer />
       <FloatingCartButton />
