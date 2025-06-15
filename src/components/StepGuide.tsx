@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { ArrowRight, Check, Compass, DollarSign, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -41,14 +40,48 @@ const StepGuide = () => {
               <DollarSign className="w-9 h-9 text-gold-300" />
             </div>
             <h3 className="font-bold text-lg mb-2">Harga Transparan</h3>
-            <p className="text-white/90 mb-0 leading-relaxed text-base">Lihat harga jujur & detail – tiada biaya tersembunyi.</p>
+            <p className="text-white/90 mb-0 leading-relaxed text-base">Mulai dari <span className="font-semibold text-gold-300">Rp 18 juta</span> (bandingkan dengan travel agent <span className="text-white/70 line-through">Rp 26 juta</span>).</p>
           </div>
           <div className="rounded-xl bg-white/10 backdrop-blur p-6 border border-white/20 text-white shadow-lg">
             <div className="mb-3">
               <Sparkles className="w-9 h-9 text-gold-300" />
             </div>
-            <h3 className="font-bold text-lg mb-2">Bebas Pilih</h3>
+            <h3 className="font-bold text-lg mb-2">Fleksibel & Bebas Pilih</h3>
             <p className="text-white/90 mb-0 leading-relaxed text-base">Ambil layanan yang kamu mau saja, bebas tanpa paket wajib.</p>
+          </div>
+        </div>
+
+        {/* Comparison Table */}
+        <div className="mt-10 flex justify-center">
+          <div className="w-full max-w-2xl">
+            <div className="rounded-2xl shadow-lg bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden">
+              <table className="w-full text-sm md:text-base text-white">
+                <thead>
+                  <tr className="bg-gradient-to-r from-gold-400/30 to-sand-400/20">
+                    <th className="py-4 px-4 text-left font-bold text-gold-200 tracking-wider"> </th>
+                    <th className="py-4 px-4 text-left font-bold text-gold-300">Bersafar</th>
+                    <th className="py-4 px-4 text-left font-bold text-sand-200">Travel Agent</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-white/20">
+                    <td className="py-4 px-4 font-semibold">Harga</td>
+                    <td className="py-4 px-4 text-gold-200 font-bold">Mulai Rp 18 jt</td>
+                    <td className="py-4 px-4 text-sand-200 font-bold">Rp 26 jt</td>
+                  </tr>
+                  <tr className="border-b border-white/20">
+                    <td className="py-4 px-4 font-semibold">Fleksibel</td>
+                    <td className="py-4 px-4 font-bold text-green-300">Ya</td>
+                    <td className="py-4 px-4 text-white/80">Tidak</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-4 font-semibold">Service</td>
+                    <td className="py-4 px-4 text-white">Mandiri</td>
+                    <td className="py-4 px-4 text-white">Full service</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
@@ -56,7 +89,7 @@ const StepGuide = () => {
           <Button 
             className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-bold text-base py-6 px-8 rounded-full hover:scale-105 transition-all duration-300"
           >
-            Mulai Sekarang <ArrowRight className="ml-2 h-5 w-5" />
+            Mulai Umrah Mandiri <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
 
