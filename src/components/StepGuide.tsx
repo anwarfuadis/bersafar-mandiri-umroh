@@ -1,43 +1,50 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  CalendarCheck,
+  Passport,
+  Globe,
+  Plane,
+  Hotel,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 const steps = [
   {
     id: 1,
     title: "Tentukan Waktu Keberangkatan",
     description:
-      "Pilih waktu terbaik untuk perjalanan umroh kamu, sebaiknya persiapan 1-2 bulan sebelum keberangkatan.",
-    detail: null
+      "Pilih waktu terbaik untuk perjalanan umroh kamu sebaiknya persiapan 1-2 bulan sebelum keberangkatan.",
+    icon: CalendarCheck,
   },
   {
     id: 2,
     title: "Buat Paspor (jika belum punya)",
     description: "Urus di Kantor Imigrasi terdekat.\nWaktu proses: ±1 minggu.",
-    detail: null
+    icon: Passport,
   },
   {
     id: 3,
     title: "Urus Visa Umroh",
     description:
-      "Untuk Umroh mandiri, ajukan Visa Umroh melalui Bersafar atau Agen travel (bisa hanya untuk visa saja).",
-    detail: null
+      "Untuk Umroh mandiri, ajukan Visa Umroh melalui:\nBersafar atau Agen travel (bisa hanya untuk visa saja).",
+    icon: Globe,
   },
   {
     id: 4,
     title: "Booking Tiket Pesawat",
     description:
-      "Cari tiket Jakarta – Jeddah / Madinah PP.\nEh, Bersafar menyediakan tiket pesawat murah. Silakan Cek!",
-    detail: null
+      "Cari tiket Jakarta – Jeddah / Madinah PP.\nEh Bersafar menyediakan tiket pesawat murah. Silakan Cek !",
+    icon: Plane,
   },
   {
     id: 5,
     title: "Booking Hotel",
     description:
-      "Cari hotel dekat Masjidil Haram (Mekkah) dan Masjid Nabawi (Madinah).\nTips: Pilih hotel dengan jarak <500 meter dari masjid. Bersafar juga ada nih hotel murah dijamin deket.",
-    detail: null
-  }
+      "Cari hotel dekat Masjidil Haram (Mekkah) dan Masjid Nabawi (Madinah).",
+    icon: Hotel,
+  },
 ];
 
 const StepGuide = () => {
@@ -141,53 +148,57 @@ const StepGuide = () => {
               msOverflowStyle: "none"
             }}
           >
-            {steps.map((step, index) => (
-              <div
-                key={step.id}
-                className={`flex-shrink-0 w-64 cursor-pointer transition-all duration-300 ${
-                  activeStep === step.id ? "scale-105" : "hover:scale-102"
-                }`}
-                onClick={() => setActiveStep(step.id)}
-                style={{
-                  animationDelay: `${index * 0.1}s`
-                }}
-              >
-                {/* Step Circle with Number */}
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              return (
                 <div
-                  className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto transition-all duration-300 text-xl font-bold font-sf ${
-                    activeStep === step.id
-                      ? "bg-gradient-to-r from-spiritual-600 to-spiritual-700 text-white shadow-lg transform scale-110"
-                      : activeStep > step.id
-                      ? "bg-gold-400 text-white"
-                      : "bg-sand-200 text-spiritual-600"
+                  key={step.id}
+                  className={`flex-shrink-0 w-64 cursor-pointer transition-all duration-300 ${
+                    activeStep === step.id ? "scale-105" : "hover:scale-102"
                   }`}
+                  onClick={() => setActiveStep(step.id)}
+                  style={{
+                    animationDelay: `${index * 0.1}s`
+                  }}
                 >
-                  <span>{step.id}</span>
-                </div>
+                  {/* Step Circle with Number and Icon */}
+                  <div
+                    className={`w-16 h-16 rounded-full flex flex-col items-center justify-center mb-4 mx-auto transition-all duration-300 text-xl font-bold font-sf ${
+                      activeStep === step.id
+                        ? "bg-gradient-to-r from-spiritual-600 to-spiritual-700 text-white shadow-lg transform scale-110"
+                        : activeStep > step.id
+                        ? "bg-gold-400 text-white"
+                        : "bg-sand-200 text-spiritual-600"
+                    }`}
+                  >
+                    <span className="text-2xl mb-0.5">{step.id}</span>
+                    <Icon size={24} className="mt-1" />
+                  </div>
 
-                {/* Step Content */}
-                <div
-                  className={`text-center transition-all duration-300 font-sf ${
-                    activeStep === step.id
-                      ? "text-spiritual-800"
-                      : "text-spiritual-600"
-                  }`}
-                >
-                  <h3 className="text-lg font-sf font-semibold mb-2">{step.title}</h3>
-                  <p className="text-sm font-sf text-spiritual-500 mb-3 whitespace-pre-line">{step.description}</p>
-                  {activeStep === step.id && (
-                    <div className="animate-fade-in">
-                      <Button
-                        size="sm"
-                        className="bg-spiritual-600 hover:bg-spiritual-700 text-white px-4 py-2 text-sm font-sf rounded-xl"
-                      >
-                        Mulai Step Ini
-                      </Button>
-                    </div>
-                  )}
+                  {/* Step Content */}
+                  <div
+                    className={`text-center transition-all duration-300 font-sf ${
+                      activeStep === step.id
+                        ? "text-spiritual-800"
+                        : "text-spiritual-600"
+                    }`}
+                  >
+                    <h3 className="text-lg font-sf font-semibold mb-2">{step.title}</h3>
+                    <p className="text-sm font-sf text-spiritual-500 mb-3 whitespace-pre-line">{step.description}</p>
+                    {activeStep === step.id && (
+                      <div className="animate-fade-in">
+                        <Button
+                          size="sm"
+                          className="bg-spiritual-600 hover:bg-spiritual-700 text-white px-4 py-2 text-sm font-sf rounded-xl"
+                        >
+                          Mulai Step Ini
+                        </Button>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
