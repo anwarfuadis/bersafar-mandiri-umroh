@@ -31,51 +31,51 @@ const StepGuide = () => {
 
         {/* Comparison Table */}
         <div className="mt-10 flex justify-center">
-          <div className="w-full">
-            <div className="rounded-2xl shadow-lg bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden">
+          <div className="w-full max-w-5xl">
+            <div className="rounded-3xl shadow-2xl bg-white/20 backdrop-blur-xl border-2 border-white/30 overflow-hidden transform hover:scale-[1.02] transition-all duration-300">
               <table className="w-full text-sm md:text-base text-white">
                 <thead>
-                  <tr className="bg-gradient-to-r from-gold-400/30 to-sand-400/20">
-                    <th className="py-4 px-4 text-left font-bold text-gold-200 tracking-wider">Aspek</th>
-                    <th className="py-4 px-4 text-left font-bold text-gold-300">Umrah Mandiri (Bersafar)</th>
-                    <th className="py-4 px-4 text-left font-bold text-sand-200">Umrah via Travel Agent</th>
+                  <tr className="bg-gradient-to-r from-gold-500/40 to-sand-500/30 border-b border-white/30">
+                    <th className="py-6 px-6 text-left font-bold text-white tracking-wider text-lg">Aspek</th>
+                    <th className="py-6 px-6 text-left font-bold text-white text-lg">Umrah Mandiri (Bersafar)</th>
+                    <th className="py-6 px-6 text-left font-bold text-white text-lg">Umrah via Travel Agent</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Harga</td>
-                    <td className="py-4 px-4 text-gold-200 font-bold">Mulai Rp 18 jutaan</td>
-                    <td className="py-4 px-4 text-sand-200 font-bold">Mulai Rp 26 jutaan</td>
+                  <tr className="border-b border-white/20 hover:bg-white/10 transition-colors duration-200">
+                    <td className="py-5 px-6 font-semibold text-white">Harga</td>
+                    <td className="py-5 px-6 text-white font-bold">Mulai Rp 18 jutaan</td>
+                    <td className="py-5 px-6 text-white font-bold">Mulai Rp 26 jutaan</td>
                   </tr>
-                  <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Jadwal</td>
-                    <td className="py-4 px-4 font-bold text-green-300">Bebas atur sendiri</td>
-                    <td className="py-4 px-4 text-white/80">Ikut jadwal rombongan</td>
+                  <tr className="border-b border-white/20 hover:bg-white/10 transition-colors duration-200">
+                    <td className="py-5 px-6 font-semibold text-white">Jadwal</td>
+                    <td className="py-5 px-6 font-bold text-white">Bebas atur sendiri</td>
+                    <td className="py-5 px-6 text-white">Ikut jadwal rombongan</td>
                   </tr>
-                  <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Akomodasi</td>
-                    <td className="py-4 px-4 font-bold text-green-300">Pilih sendiri</td>
-                    <td className="py-4 px-4 text-white/80">Sudah ditentukan travel</td>
+                  <tr className="border-b border-white/20 hover:bg-white/10 transition-colors duration-200">
+                    <td className="py-5 px-6 font-semibold text-white">Akomodasi</td>
+                    <td className="py-5 px-6 font-bold text-white">Pilih sendiri</td>
+                    <td className="py-5 px-6 text-white">Sudah ditentukan travel</td>
                   </tr>
-                  <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Transportasi Lokal</td>
-                    <td className="py-4 px-4 text-gold-200">Patungan bareng, lebih hemat</td>
-                    <td className="py-4 px-4 text-white/80">Sudah termasuk paket</td>
+                  <tr className="border-b border-white/20 hover:bg-white/10 transition-colors duration-200">
+                    <td className="py-5 px-6 font-semibold text-white">Transportasi Lokal</td>
+                    <td className="py-5 px-6 text-white">Patungan bareng, lebih hemat</td>
+                    <td className="py-5 px-6 text-white">Sudah termasuk paket</td>
                   </tr>
-                  <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Handling Bandara</td>
-                    <td className="py-4 px-4 text-white/80">Tanpa handling</td>
-                    <td className="py-4 px-4 text-green-300">Ada petugas bantu</td>
+                  <tr className="border-b border-white/20 hover:bg-white/10 transition-colors duration-200">
+                    <td className="py-5 px-6 font-semibold text-white">Handling Bandara</td>
+                    <td className="py-5 px-6 text-white">Tanpa handling</td>
+                    <td className="py-5 px-6 text-white">Ada petugas bantu</td>
                   </tr>
-                  <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Kebebasan</td>
-                    <td className="py-4 px-4 font-bold text-green-300">Lebih fleksibel</td>
-                    <td className="py-4 px-4 text-white/80">Terikat itinerary grup</td>
+                  <tr className="border-b border-white/20 hover:bg-white/10 transition-colors duration-200">
+                    <td className="py-5 px-6 font-semibold text-white">Kebebasan</td>
+                    <td className="py-5 px-6 font-bold text-white">Lebih fleksibel</td>
+                    <td className="py-5 px-6 text-white">Terikat itinerary grup</td>
                   </tr>
-                  <tr>
-                    <td className="py-4 px-4 font-semibold">Pendamping (Mutawif)</td>
-                    <td className="py-4 px-4 text-white">Jika dibutuhkan saja</td>
-                    <td className="py-4 px-4 text-green-300">Ada pembimbing tetap</td>
+                  <tr className="hover:bg-white/10 transition-colors duration-200">
+                    <td className="py-5 px-6 font-semibold text-white">Pendamping (Mutawif)</td>
+                    <td className="py-5 px-6 text-white">Jika dibutuhkan saja</td>
+                    <td className="py-5 px-6 text-white">Ada pembimbing tetap</td>
                   </tr>
                 </tbody>
               </table>
