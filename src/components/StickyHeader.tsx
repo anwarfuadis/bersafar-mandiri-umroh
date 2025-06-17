@@ -28,18 +28,19 @@ const StickyHeader = () => {
         `}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Brand Name */}
+          {/* Brand Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-sf font-bold text-white tracking-tight">
-              Bersafar
-            </h1>
-            <div className="w-1 h-6 bg-gold-400 ml-3 rounded-full"></div>
+            <img 
+              src="/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png" 
+              alt="Bersafar" 
+              className="h-10 w-auto"
+            />
           </div>
 
           {/* CTA Button */}
           <Button 
             size="default" 
-            className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-6 py-2 font-sf font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
+            className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-8 py-3 font-sf font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
             onClick={() => setDialogOpen(true)}
           >
             Mulai Perjalananmu

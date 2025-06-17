@@ -27,55 +27,91 @@ const StepGuide = () => {
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-sf font-bold mb-7 text-white text-center drop-shadow">
           Bersafar bersama kami
         </h2>
-        {/* Removed the three feature cards for Langkah Mudah, Harga Transparan, Fleksibel & Bebas Pilih */}
 
-        {/* Comparison Table */}
+        {/* Enhanced Comparison Table */}
         <div className="mt-10 flex justify-center">
           <div className="w-full">
-            <div className="rounded-2xl shadow-lg bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden">
+            <div className="rounded-3xl shadow-2xl bg-white/15 backdrop-blur-xl border-2 border-white/30 overflow-hidden hover:shadow-3xl transition-all duration-300">
               <table className="w-full text-sm md:text-base text-white">
                 <thead>
-                  <tr className="bg-gradient-to-r from-gold-400/30 to-sand-400/20">
-                    <th className="py-4 px-4 text-left font-bold text-gold-200 tracking-wider">Aspek</th>
-                    <th className="py-4 px-4 text-left font-bold text-gold-300">Umrah Mandiri (Bersafar)</th>
-                    <th className="py-4 px-4 text-left font-bold text-sand-200">Umrah via Travel Agent</th>
+                  <tr className="bg-gradient-to-r from-gold-500/40 to-sand-500/30 border-b-2 border-white/20">
+                    <th className="py-6 px-6 text-left font-bold text-white tracking-wider text-lg">Aspek</th>
+                    <th className="py-6 px-6 text-left font-bold text-gold-200 text-lg bg-gradient-to-r from-gold-400/20 to-gold-500/20 border-l-2 border-gold-300/50">
+                      <div className="flex items-center">
+                        <span className="text-xl">🎯</span>
+                        <span className="ml-2">Umroh Mandiri (Bersafar)</span>
+                      </div>
+                    </th>
+                    <th className="py-6 px-6 text-left font-bold text-sand-200 text-lg">Umroh via Travel Agent</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Harga</td>
-                    <td className="py-4 px-4 text-gold-200 font-bold">Mulai Rp 18 jutaan</td>
-                    <td className="py-4 px-4 text-sand-200 font-bold">Mulai Rp 26 jutaan</td>
+                  <tr className="border-b border-white/20 hover:bg-white/5 transition-colors">
+                    <td className="py-5 px-6 font-semibold text-white">Harga</td>
+                    <td className="py-5 px-6 text-gold-200 font-bold text-lg bg-gradient-to-r from-gold-400/10 to-gold-500/10 border-l-2 border-gold-300/30">
+                      <span className="text-green-300">✨ Mulai Rp 18 jutaan</span>
+                    </td>
+                    <td className="py-5 px-6 text-sand-200 font-bold">Mulai Rp 26 jutaan</td>
                   </tr>
-                  <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Jadwal</td>
-                    <td className="py-4 px-4 font-bold text-green-300">Bebas atur sendiri</td>
-                    <td className="py-4 px-4 text-white/80">Ikut jadwal rombongan</td>
+                  <tr className="border-b border-white/20 hover:bg-white/5 transition-colors">
+                    <td className="py-5 px-6 font-semibold text-white">Tiket Pesawat</td>
+                    <td className="py-5 px-6 font-bold text-green-300 bg-gradient-to-r from-gold-400/10 to-gold-500/10 border-l-2 border-gold-300/30">
+                      <span className="flex items-center">
+                        <span className="mr-2">✈️</span>
+                        Pilih sendiri, hemat lebih
+                      </span>
+                    </td>
+                    <td className="py-5 px-6 text-white/80">Sudah ditentukan travel</td>
                   </tr>
-                  <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Akomodasi</td>
-                    <td className="py-4 px-4 font-bold text-green-300">Pilih sendiri</td>
-                    <td className="py-4 px-4 text-white/80">Sudah ditentukan travel</td>
+                  <tr className="border-b border-white/20 hover:bg-white/5 transition-colors">
+                    <td className="py-5 px-6 font-semibold text-white">Hotel</td>
+                    <td className="py-5 px-6 font-bold text-green-300 bg-gradient-to-r from-gold-400/10 to-gold-500/10 border-l-2 border-gold-300/30">
+                      <span className="flex items-center">
+                        <span className="mr-2">🏨</span>
+                        Bebas pilih sesuai budget
+                      </span>
+                    </td>
+                    <td className="py-5 px-6 text-white/80">Paket sudah ditentukan</td>
                   </tr>
-                  <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Transportasi Lokal</td>
-                    <td className="py-4 px-4 text-gold-200">Patungan bareng, lebih hemat</td>
-                    <td className="py-4 px-4 text-white/80">Sudah termasuk paket</td>
+                  <tr className="border-b border-white/20 hover:bg-white/5 transition-colors">
+                    <td className="py-5 px-6 font-semibold text-white">Visa</td>
+                    <td className="py-5 px-6 text-gold-200 bg-gradient-to-r from-gold-400/10 to-gold-500/10 border-l-2 border-gold-300/30">
+                      <span className="flex items-center">
+                        <span className="mr-2">📋</span>
+                        Bantuan proses visa
+                      </span>
+                    </td>
+                    <td className="py-5 px-6 text-green-300">Sudah termasuk</td>
                   </tr>
-                  <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Handling Bandara</td>
-                    <td className="py-4 px-4 text-white/80">Tanpa handling</td>
-                    <td className="py-4 px-4 text-green-300">Ada petugas bantu</td>
+                  <tr className="border-b border-white/20 hover:bg-white/5 transition-colors">
+                    <td className="py-5 px-6 font-semibold text-white">Pendamping</td>
+                    <td className="py-5 px-6 text-white bg-gradient-to-r from-gold-400/10 to-gold-500/10 border-l-2 border-gold-300/30">
+                      <span className="flex items-center">
+                        <span className="mr-2">👥</span>
+                        Opsional sesuai kebutuhan
+                      </span>
+                    </td>
+                    <td className="py-5 px-6 text-green-300">Ada pembimbing tetap</td>
                   </tr>
-                  <tr className="border-b border-white/20">
-                    <td className="py-4 px-4 font-semibold">Kebebasan</td>
-                    <td className="py-4 px-4 font-bold text-green-300">Lebih fleksibel</td>
-                    <td className="py-4 px-4 text-white/80">Terikat itinerary grup</td>
+                  <tr className="border-b border-white/20 hover:bg-white/5 transition-colors">
+                    <td className="py-5 px-6 font-semibold text-white">Akomodasi</td>
+                    <td className="py-5 px-6 font-bold text-green-300 bg-gradient-to-r from-gold-400/10 to-gold-500/10 border-l-2 border-gold-300/30">
+                      <span className="flex items-center">
+                        <span className="mr-2">🎒</span>
+                        Fleksibel & custom
+                      </span>
+                    </td>
+                    <td className="py-5 px-6 text-white/80">Paket standar</td>
                   </tr>
-                  <tr>
-                    <td className="py-4 px-4 font-semibold">Pendamping (Mutawif)</td>
-                    <td className="py-4 px-4 text-white">Jika dibutuhkan saja</td>
-                    <td className="py-4 px-4 text-green-300">Ada pembimbing tetap</td>
+                  <tr className="hover:bg-white/5 transition-colors">
+                    <td className="py-5 px-6 font-semibold text-white">Handling Bandara</td>
+                    <td className="py-5 px-6 text-white/80 bg-gradient-to-r from-gold-400/10 to-gold-500/10 border-l-2 border-gold-300/30">
+                      <span className="flex items-center">
+                        <span className="mr-2">✈️</span>
+                        Mandiri
+                      </span>
+                    </td>
+                    <td className="py-5 px-6 text-green-300">Ada petugas bantu</td>
                   </tr>
                 </tbody>
               </table>
@@ -85,9 +121,9 @@ const StepGuide = () => {
 
         <div className="mt-12 text-center">
           <Button 
-            className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-bold text-base py-6 px-8 rounded-full hover:scale-105 transition-all duration-300"
+            className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-bold text-base py-6 px-8 rounded-full hover:scale-105 transition-all duration-300 shadow-2xl"
           >
-            Mulai Umrah Mandiri <ArrowRight className="ml-2 h-5 w-5" />
+            Mulai Umroh Mandiri <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
       </div>
