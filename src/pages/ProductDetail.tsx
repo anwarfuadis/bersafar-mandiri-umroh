@@ -1,12 +1,49 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Check, Star } from "lucide-react";
+import { ArrowLeft, Check, Star, Plus, Minus } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Asterisk } from "lucide-react";
 import RegistrationDialog from "@/components/RegistrationDialog";
 
 const ProductDetail = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedItems, setSelectedItems] = useState<{[key: string]: number}>({});
+
+  const subItems = [
+    { id: 'tiket-pesawat', name: 'Tiket Pesawat', price: 8500000, description: 'Tiket pulang-pergi ke Jeddah' },
+    { id: 'hotel-mekkah', name: 'Hotel Mekkah', price: 4200000, description: 'Hotel bintang 4 dekat Masjidil Haram' },
+    { id: 'hotel-madinah', name: 'Hotel Madinah', price: 3800000, description: 'Hotel bintang 4 dekat Masjid Nabawi' },
+    { id: 'visa-umroh', name: 'Visa Umroh', price: 1200000, description: 'Pengurusan visa umroh lengkap' },
+    { id: 'mutawif', name: 'Mutawif', price: 2500000, description: 'Pemandu umroh berpengalaman' },
+    { id: 'transportasi', name: 'Transportasi Lokal', price: 1800000, description: 'Bus AC untuk transportasi lokal' },
+  ];
+
+  const updateItemQuantity = (itemId: string, change: number) => {
+    setSelectedItems(prev => {
+      const newQuantity = (prev[itemId] || 0) + change;
+      if (newQuantity <= 0) {
+        const { [itemId]: removed, ...rest } = prev;
+        return rest;
+      }
+      return { ...prev, [itemId]: newQuantity };
+    });
+  };
+
+  const getTotalPrice = () => {
+    return Object.entries(selectedItems).reduce((total, [itemId, quantity]) => {
+      const item = subItems.find(item => item.id === itemId);
+      return total + (item ? item.price * quantity : 0);
+    }, 0);
+  };
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0
+    }).format(price);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-sand-50 via-white to-spiritual-50/30">
@@ -18,11 +55,7 @@ const ProductDetail = () => {
               <ArrowLeft className="w-5 h-5" />
             </Link>
             <div className="flex items-center space-x-3">
-              <img 
-                src="/lovable-uploads/0447b7fb-94d7-470d-84ff-72fa7f50a25f.png" 
-                alt="Bersafar" 
-                className="h-8 w-auto"
-              />
+              <Asterisk className="h-8 w-8 text-gold-400" />
               <span className="text-xl font-sf font-bold">Bersafar</span>
             </div>
           </div>
@@ -35,7 +68,7 @@ const ProductDetail = () => {
           <div className="space-y-4">
             <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=800&h=800&fit=crop&crop=center"
+                src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=800&h=800&fit=crop&crop=center"
                 alt="Umroh Mandiri Bersafar"
                 className="w-full h-full object-cover"
               />
@@ -44,7 +77,7 @@ const ProductDetail = () => {
               {[1,2,3,4].map((i) => (
                 <div key={i} className="aspect-square rounded-lg overflow-hidden">
                   <img 
-                    src={`https://images.unsplash.com/photo-146644292997${i}-97f336a657be?w=200&h=200&fit=crop&crop=center`}
+                    src={`https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=200&h=200&fit=crop&crop=center&q=80&auto=format&cs=tinysrgb&${i}`}
                     alt={`Gallery ${i}`}
                     className="w-full h-full object-cover"
                   />
@@ -72,18 +105,59 @@ const ProductDetail = () => {
               </p>
             </div>
 
-            {/* Price */}
-            <div className="bg-gradient-to-r from-gold-50 to-spiritual-50 rounded-2xl p-6 border border-gold-200">
-              <div className="flex items-baseline space-x-2 mb-2">
-                <span className="text-3xl font-sf font-bold text-spiritual-800">Mulai Rp 18,000,000</span>
-                <span className="text-lg text-spiritual-500 line-through">Rp 26,000,000</span>
+            {/* Sub Items Selection */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-sf font-bold text-spiritual-800">Pilih Layanan Sesuai Kebutuhan:</h3>
+              <div className="space-y-3">
+                {subItems.map((item) => (
+                  <div key={item.id} className="border border-spiritual-200 rounded-xl p-4 bg-white/80 backdrop-blur-sm">
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1">
+                        <h4 className="font-sf font-semibold text-spiritual-800">{item.name}</h4>
+                        <p className="text-sm text-spiritual-600">{item.description}</p>
+                        <p className="text-gold-600 font-sf font-bold">{formatPrice(item.price)}</p>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="w-8 h-8 p-0 rounded-full"
+                          onClick={() => updateItemQuantity(item.id, -1)}
+                          disabled={!selectedItems[item.id]}
+                        >
+                          <Minus className="w-4 h-4" />
+                        </Button>
+                        <span className="w-8 text-center font-sf font-medium">
+                          {selectedItems[item.id] || 0}
+                        </span>
+                        <Button
+                          size="sm"
+                          className="w-8 h-8 p-0 rounded-full bg-gold-500 hover:bg-gold-600"
+                          onClick={() => updateItemQuantity(item.id, 1)}
+                        >
+                          <Plus className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <p className="text-spiritual-600 font-sf">Hemat hingga Rp 8 juta dibanding travel agent</p>
+            </div>
+
+            {/* Price Summary */}
+            <div className="bg-gradient-to-r from-gold-50 to-spiritual-50 rounded-2xl p-6 border border-gold-200">
+              <div className="flex items-baseline justify-between mb-2">
+                <span className="text-lg font-sf font-semibold text-spiritual-800">Total Harga:</span>
+                <span className="text-3xl font-sf font-bold text-spiritual-800">
+                  {getTotalPrice() > 0 ? formatPrice(getTotalPrice()) : "Pilih layanan"}
+                </span>
+              </div>
+              <p className="text-spiritual-600 font-sf">Hemat hingga 30% dibanding travel agent tradisional</p>
             </div>
 
             {/* Features */}
             <div className="space-y-4">
-              <h3 className="text-xl font-sf font-bold text-spiritual-800">Yang Anda Dapatkan:</h3>
+              <h3 className="text-xl font-sf font-bold text-spiritual-800">Keunggulan Bersafar:</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
                   "Bantuan pengurusan visa",
@@ -106,16 +180,17 @@ const ProductDetail = () => {
               <Button 
                 size="lg" 
                 className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-sf font-bold py-4 px-8 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                disabled={getTotalPrice() === 0}
                 onClick={() => setDialogOpen(true)}
               >
-                Daftar Sekarang - Gratis!
+                Tambah ke Keranjang - Wujudkan Impian Umroh! 🛒
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
                 className="w-full border-2 border-spiritual-600 text-spiritual-600 hover:bg-spiritual-600 hover:text-white font-sf font-semibold py-4 px-8 rounded-full transition-all duration-300"
               >
-                Konsultasi WhatsApp
+                Konsultasi WhatsApp Gratis 💬
               </Button>
             </div>
 

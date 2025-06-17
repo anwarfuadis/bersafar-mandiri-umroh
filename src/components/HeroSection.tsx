@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Asterisk } from "lucide-react";
 import RegistrationDialog from "@/components/RegistrationDialog";
 
 const HeroSection = () => {
@@ -15,14 +16,14 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Parallax Geometric Shapes */}
-      <div className="parallax-shapes">
-        <div className="geometric-shape"></div>
-        <div className="geometric-shape"></div>
-        <div className="geometric-shape"></div>
-        <div className="geometric-shape"></div>
-        <div className="geometric-shape"></div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-spiritual-700 via-spiritual-600 to-spiritual-800">
+      {/* Parallax Geometric Shapes - only for hero section */}
+      <div className="hero-parallax-shapes">
+        <div className="hero-geometric-shape"></div>
+        <div className="hero-geometric-shape"></div>
+        <div className="hero-geometric-shape"></div>
+        <div className="hero-geometric-shape"></div>
+        <div className="hero-geometric-shape"></div>
       </div>
 
       {/* Video Background */}
@@ -32,7 +33,7 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
           style={{
             transform: `translateY(${scrollY * 0.3}px)`,
           }}
@@ -54,12 +55,8 @@ const HeroSection = () => {
         <div className="animate-fade-in">
           {/* Brand Logo */}
           <div className="mb-8">
-            <img 
-              src="/lovable-uploads/0447b7fb-94d7-470d-84ff-72fa7f50a25f.png" 
-              alt="Bersafar" 
-              className="h-16 md:h-20 mx-auto mb-4"
-            />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-sf font-bold text-white mb-6">
+            <Asterisk className="h-16 md:h-20 mx-auto mb-4 text-gold-400" />
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-sf font-bold text-white mb-6">
               Bersafar
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full shadow-lg"></div>

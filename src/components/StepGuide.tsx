@@ -1,8 +1,6 @@
-
 import React, { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 const StepGuide = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -119,166 +117,90 @@ const StepGuide = () => {
             </div>
           </div>
 
-          {/* Mobile Cards */}
-          <div className="lg:hidden space-y-4">
-            <div className="bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-2xl p-4 border border-green-300/50">
-              <h3 className="text-lg font-bold text-gold-200 mb-4 flex items-center">
-                <span className="text-xl mr-2">🎯</span>
-                Umroh Mandiri (Bersafar)
-              </h3>
-              <div className="space-y-3 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-white">Harga</span>
-                  <span className="text-green-300">✨ Mulai Rp 18 jutaan</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white">Tiket Pesawat</span>
-                  <span className="text-green-300">✈️ Pilih sendiri, hemat lebih</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white">Hotel</span>
-                  <span className="text-green-300">🏨 Bebas pilih sesuai budget</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white">Visa</span>
-                  <span className="text-gold-200">📋 Bantuan proses visa</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white">Mutawif</span>
-                  <span className="text-white">👥 Opsional sesuai kebutuhan</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white">Transportasi Lokal</span>
-                  <span className="text-green-300">🚌 Fleksibel & custom</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white">Handling Bandara</span>
-                  <span className="text-white/80">✈️ Mandiri</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white/10 rounded-2xl p-4 border border-white/20">
-              <h3 className="text-lg text-sand-200 mb-4">
-                Umroh via Travel Agent
-              </h3>
-              <div className="space-y-3 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-white">Harga</span>
-                  <span className="text-sand-200">Mulai Rp 26 jutaan</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white">Tiket Pesawat</span>
-                  <span className="text-white/80">Sudah ditentukan travel</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white">Hotel</span>
-                  <span className="text-white/80">Paket sudah ditentukan</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white">Visa</span>
-                  <span className="text-green-300">Sudah termasuk</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white">Mutawif</span>
-                  <span className="text-green-300">Ada pembimbing tetap</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white">Transportasi Lokal</span>
-                  <span className="text-white/80">Paket standar</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white">Handling Bandara</span>
-                  <span className="text-green-300">Ada petugas bantu</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Tablet View - Horizontal Scroll */}
-          <div className="hidden md:block lg:hidden">
+          {/* Mobile/Tablet View - Horizontal Scroll with same desktop style */}
+          <div className="lg:hidden">
             <div className="overflow-x-auto">
-              <div className="min-w-[800px] rounded-3xl shadow-2xl bg-white/15 backdrop-blur-xl border-2 border-white/30 overflow-hidden">
-                <table className="w-full text-sm text-white">
+              <div className="min-w-[700px] rounded-3xl shadow-2xl bg-white/15 backdrop-blur-xl border-2 border-white/30 overflow-hidden">
+                <table className="w-full text-xs sm:text-sm text-white">
                   <thead>
                     <tr className="bg-gradient-to-r from-gold-500/40 to-sand-500/30 border-b-2 border-white/20">
-                      <th className="py-4 px-4 text-left font-normal text-white tracking-wider"></th>
-                      <th className="py-4 px-4 text-left text-gold-200 bg-gradient-to-r from-green-400/30 to-green-500/30 border-l-2 border-green-300/50">
+                      <th className="py-4 px-3 text-left font-normal text-white tracking-wider text-sm"></th>
+                      <th className="py-4 px-3 text-left text-gold-200 text-sm bg-gradient-to-r from-green-400/30 to-green-500/30 border-l-2 border-green-300/50">
                         <div className="flex items-center">
-                          <span className="text-lg">🎯</span>
-                          <span className="ml-2 font-bold text-sm">Umroh Mandiri (Bersafar)</span>
+                          <span className="text-base">🎯</span>
+                          <span className="ml-2 font-bold">Umroh Mandiri (Bersafar)</span>
                         </div>
                       </th>
-                      <th className="py-4 px-4 text-left text-sand-200 text-sm">Umroh via Travel Agent</th>
+                      <th className="py-4 px-3 text-left text-sand-200 text-sm">Umroh via Travel Agent</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="border-b border-white/20">
-                      <td className="py-3 px-4 text-white font-medium text-sm">Harga</td>
-                      <td className="py-3 px-4 text-gold-200 bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
-                        <span className="text-green-300 text-sm">✨ Mulai Rp 18 jutaan</span>
+                    <tr className="border-b border-white/20 hover:bg-white/5 transition-colors">
+                      <td className="py-3 px-3 text-white font-medium">Harga</td>
+                      <td className="py-3 px-3 text-gold-200 bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
+                        <span className="text-green-300">✨ Mulai Rp 18 jutaan</span>
                       </td>
-                      <td className="py-3 px-4 text-sand-200 text-sm">Mulai Rp 26 jutaan</td>
+                      <td className="py-3 px-3 text-sand-200">Mulai Rp 26 jutaan</td>
                     </tr>
-                    <tr className="border-b border-white/20">
-                      <td className="py-3 px-4 text-white font-medium text-sm">Tiket Pesawat</td>
-                      <td className="py-3 px-4 text-green-300 bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
-                        <span className="flex items-center text-sm">
-                          <span className="mr-2">✈️</span>
+                    <tr className="border-b border-white/20 hover:bg-white/5 transition-colors">
+                      <td className="py-3 px-3 text-white font-medium">Tiket Pesawat</td>
+                      <td className="py-3 px-3 text-green-300 bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
+                        <span className="flex items-center">
+                          <span className="mr-1">✈️</span>
                           Pilih sendiri, hemat lebih
                         </span>
                       </td>
-                      <td className="py-3 px-4 text-white/80 text-sm">Sudah ditentukan travel</td>
+                      <td className="py-3 px-3 text-white/80">Sudah ditentukan travel</td>
                     </tr>
-                    <tr className="border-b border-white/20">
-                      <td className="py-3 px-4 text-white font-medium text-sm">Hotel</td>
-                      <td className="py-3 px-4 text-green-300 bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
-                        <span className="flex items-center text-sm">
-                          <span className="mr-2">🏨</span>
+                    <tr className="border-b border-white/20 hover:bg-white/5 transition-colors">
+                      <td className="py-3 px-3 text-white font-medium">Hotel</td>
+                      <td className="py-3 px-3 text-green-300 bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
+                        <span className="flex items-center">
+                          <span className="mr-1">🏨</span>
                           Bebas pilih sesuai budget
                         </span>
                       </td>
-                      <td className="py-3 px-4 text-white/80 text-sm">Paket sudah ditentukan</td>
+                      <td className="py-3 px-3 text-white/80">Paket sudah ditentukan</td>
                     </tr>
-                    <tr className="border-b border-white/20">
-                      <td className="py-3 px-4 text-white font-medium text-sm">Visa</td>
-                      <td className="py-3 px-4 text-gold-200 bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
-                        <span className="flex items-center text-sm">
-                          <span className="mr-2">📋</span>
+                    <tr className="border-b border-white/20 hover:bg-white/5 transition-colors">
+                      <td className="py-3 px-3 text-white font-medium">Visa</td>
+                      <td className="py-3 px-3 text-gold-200 bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
+                        <span className="flex items-center">
+                          <span className="mr-1">📋</span>
                           Bantuan proses visa
                         </span>
                       </td>
-                      <td className="py-3 px-4 text-green-300 text-sm">Sudah termasuk</td>
+                      <td className="py-3 px-3 text-green-300">Sudah termasuk</td>
                     </tr>
-                    <tr className="border-b border-white/20">
-                      <td className="py-3 px-4 text-white font-medium text-sm">Mutawif</td>
-                      <td className="py-3 px-4 text-white bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
-                        <span className="flex items-center text-sm">
-                          <span className="mr-2">👥</span>
+                    <tr className="border-b border-white/20 hover:bg-white/5 transition-colors">
+                      <td className="py-3 px-3 text-white font-medium">Mutawif</td>
+                      <td className="py-3 px-3 text-white bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
+                        <span className="flex items-center">
+                          <span className="mr-1">👥</span>
                           Opsional sesuai kebutuhan
                         </span>
                       </td>
-                      <td className="py-3 px-4 text-green-300 text-sm">Ada pembimbing tetap</td>
+                      <td className="py-3 px-3 text-green-300">Ada pembimbing tetap</td>
                     </tr>
-                    <tr className="border-b border-white/20">
-                      <td className="py-3 px-4 text-white font-medium text-sm">Transportasi Lokal</td>
-                      <td className="py-3 px-4 text-green-300 bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
-                        <span className="flex items-center text-sm">
-                          <span className="mr-2">🚌</span>
+                    <tr className="border-b border-white/20 hover:bg-white/5 transition-colors">
+                      <td className="py-3 px-3 text-white font-medium">Transportasi Lokal</td>
+                      <td className="py-3 px-3 text-green-300 bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
+                        <span className="flex items-center">
+                          <span className="mr-1">🚌</span>
                           Fleksibel & custom
                         </span>
                       </td>
-                      <td className="py-3 px-4 text-white/80 text-sm">Paket standar</td>
+                      <td className="py-3 px-3 text-white/80">Paket standar</td>
                     </tr>
-                    <tr>
-                      <td className="py-3 px-4 text-white font-medium text-sm">Handling Bandara</td>
-                      <td className="py-3 px-4 text-white/80 bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
-                        <span className="flex items-center text-sm">
-                          <span className="mr-2">✈️</span>
+                    <tr className="hover:bg-white/5 transition-colors">
+                      <td className="py-3 px-3 text-white font-medium">Handling Bandara</td>
+                      <td className="py-3 px-3 text-white/80 bg-gradient-to-r from-green-400/10 to-green-500/10 border-l-2 border-green-300/30">
+                        <span className="flex items-center">
+                          <span className="mr-1">✈️</span>
                           Mandiri
                         </span>
                       </td>
-                      <td className="py-3 px-4 text-green-300 text-sm">Ada petugas bantu</td>
+                      <td className="py-3 px-3 text-green-300">Ada petugas bantu</td>
                     </tr>
                   </tbody>
                 </table>

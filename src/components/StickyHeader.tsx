@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Asterisk } from "lucide-react";
 import RegistrationDialog from "@/components/RegistrationDialog";
 import LoginDialog from "@/components/LoginDialog";
 
@@ -19,8 +20,8 @@ const StickyHeader = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Ensure header is visible if dialogOpen is true
-  const headerVisible = showHeader || dialogOpen;
+  // Ensure header is visible if dialogOpen or loginOpen is true
+  const headerVisible = showHeader || dialogOpen || loginOpen;
 
   return (
     <>
@@ -32,11 +33,7 @@ const StickyHeader = () => {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Brand Logo */}
           <div className="flex items-center space-x-3">
-            <img 
-              src="/lovable-uploads/0447b7fb-94d7-470d-84ff-72fa7f50a25f.png" 
-              alt="Bersafar" 
-              className="h-8 w-auto"
-            />
+            <Asterisk className="h-8 w-8 text-gold-400" />
             <span className="text-xl font-sf font-bold text-white">Bersafar</span>
           </div>
 
