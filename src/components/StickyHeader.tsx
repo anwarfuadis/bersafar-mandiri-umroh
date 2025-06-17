@@ -29,12 +29,13 @@ const StickyHeader = () => {
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Brand Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center space-x-3">
             <img 
-              src="/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png" 
+              src="/lovable-uploads/0447b7fb-94d7-470d-84ff-72fa7f50a25f.png" 
               alt="Bersafar" 
-              className="h-10 w-auto"
+              className="h-8 w-auto"
             />
+            <span className="text-xl font-sf font-bold text-white">Bersafar</span>
           </div>
 
           {/* CTA Button */}

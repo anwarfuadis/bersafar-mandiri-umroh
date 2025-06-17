@@ -9,7 +9,8 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Phone, Mail, User, MapPin } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Phone, Mail, User, MapPin, Calendar, Package } from "lucide-react";
 
 interface RegistrationDialogProps {
   open: boolean;
@@ -19,9 +20,9 @@ interface RegistrationDialogProps {
 const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
-    city: "",
+    estimatedUmroh: "",
+    umrohNeeds: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -37,19 +38,20 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md mx-auto bg-gradient-to-br from-white via-sand-50 to-spiritual-50 border-2 border-gold-200/50 shadow-2xl">
+      <DialogContent className="sm:max-w-md mx-auto bg-gradient-to-br from-spiritual-50 via-white to-gold-50/30 border-2 border-gold-200/50 shadow-2xl backdrop-blur-sm">
         <DialogHeader className="text-center pb-6">
           <div className="mx-auto mb-4">
             <img 
-              src="/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png" 
+              src="/lovable-uploads/0447b7fb-94d7-470d-84ff-72fa7f50a25f.png" 
               alt="Bersafar" 
-              className="h-12 w-auto mx-auto"
+              className="h-10 w-auto mx-auto mb-2"
             />
+            <h3 className="text-lg font-sf font-bold text-spiritual-700">Bersafar</h3>
           </div>
           <DialogTitle className="text-2xl font-sf font-bold text-spiritual-800 mb-2">
             Mulai Perjalanan Umrohmu
           </DialogTitle>
-          <p className="text-spiritual-600 font-sf">
+          <p className="text-spiritual-600 font-sf leading-relaxed">
             Daftar sekarang dan dapatkan konsultasi gratis untuk persiapan umroh mandiri
           </p>
         </DialogHeader>
@@ -68,25 +70,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
                   placeholder="Masukkan nama lengkap"
                   value={formData.name}
                   onChange={(e) => handleInputChange("name", e.target.value)}
-                  className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/80 backdrop-blur"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="relative">
-              <Label htmlFor="email" className="text-spiritual-700 font-sf font-medium">
-                Email
-              </Label>
-              <div className="relative mt-1">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-spiritual-400" />
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="nama@email.com"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
-                  className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/80 backdrop-blur"
+                  className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm"
                   required
                 />
               </div>
@@ -104,27 +88,50 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
                   placeholder="08xxxxxxxxxx"
                   value={formData.phone}
                   onChange={(e) => handleInputChange("phone", e.target.value)}
-                  className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/80 backdrop-blur"
+                  className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm"
                   required
                 />
               </div>
             </div>
 
             <div className="relative">
-              <Label htmlFor="city" className="text-spiritual-700 font-sf font-medium">
-                Kota Asal
+              <Label htmlFor="estimatedUmroh" className="text-spiritual-700 font-sf font-medium">
+                Estimasi Umroh
               </Label>
               <div className="relative mt-1">
-                <MapPin className="absolute left-3 top-3 h-4 w-4 text-spiritual-400" />
-                <Input
-                  id="city"
-                  type="text"
-                  placeholder="Kota tempat tinggal"
-                  value={formData.city}
-                  onChange={(e) => handleInputChange("city", e.target.value)}
-                  className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/80 backdrop-blur"
-                  required
-                />
+                <Calendar className="absolute left-3 top-3 h-4 w-4 text-spiritual-400" />
+                <Select value={formData.estimatedUmroh} onValueChange={(value) => handleInputChange("estimatedUmroh", value)}>
+                  <SelectTrigger className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm">
+                    <SelectValue placeholder="Pilih waktu keberangkatan" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="1-3-bulan">1-3 bulan</SelectItem>
+                    <SelectItem value="3-6-bulan">3-6 bulan</SelectItem>
+                    <SelectItem value="6-12-bulan">6-12 bulan</SelectItem>
+                    <SelectItem value="lebih-dari-1-tahun">Lebih dari 1 tahun</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            <div className="relative">
+              <Label htmlFor="umrohNeeds" className="text-spiritual-700 font-sf font-medium">
+                Kebutuhan Umroh
+              </Label>
+              <div className="relative mt-1">
+                <Package className="absolute left-3 top-3 h-4 w-4 text-spiritual-400" />
+                <Select value={formData.umrohNeeds} onValueChange={(value) => handleInputChange("umrohNeeds", value)}>
+                  <SelectTrigger className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm">
+                    <SelectValue placeholder="Pilih layanan yang dibutuhkan" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="visa-saja">Visa saja</SelectItem>
+                    <SelectItem value="visa-hotel">Visa + Hotel</SelectItem>
+                    <SelectItem value="visa-tiket">Visa + Tiket</SelectItem>
+                    <SelectItem value="paket-lengkap">Paket lengkap</SelectItem>
+                    <SelectItem value="konsultasi">Konsultasi dulu</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           </div>
@@ -132,7 +139,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
           <div className="space-y-4 pt-4">
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-sf font-bold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-sf font-bold py-4 px-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
             >
               Daftar Sekarang - Gratis!
             </Button>

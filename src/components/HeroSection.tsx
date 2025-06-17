@@ -16,52 +16,25 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Desert Background */}
+      {/* Video Background */}
       <div className="absolute inset-0">
-        <div 
-          className="absolute inset-0 bg-gradient-to-br from-sand-300 via-sand-400 to-sand-600"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
           style={{
             transform: `translateY(${scrollY * 0.3}px)`,
           }}
-        />
+        >
+          <source src="https://player.vimeo.com/external/418113258.sd.mp4?s=4b3b4e3a4d7c5f7e9f1a2b3c4d5e6f7g8h9i0j1k&profile_id=165" type="video/mp4" />
+          {/* Fallback to animated background if video fails */}
+          <div className="absolute inset-0 bg-gradient-to-br from-sand-300 via-sand-400 to-sand-600 animate-desert-wind" />
+        </video>
         
-        {/* Animated sand dunes */}
-        <div className="absolute inset-0">
-          <div 
-            className="absolute bottom-0 left-0 w-full h-96 bg-gradient-to-t from-sand-500 to-transparent rounded-full blur-3xl animate-pulse-gentle"
-            style={{
-              transform: `translateX(${Math.sin(Date.now() * 0.001) * 20}px)`,
-            }}
-          />
-          <div 
-            className="absolute bottom-20 right-0 w-96 h-96 bg-gradient-to-t from-sand-600 to-transparent rounded-full blur-2xl opacity-70"
-            style={{
-              transform: `translateX(${Math.sin(Date.now() * 0.0008) * -30}px)`,
-            }}
-          />
-          <div 
-            className="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-to-br from-gold-400/30 to-sand-500/30 rounded-full blur-3xl animate-pulse-gentle"
-            style={{
-              transform: `translateY(${Math.sin(Date.now() * 0.0012) * 15}px)`,
-            }}
-          />
-        </div>
-        
-        {/* Wind effect particles */}
-        <div className="absolute inset-0 opacity-30">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-sand-200 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 4}s`,
-              }}
-            />
-          ))}
-        </div>
+        {/* Fallback animated background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-sand-300 via-sand-400 to-sand-600 animate-desert-wind opacity-0" />
       </div>
 
       {/* Overlay for better text readability */}
@@ -73,10 +46,13 @@ const HeroSection = () => {
           {/* Brand Logo */}
           <div className="mb-8">
             <img 
-              src="/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png" 
+              src="/lovable-uploads/0447b7fb-94d7-470d-84ff-72fa7f50a25f.png" 
               alt="Bersafar" 
-              className="h-20 md:h-24 mx-auto mb-6"
+              className="h-16 md:h-20 mx-auto mb-4"
             />
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-sf font-bold text-white mb-6">
+              Bersafar
+            </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full shadow-lg"></div>
           </div>
 
