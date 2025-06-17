@@ -46,7 +46,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
               alt="Bersafar" 
               className="h-10 w-auto mx-auto mb-2"
             />
-            <h3 className="text-lg font-sf font-bold text-spiritual-700">Bersafar</h3>
+            <h3 className="text-lg font-sf font-bold text-green-700">Bersafar</h3>
           </div>
           <DialogTitle className="text-2xl font-sf font-bold text-spiritual-800 mb-2">
             Mulai Perjalanan Umrohmu
@@ -125,9 +125,12 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
                     <SelectValue placeholder="Pilih layanan yang dibutuhkan" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="visa-saja">Visa saja</SelectItem>
-                    <SelectItem value="visa-hotel">Visa + Hotel</SelectItem>
-                    <SelectItem value="visa-tiket">Visa + Tiket</SelectItem>
+                    <SelectItem value="tiket-pesawat">Tiket Pesawat</SelectItem>
+                    <SelectItem value="hotel">Hotel</SelectItem>
+                    <SelectItem value="visa">Visa</SelectItem>
+                    <SelectItem value="mutawif">Mutawif</SelectItem>
+                    <SelectItem value="transportasi-lokal">Transportasi Lokal</SelectItem>
+                    <SelectItem value="handling-bandara">Handling Bandara</SelectItem>
                     <SelectItem value="paket-lengkap">Paket lengkap</SelectItem>
                     <SelectItem value="konsultasi">Konsultasi dulu</SelectItem>
                   </SelectContent>

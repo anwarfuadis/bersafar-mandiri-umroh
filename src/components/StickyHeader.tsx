@@ -2,9 +2,11 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import RegistrationDialog from "@/components/RegistrationDialog";
+import LoginDialog from "@/components/LoginDialog";
 
 const StickyHeader = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
 
   useEffect(() => {
@@ -38,17 +40,27 @@ const StickyHeader = () => {
             <span className="text-xl font-sf font-bold text-white">Bersafar</span>
           </div>
 
-          {/* CTA Button */}
-          <Button 
-            size="default" 
-            className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-8 py-3 font-sf font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
-            onClick={() => setDialogOpen(true)}
-          >
-            Mulai Perjalananmu
-          </Button>
+          {/* Navigation */}
+          <div className="flex items-center space-x-4">
+            <Button 
+              variant="ghost"
+              className="text-white hover:text-gold-300 font-sf font-medium"
+              onClick={() => setLoginOpen(true)}
+            >
+              Login
+            </Button>
+            <Button 
+              size="default" 
+              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-8 py-3 font-sf font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
+              onClick={() => setDialogOpen(true)}
+            >
+              Mulai Perjalananmu
+            </Button>
+          </div>
         </div>
       </header>
       <RegistrationDialog open={dialogOpen} onOpenChange={setDialogOpen} />
+      <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} />
     </>
   );
 };

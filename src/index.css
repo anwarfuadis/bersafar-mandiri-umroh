@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -139,6 +138,88 @@
     background-position: 75% 25%;
     transform: scale(1.05) rotate(0.25deg);
   }
+}
+
+@keyframes float-geometric {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-15px) translateX(8px) rotate(5deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-30px) translateX(15px) rotate(10deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-20px) translateX(8px) rotate(5deg);
+    opacity: 0.6;
+  }
+}
+
+.parallax-shapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.geometric-shape {
+  position: absolute;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(22, 163, 74, 0.3) 100%);
+  border-radius: 50%;
+  animation: float-geometric 15s ease-in-out infinite;
+  filter: blur(1px);
+}
+
+.geometric-shape:nth-child(1) {
+  width: 60px;
+  height: 60px;
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.geometric-shape:nth-child(2) {
+  width: 40px;
+  height: 40px;
+  top: 30%;
+  right: 15%;
+  animation-delay: 2s;
+  border-radius: 10px;
+}
+
+.geometric-shape:nth-child(3) {
+  width: 80px;
+  height: 80px;
+  bottom: 20%;
+  left: 10%;
+  animation-delay: 4s;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.geometric-shape:nth-child(4) {
+  width: 35px;
+  height: 35px;
+  top: 60%;
+  left: 70%;
+  animation-delay: 6s;
+  border-radius: 0;
+}
+
+.geometric-shape:nth-child(5) {
+  width: 55px;
+  height: 55px;
+  bottom: 40%;
+  right: 30%;
+  animation-delay: 8s;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
 }
 
 .animate-desert-wind {

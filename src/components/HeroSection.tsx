@@ -16,6 +16,15 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Parallax Geometric Shapes */}
+      <div className="parallax-shapes">
+        <div className="geometric-shape"></div>
+        <div className="geometric-shape"></div>
+        <div className="geometric-shape"></div>
+        <div className="geometric-shape"></div>
+        <div className="geometric-shape"></div>
+      </div>
+
       {/* Video Background */}
       <div className="absolute inset-0">
         <video
@@ -50,7 +59,7 @@ const HeroSection = () => {
               alt="Bersafar" 
               className="h-16 md:h-20 mx-auto mb-4"
             />
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-sf font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-sf font-bold text-white mb-6">
               Bersafar
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full shadow-lg"></div>
@@ -71,15 +80,6 @@ const HeroSection = () => {
             >
               Mulai Perjalananmu
             </Button>
-          </div>
-
-          <div className="mt-16 text-center">
-            <p className="text-sm font-sf uppercase tracking-wider mb-4 text-gray-100 drop-shadow-lg">
-              IN PARTNERSHIP WITH
-            </p>
-            <div className="flex justify-center items-center space-x-8 opacity-80">
-              {/* Add logos if needed */}
-            </div>
           </div>
         </div>
       </div>
