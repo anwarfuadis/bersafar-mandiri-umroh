@@ -16,7 +16,20 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-spiritual-700 via-spiritual-600 to-spiritual-800">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Desert Background with Parallax */}
+      <div className="absolute inset-0">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/lovable-uploads/f2a9a231-b30a-47e0-9730-5d5276a8aa0d.png')`,
+            transform: `translateY(${scrollY * 0.5}px)`,
+          }}
+        />
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
+      </div>
+
       {/* Parallax Geometric Shapes - only for hero section */}
       <div className="hero-parallax-shapes">
         <div className="hero-geometric-shape"></div>
@@ -26,40 +39,18 @@ const HeroSection = () => {
         <div className="hero-geometric-shape"></div>
       </div>
 
-      {/* Video Background */}
-      <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-          style={{
-            transform: `translateY(${scrollY * 0.3}px)`,
-          }}
-        >
-          <source src="https://player.vimeo.com/external/418113258.sd.mp4?s=4b3b4e3a4d7c5f7e9f1a2b3c4d5e6f7g8h9i0j1k&profile_id=165" type="video/mp4" />
-          {/* Fallback to animated background if video fails */}
-          <div className="absolute inset-0 bg-gradient-to-br from-sand-300 via-sand-400 to-sand-600 animate-desert-wind" />
-        </video>
-        
-        {/* Fallback animated background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-sand-300 via-sand-400 to-sand-600 animate-desert-wind opacity-0" />
-      </div>
-
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-spiritual-600/40 via-spiritual-700/50 to-spiritual-800/60" />
-
       {/* Content */}
       <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
         <div className="animate-fade-in">
-          {/* Brand Logo */}
-          <div className="mb-8">
-            <Asterisk className="h-16 md:h-20 mx-auto mb-4 text-gold-400" />
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-sf font-bold text-white mb-6">
-              Bersafar
-            </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full shadow-lg"></div>
+          {/* Brand Logo - Increased size and repositioned */}
+          <div className="mb-8" id="hero-brand">
+            <div className="flex items-center justify-center mb-6">
+              <Asterisk className="h-24 md:h-32 text-gold-400 mr-4" id="hero-logo" />
+              <h1 className="text-7xl md:text-8xl lg:text-9xl font-sf font-bold text-white" id="hero-title">
+                Bersafar
+              </h1>
+            </div>
+            <div className="w-32 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full shadow-lg"></div>
           </div>
 
           {/* Main Tagline */}
@@ -72,8 +63,11 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-10 py-6 text-lg font-sf font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 border-2 border-gold-400/30"
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-10 py-6 text-lg font-sf font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 border-2 border-gold-400/30"
               onClick={() => setDialogOpen(true)}
+              id="hero-cta-button"
             >
               Mulai Perjalananmu
             </Button>

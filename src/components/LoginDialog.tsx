@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Mail, Lock } from "lucide-react";
+import { Mail, Lock, Asterisk } from "lucide-react";
 
 interface LoginDialogProps {
   open: boolean;
@@ -38,11 +38,7 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
       <DialogContent className="sm:max-w-md mx-auto bg-gradient-to-br from-spiritual-50 via-white to-gold-50/30 border-2 border-gold-200/50 shadow-2xl backdrop-blur-sm">
         <DialogHeader className="text-center pb-6">
           <div className="mx-auto mb-4">
-            <img 
-              src="/lovable-uploads/0447b7fb-94d7-470d-84ff-72fa7f50a25f.png" 
-              alt="Bersafar" 
-              className="h-10 w-auto mx-auto mb-2"
-            />
+            <Asterisk className="h-10 w-10 mx-auto mb-2 text-green-700" />
             <h3 className="text-lg font-sf font-bold text-green-700">Bersafar</h3>
           </div>
           <DialogTitle className="text-2xl font-sf font-bold text-spiritual-800 mb-2">

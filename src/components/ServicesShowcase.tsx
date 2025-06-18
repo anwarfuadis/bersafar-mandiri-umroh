@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, Star, ArrowRight } from "lucide-react";
+import { Check, Star, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   Carousel,
@@ -220,8 +220,19 @@ const ServicesShowcase = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex" />
-            <CarouselNext className="hidden sm:flex" />
+            
+            {/* Enhanced carousel controls with mobile visibility */}
+            <CarouselPrevious className="hidden sm:flex -left-4 bg-white/90 hover:bg-white border-2 border-spiritual-200 text-spiritual-700 hover:text-spiritual-900 shadow-lg" />
+            <CarouselNext className="hidden sm:flex -right-4 bg-white/90 hover:bg-white border-2 border-spiritual-200 text-spiritual-700 hover:text-spiritual-900 shadow-lg" />
+            
+            {/* Mobile swipe indicators */}
+            <div className="flex sm:hidden justify-center mt-6 space-x-4">
+              <div className="flex items-center space-x-2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                <ChevronLeft className="w-4 h-4 text-spiritual-600" />
+                <span className="text-sm font-sf text-spiritual-600">Geser untuk melihat lebih banyak</span>
+                <ChevronRight className="w-4 h-4 text-spiritual-600" />
+              </div>
+            </div>
           </Carousel>
         </div>
 
