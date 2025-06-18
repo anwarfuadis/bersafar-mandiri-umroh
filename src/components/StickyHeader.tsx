@@ -65,7 +65,7 @@ const StickyHeader = () => {
           <div className="hidden md:flex items-center space-x-4">
             <Button 
               variant="ghost"
-              className="text-white hover:text-gold-300 font-sf font-medium"
+              className="text-white hover:text-gold-300 font-sf font-medium animate-fade-in"
               onClick={() => setLoginOpen(true)}
             >
               Login
@@ -101,7 +101,7 @@ const StickyHeader = () => {
           <div className="px-6 py-4 space-y-4 bg-spiritual-900/95 backdrop-blur-md border-t border-spiritual-600/30">
             <Button 
               variant="ghost"
-              className="w-full text-white hover:text-gold-300 font-sf font-medium justify-start"
+              className="w-full text-white hover:text-gold-300 font-sf font-medium justify-start animate-fade-in"
               onClick={() => {
                 setLoginOpen(true);
                 setMobileMenuOpen(false);

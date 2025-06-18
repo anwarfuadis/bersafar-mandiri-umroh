@@ -30,24 +30,27 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
       </div>
 
-      {/* Parallax Geometric Shapes - only for hero section */}
+      {/* Parallax Geometric Shapes - only for hero section with aligned colors */}
       <div className="hero-parallax-shapes">
-        <div className="hero-geometric-shape"></div>
-        <div className="hero-geometric-shape"></div>
-        <div className="hero-geometric-shape"></div>
-        <div className="hero-geometric-shape"></div>
-        <div className="hero-geometric-shape"></div>
+        <div className="hero-geometric-shape bg-green-600/20"></div>
+        <div className="hero-geometric-shape bg-emerald-500/15"></div>
+        <div className="hero-geometric-shape bg-teal-600/20"></div>
+        <div className="hero-geometric-shape bg-green-700/25"></div>
+        <div className="hero-geometric-shape bg-emerald-600/18"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
         <div className="animate-fade-in">
-          {/* Brand Logo - Increased size and repositioned */}
+          {/* Brand Logo - Logo positioned above letter "r" */}
           <div className="mb-8" id="hero-brand">
-            <div className="flex items-center justify-center mb-6">
-              <Asterisk className="h-24 md:h-32 text-gold-400 mr-4" id="hero-logo" />
-              <h1 className="text-7xl md:text-8xl lg:text-9xl font-sf font-bold text-white" id="hero-title">
-                Bersafar
+            <div className="relative mb-6">
+              <h1 className="text-7xl md:text-8xl lg:text-9xl font-sf font-bold text-white relative inline-block" id="hero-title">
+                Bersafa
+                <span className="relative">
+                  r
+                  <Asterisk className="absolute -top-6 md:-top-8 lg:-top-12 left-1/2 transform -translate-x-1/2 h-16 md:h-20 lg:h-24 text-gold-400" id="hero-logo" />
+                </span>
               </h1>
             </div>
             <div className="w-32 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full shadow-lg"></div>
@@ -65,7 +68,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-10 py-6 text-lg font-sf font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 border-2 border-gold-400/30"
+              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-10 py-6 text-lg font-sf font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 border-2 border-gold-400/30 animate-fade-in"
               onClick={() => setDialogOpen(true)}
               id="hero-cta-button"
             >
