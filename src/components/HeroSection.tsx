@@ -40,7 +40,7 @@ const HeroSection = () => {
                 Bersafa
                 <span className="relative">
                   r
-                  <Asterisk className="absolute -top-12 md:-top-16 lg:-top-24 left-1/2 transform -translate-x-1/2 h-24 md:h-32 lg:h-36 text-gold-400" id="hero-logo" />
+                  <Asterisk className="absolute -top-24 md:-top-32 lg:-top-48 left-1/2 transform -translate-x-1/2 h-48 md:h-64 lg:h-72 text-gold-400" id="hero-logo" />
                 </span>
               </h1>
             </div>
