@@ -11,12 +11,48 @@ const ProductDetail = () => {
   const [selectedItems, setSelectedItems] = useState<{[key: string]: number}>({});
 
   const subItems = [
-    { id: 'tiket-pesawat', name: 'Tiket Pesawat', price: 8500000, description: 'Tiket pulang-pergi ke Jeddah' },
-    { id: 'hotel-mekkah', name: 'Hotel Mekkah', price: 4200000, description: 'Hotel bintang 4 dekat Masjidil Haram' },
-    { id: 'hotel-madinah', name: 'Hotel Madinah', price: 3800000, description: 'Hotel bintang 4 dekat Masjid Nabawi' },
-    { id: 'visa-umroh', name: 'Visa Umroh', price: 1200000, description: 'Pengurusan visa umroh lengkap' },
-    { id: 'mutawif', name: 'Mutawif', price: 2500000, description: 'Pemandu umroh berpengalaman' },
-    { id: 'transportasi', name: 'Transportasi Lokal', price: 1800000, description: 'Bus AC untuk transportasi lokal' },
+    { 
+      id: 'tiket-pesawat', 
+      name: 'Tiket Pesawat', 
+      price: 8500000, 
+      description: 'Tiket pulang-pergi ke Jeddah',
+      detailLink: '/flight-detail'
+    },
+    { 
+      id: 'hotel-mekkah', 
+      name: 'Hotel Mekkah', 
+      price: 4200000, 
+      description: 'Hotel bintang 4 dekat Masjidil Haram',
+      detailLink: '/hotel-detail'
+    },
+    { 
+      id: 'hotel-madinah', 
+      name: 'Hotel Madinah', 
+      price: 3800000, 
+      description: 'Hotel bintang 4 dekat Masjid Nabawi',
+      detailLink: '/hotel-detail'
+    },
+    { 
+      id: 'visa-umroh', 
+      name: 'Visa Umroh', 
+      price: 1200000, 
+      description: 'Pengurusan visa umroh lengkap',
+      detailLink: '/visa-detail'
+    },
+    { 
+      id: 'mutawif', 
+      name: 'Mutawif', 
+      price: 2500000, 
+      description: 'Pemandu umroh berpengalaman',
+      detailLink: '/mutawif-detail'
+    },
+    { 
+      id: 'transportasi', 
+      name: 'Transportasi Lokal', 
+      price: 1800000, 
+      description: 'Bus AC untuk transportasi lokal',
+      detailLink: '/product-detail'
+    },
   ];
 
   const updateItemQuantity = (itemId: string, change: number) => {
@@ -113,7 +149,15 @@ const ProductDetail = () => {
                   <div key={item.id} className="border border-spiritual-200 rounded-xl p-4 bg-white/80 backdrop-blur-sm">
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
-                        <h4 className="font-sf font-semibold text-spiritual-800">{item.name}</h4>
+                        <div className="flex items-center space-x-2 mb-2">
+                          <h4 className="font-sf font-semibold text-spiritual-800">{item.name}</h4>
+                          <Link 
+                            to={item.detailLink}
+                            className="text-xs text-gold-600 hover:text-gold-700 underline"
+                          >
+                            Lihat Detail
+                          </Link>
+                        </div>
                         <p className="text-sm text-spiritual-600">{item.description}</p>
                         <p className="text-gold-600 font-sf font-bold">{formatPrice(item.price)}</p>
                       </div>

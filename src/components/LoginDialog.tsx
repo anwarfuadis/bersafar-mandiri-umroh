@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Mail, Lock, Asterisk } from "lucide-react";
+import { Phone, Lock, Asterisk, Eye, EyeOff } from "lucide-react";
 
 interface LoginDialogProps {
   open: boolean;
@@ -18,9 +18,10 @@ interface LoginDialogProps {
 
 const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
   const [formData, setFormData] = useState({
-    email: "",
+    whatsapp: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,17 +53,17 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-4">
             <div className="relative">
-              <Label htmlFor="email" className="text-spiritual-700 font-sf font-medium">
-                Email
+              <Label htmlFor="whatsapp" className="text-spiritual-700 font-sf font-medium">
+                Nomor WhatsApp
               </Label>
               <div className="relative mt-1">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-spiritual-400" />
+                <Phone className="absolute left-3 top-3 h-4 w-4 text-spiritual-400" />
                 <Input
-                  id="email"
-                  type="email"
-                  placeholder="Masukkan email Anda"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
+                  id="whatsapp"
+                  type="tel"
+                  placeholder="Contoh: 08123456789"
+                  value={formData.whatsapp}
+                  onChange={(e) => handleInputChange("whatsapp", e.target.value)}
                   className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm"
                   required
                 />
@@ -77,13 +78,20 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
                 <Lock className="absolute left-3 top-3 h-4 w-4 text-spiritual-400" />
                 <Input
                   id="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Masukkan password Anda"
                   value={formData.password}
                   onChange={(e) => handleInputChange("password", e.target.value)}
-                  className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm"
+                  className="pl-10 pr-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm"
                   required
                 />
+                <button
+                  type="button"
+                  className="absolute right-3 top-3 text-spiritual-400 hover:text-spiritual-600"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
               </div>
             </div>
           </div>

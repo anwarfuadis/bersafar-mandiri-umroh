@@ -9,7 +9,8 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { User, Phone, Calendar, CheckSquare, Asterisk } from "lucide-react";
+import { User, Phone, Calendar, CheckSquare, Asterisk, Eye, EyeOff } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface RegistrationDialogProps {
   open: boolean;
@@ -20,9 +21,27 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
   const [formData, setFormData] = useState({
     namaLengkap: "",
     nomorWhatsapp: "",
+    password: "",
     estimasiUmroh: "",
     kebutuhanUmroh: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
+
+  const estimasiOptions = [
+    "1-3 bulan",
+    "3-6 bulan", 
+    "6-12 bulan",
+    "Lebih dari 1 tahun",
+    "Belum pasti"
+  ];
+
+  const kebutuhanOptions = [
+    "Paket Lengkap (Visa, Hotel, Tiket, Mutawif)",
+    "Visa + Hotel + Tiket",
+    "Hotel + Tiket saja",
+    "Visa saja",
+    "Konsultasi saja"
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -90,20 +109,47 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
             </div>
 
             <div className="relative">
+              <Label htmlFor="password" className="text-spiritual-700 font-sf font-medium">
+                Password
+              </Label>
+              <div className="relative mt-1">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Buat password untuk akun Anda"
+                  value={formData.password}
+                  onChange={(e) => handleInputChange("password", e.target.value)}
+                  className="pr-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm"
+                  required
+                />
+                <button
+                  type="button"
+                  className="absolute right-3 top-3 text-spiritual-400 hover:text-spiritual-600"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
+              </div>
+            </div>
+
+            <div className="relative">
               <Label htmlFor="estimasiUmroh" className="text-spiritual-700 font-sf font-medium">
                 Estimasi Umroh
               </Label>
               <div className="relative mt-1">
-                <Calendar className="absolute left-3 top-3 h-4 w-4 text-spiritual-400" />
-                <Input
-                  id="estimasiUmroh"
-                  type="text"
-                  placeholder="Contoh: Bulan Maret 2024"
-                  value={formData.estimasiUmroh}
-                  onChange={(e) => handleInputChange("estimasiUmroh", e.target.value)}
-                  className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm"
-                  required
-                />
+                <Calendar className="absolute left-3 top-3 h-4 w-4 text-spiritual-400 z-10" />
+                <Select value={formData.estimasiUmroh} onValueChange={(value) => handleInputChange("estimasiUmroh", value)}>
+                  <SelectTrigger className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm">
+                    <SelectValue placeholder="Pilih estimasi waktu umroh" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {estimasiOptions.map((option) => (
+                      <SelectItem key={option} value={option}>
+                        {option}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
 
@@ -112,16 +158,19 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
                 Kebutuhan Umroh
               </Label>
               <div className="relative mt-1">
-                <CheckSquare className="absolute left-3 top-3 h-4 w-4 text-spiritual-400" />
-                <Input
-                  id="kebutuhanUmroh"
-                  type="text"
-                  placeholder="Contoh: Visa, Hotel, Tiket Pesawat"
-                  value={formData.kebutuhanUmroh}
-                  onChange={(e) => handleInputChange("kebutuhanUmroh", e.target.value)}
-                  className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm"
-                  required
-                />
+                <CheckSquare className="absolute left-3 top-3 h-4 w-4 text-spiritual-400 z-10" />
+                <Select value={formData.kebutuhanUmroh} onValueChange={(value) => handleInputChange("kebutuhanUmroh", value)}>
+                  <SelectTrigger className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm">
+                    <SelectValue placeholder="Pilih kebutuhan umroh Anda" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {kebutuhanOptions.map((option) => (
+                      <SelectItem key={option} value={option}>
+                        {option}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           </div>
