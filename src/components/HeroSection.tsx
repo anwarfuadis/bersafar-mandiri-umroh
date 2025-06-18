@@ -30,15 +30,6 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
       </div>
 
-      {/* Parallax Geometric Shapes - only for hero section with aligned colors */}
-      <div className="hero-parallax-shapes">
-        <div className="hero-geometric-shape bg-green-600/20"></div>
-        <div className="hero-geometric-shape bg-emerald-500/15"></div>
-        <div className="hero-geometric-shape bg-teal-600/20"></div>
-        <div className="hero-geometric-shape bg-green-700/25"></div>
-        <div className="hero-geometric-shape bg-emerald-600/18"></div>
-      </div>
-
       {/* Content */}
       <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
         <div className="animate-fade-in">
@@ -49,7 +40,7 @@ const HeroSection = () => {
                 Bersafa
                 <span className="relative">
                   r
-                  <Asterisk className="absolute -top-6 md:-top-8 lg:-top-12 left-1/2 transform -translate-x-1/2 h-16 md:h-20 lg:h-24 text-gold-400" id="hero-logo" />
+                  <Asterisk className="absolute -top-12 md:-top-16 lg:-top-24 left-1/2 transform -translate-x-1/2 h-24 md:h-32 lg:h-36 text-gold-400" id="hero-logo" />
                 </span>
               </h1>
             </div>
