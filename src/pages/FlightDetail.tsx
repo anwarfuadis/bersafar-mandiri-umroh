@@ -1,261 +1,239 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Calendar, Users, Clock, Star, AlertCircle, Plane } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Asterisk } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar as CalendarComponent } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { format, isPast } from "date-fns";
-import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Calendar, Users, Plane, Clock, MapPin, ArrowRight } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import StickyHeader from "@/components/StickyHeader";
 
 const FlightDetail = () => {
-  const [selectedDate, setSelectedDate] = useState<Date>();
-  const [quantity, setQuantity] = useState(1);
+  const [selectedDate, setSelectedDate] = useState("");
+  const [passengers, setPassengers] = useState(1);
 
-  const flightData = [
+  const flights = [
     {
       id: 1,
-      airline: "Garuda Indonesia",
-      logo: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=50&h=50&fit=crop",
-      departure: "07:00",
-      arrival: "14:30",
-      duration: "7h 30m",
+      airline: "Saudi Airlines",
+      route: "Jakarta (CGK) → Jeddah (JED)",
+      departure: "14:30",
+      arrival: "20:45",
+      duration: "9h 15m",
       price: 8500000,
+      originalPrice: 12000000,
       seatsLeft: 12,
       maxSeats: 180,
-      route: "CGK - JED",
-      class: "Economy",
-      hasPromo: true,
-      promoText: "Hemat 15%"
+      aircraft: "Boeing 777-300ER",
+      class: "Economy"
     },
     {
       id: 2,
-      airline: "Saudi Arabian Airlines",
-      logo: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=50&h=50&fit=crop",
-      departure: "15:45",
-      arrival: "23:15",
-      duration: "7h 30m",
-      price: 7800000,
-      seatsLeft: 5,
+      airline: "Garuda Indonesia",
+      route: "Jakarta (CGK) → Jeddah (JED)",
+      departure: "22:15",
+      arrival: "04:30+1",
+      duration: "9h 15m",
+      price: 9200000,
+      originalPrice: 13000000,
+      seatsLeft: 8,
       maxSeats: 180,
-      route: "CGK - JED",
-      class: "Economy",
-      hasPromo: false,
-      promoText: ""
+      aircraft: "Boeing 777-300ER",
+      class: "Economy"
     },
     {
       id: 3,
       airline: "Emirates",
-      logo: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=50&h=50&fit=crop",
-      departure: "23:30",
-      arrival: "07:00+1",
-      duration: "7h 30m",
-      price: 9200000,
-      seatsLeft: 0,
-      maxSeats: 180,
-      route: "CGK - JED",
+      route: "Jakarta (CGK) → Jeddah (JED)",
+      departure: "08:45",
+      arrival: "19:30",
+      duration: "12h 45m",
+      price: 11500000,
+      originalPrice: 15000000,
+      seatsLeft: 25,
+      maxSeats: 350,
+      aircraft: "Airbus A380",
       class: "Economy",
-      hasPromo: false,
-      promoText: ""
+      transit: "Dubai (DXB) - 2h 15m"
     }
   ];
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0
-    }).format(price);
-  };
-
-  const isDateDisabled = (date: Date) => {
-    return isPast(date) && !isToday(date);
-  };
-
-  const isToday = (date: Date) => {
-    const today = new Date();
-    return date.toDateString() === today.toDateString();
+  const isDatePassed = (date: string) => {
+    if (!date) return false;
+    return new Date(date) < new Date();
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sand-50 via-white to-spiritual-50/30">
-      {/* Header */}
-      <header className="bg-spiritual-800 text-white py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center space-x-4">
-            <Link to="/product-detail" className="p-2 hover:bg-spiritual-700 rounded-lg transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-            </Link>
-            <div className="flex items-center space-x-3">
-              <Asterisk className="h-8 w-8 text-gold-400" />
-              <span className="text-xl font-sf font-bold">Bersafar</span>
-            </div>
-            <div className="ml-auto">
-              <h1 className="text-lg font-sf font-semibold">Tiket Pesawat Umroh</h1>
-            </div>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-spiritual-50 to-sand-50">
+      <StickyHeader />
+      
+      {/* Promo Banner */}
+      <div className="bg-gradient-to-r from-gold-500 to-gold-600 text-white py-4 mt-16">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="font-sf font-bold text-lg">
+            🎉 Promo Spesial! Hemat hingga 30% untuk pemesanan bulan ini! 
+            <span className="ml-2 animate-pulse">✈️</span>
+          </p>
         </div>
-      </header>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-        {/* Date Selection */}
-        <Card className="mb-6">
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-sf font-bold text-spiritual-800 mb-4">
+            Tiket Pesawat Umroh
+          </h1>
+          <p className="text-lg text-spiritual-600 max-w-2xl mx-auto">
+            Pilih penerbangan terbaik untuk perjalanan umroh Anda dengan harga terjangkau
+          </p>
+        </div>
+
+        {/* Booking Form */}
+        <Card className="mb-8 bg-white/80 backdrop-blur-sm border-2 border-spiritual-100">
           <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <Calendar className="w-5 h-5" />
-              <span>Pilih Tanggal Keberangkatan</span>
+            <CardTitle className="text-2xl font-sf font-bold text-spiritual-800">
+              Cari Penerbangan
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className={cn(
-                      "w-[240px] justify-start text-left font-normal",
-                      !selectedDate && "text-muted-foreground"
-                    )}
-                  >
-                    <Calendar className="mr-2 h-4 w-4" />
-                    {selectedDate ? format(selectedDate, "PPP") : "Pilih tanggal"}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <CalendarComponent
-                    mode="single"
-                    selected={selectedDate}
-                    onSelect={setSelectedDate}
-                    disabled={isDateDisabled}
-                    initialFocus
-                    className="pointer-events-auto"
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div>
+                <Label htmlFor="departure-date" className="text-spiritual-700 font-sf font-medium">
+                  Tanggal Keberangkatan
+                </Label>
+                <div className="relative mt-1">
+                  <Calendar className="absolute left-3 top-3 h-4 w-4 text-spiritual-400" />
+                  <Input
+                    id="departure-date"
+                    type="date"
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                    className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400"
+                    min={new Date().toISOString().split('T')[0]}
                   />
-                </PopoverContent>
-              </Popover>
-              
-              <div className="flex items-center space-x-2">
-                <Users className="w-4 h-4" />
-                <span>Jumlah Tiket:</span>
-                <div className="flex items-center space-x-2">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  >
-                    -
-                  </Button>
-                  <span className="w-8 text-center">{quantity}</span>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => setQuantity(quantity + 1)}
-                  >
-                    +
-                  </Button>
                 </div>
+              </div>
+              
+              <div>
+                <Label htmlFor="passengers" className="text-spiritual-700 font-sf font-medium">
+                  Jumlah Penumpang
+                </Label>
+                <div className="relative mt-1">
+                  <Users className="absolute left-3 top-3 h-4 w-4 text-spiritual-400" />
+                  <Input
+                    id="passengers"
+                    type="number"
+                    min="1"
+                    max="9"
+                    value={passengers}
+                    onChange={(e) => setPassengers(parseInt(e.target.value))}
+                    className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-end">
+                <Button 
+                  className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-sf font-semibold py-3"
+                  disabled={!selectedDate || isDatePassed(selectedDate)}
+                >
+                  Cari Penerbangan
+                </Button>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Flight Options */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-sf font-bold text-spiritual-800">Pilihan Penerbangan</h2>
+        {/* Flight Results */}
+        <div className="space-y-6">
+          <h2 className="text-2xl font-sf font-bold text-spiritual-800">
+            Penerbangan Tersedia
+          </h2>
           
-          {!selectedDate ? (
-            <Card>
-              <CardContent className="flex items-center justify-center py-12">
-                <div className="text-center text-spiritual-600">
-                  <Calendar className="w-12 h-12 mx-auto mb-4 opacity-50" />
-                  <p>Silakan pilih tanggal untuk melihat penerbangan yang tersedia</p>
+          {flights.map((flight) => (
+            <Card key={flight.id} className="bg-white/90 backdrop-blur-sm border border-spiritual-100 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center">
+                  {/* Flight Info */}
+                  <div className="lg:col-span-2">
+                    <div className="flex items-center mb-4">
+                      <Plane className="w-5 h-5 text-spiritual-600 mr-2" />
+                      <h3 className="text-xl font-sf font-bold text-spiritual-800">
+                        {flight.airline}
+                      </h3>
+                      <Badge className="ml-2 bg-spiritual-100 text-spiritual-700">
+                        {flight.aircraft}
+                      </Badge>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-2xl font-bold text-spiritual-800">{flight.departure}</p>
+                          <p className="text-sm text-spiritual-600">Jakarta (CGK)</p>
+                        </div>
+                        <div className="text-center">
+                          <div className="flex items-center">
+                            <div className="w-4 h-4 bg-spiritual-400 rounded-full"></div>
+                            <div className="flex-1 h-0.5 bg-spiritual-200 mx-2"></div>
+                            <Clock className="w-4 h-4 text-spiritual-400" />
+                            <div className="flex-1 h-0.5 bg-spiritual-200 mx-2"></div>
+                            <div className="w-4 h-4 bg-spiritual-400 rounded-full"></div>
+                          </div>
+                          <p className="text-sm text-spiritual-600 mt-1">{flight.duration}</p>
+                          {flight.transit && (
+                            <p className="text-xs text-spiritual-500">{flight.transit}</p>
+                          )}
+                        </div>
+                        <div>
+                          <p className="text-2xl font-bold text-spiritual-800">{flight.arrival}</p>
+                          <p className="text-sm text-spiritual-600">Jeddah (JED)</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Pricing & Availability */}
+                  <div className="text-center">
+                    <div className="mb-2">
+                      <span className="text-2xl font-sf font-bold text-spiritual-800">
+                        Rp {flight.price.toLocaleString('id-ID')}
+                      </span>
+                      <span className="text-sm text-spiritual-500 line-through ml-2">
+                        Rp {flight.originalPrice.toLocaleString('id-ID')}
+                      </span>
+                    </div>
+                    <div className="text-sm text-spiritual-600 mb-2">
+                      {flight.seatsLeft} dari {flight.maxSeats} kursi tersisa
+                    </div>
+                    <div className="w-full bg-spiritual-200 rounded-full h-2 mb-2">
+                      <div 
+                        className="bg-gradient-to-r from-gold-400 to-gold-500 h-2 rounded-full"
+                        style={{ width: `${(flight.seatsLeft / flight.maxSeats) * 100}%` }}
+                      ></div>
+                    </div>
+                    <Badge 
+                      variant={flight.seatsLeft < 10 ? "destructive" : "secondary"}
+                      className="text-xs"
+                    >
+                      {flight.seatsLeft < 10 ? "Kursi Terbatas" : "Tersedia"}
+                    </Badge>
+                  </div>
+
+                  {/* Action Button */}
+                  <div>
+                    <Button 
+                      className="w-full bg-gradient-to-r from-spiritual-600 to-spiritual-700 hover:from-spiritual-700 hover:to-spiritual-800 text-white font-sf font-semibold py-3 rounded-full"
+                      disabled={flight.seatsLeft === 0}
+                    >
+                      {flight.seatsLeft === 0 ? "Sold Out" : "Pilih Penerbangan"}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>
-          ) : (
-            flightData.map((flight) => (
-              <Card key={flight.id} className={cn(
-                "relative",
-                flight.seatsLeft === 0 && "opacity-60"
-              )}>
-                <CardContent className="p-6">
-                  <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between space-y-4 lg:space-y-0">
-                    {/* Flight Info */}
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-4 mb-4">
-                        <img 
-                          src={flight.logo} 
-                          alt={flight.airline}
-                          className="w-12 h-12 rounded-lg object-cover"
-                        />
-                        <div>
-                          <h3 className="font-sf font-bold text-lg">{flight.airline}</h3>
-                          <p className="text-spiritual-600">{flight.class} • {flight.route}</p>
-                        </div>
-                        {flight.hasPromo && (
-                          <Badge className="bg-red-500 text-white">
-                            {flight.promoText}
-                          </Badge>
-                        )}
-                      </div>
-                      
-                      <div className="flex items-center space-x-6">
-                        <div className="text-center">
-                          <p className="text-2xl font-bold">{flight.departure}</p>
-                          <p className="text-sm text-spiritual-600">CGK</p>
-                        </div>
-                        <div className="flex-1 flex items-center">
-                          <div className="flex-1 border-t border-spiritual-300 relative">
-                            <Plane className="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 text-spiritual-600" />
-                          </div>
-                        </div>
-                        <div className="text-center">
-                          <p className="text-2xl font-bold">{flight.arrival}</p>
-                          <p className="text-sm text-spiritual-600">JED</p>
-                        </div>
-                      </div>
-                      
-                      <div className="flex items-center space-x-4 mt-4 text-sm text-spiritual-600">
-                        <div className="flex items-center space-x-1">
-                          <Clock className="w-4 h-4" />
-                          <span>{flight.duration}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <AlertCircle className="w-4 h-4" />
-                          <span>{flight.seatsLeft} kursi tersisa dari {flight.maxSeats}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Price and Action */}
-                    <div className="text-right">
-                      <div className="mb-4">
-                        <p className="text-3xl font-sf font-bold text-spiritual-800">
-                          {formatPrice(flight.price)}
-                        </p>
-                        <p className="text-sm text-spiritual-600">per orang</p>
-                      </div>
-                      
-                      <Button
-                        className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900"
-                        disabled={flight.seatsLeft === 0 || flight.seatsLeft < quantity}
-                      >
-                        {flight.seatsLeft === 0 ? "Sold Out" : 
-                         flight.seatsLeft < quantity ? "Kursi Tidak Cukup" :
-                         "Pilih Penerbangan"}
-                      </Button>
-                      
-                      {flight.seatsLeft < 10 && flight.seatsLeft > 0 && (
-                        <p className="text-red-500 text-xs mt-2">Hanya {flight.seatsLeft} kursi tersisa!</p>
-                      )}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))
-          )}
+          ))}
         </div>
       </div>
     </div>

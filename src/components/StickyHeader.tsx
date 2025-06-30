@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Asterisk, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import RegistrationDialog from "@/components/RegistrationDialog";
 import LoginDialog from "@/components/LoginDialog";
 
@@ -47,8 +47,10 @@ const StickyHeader = () => {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Brand Logo */}
           <div className="flex items-center space-x-3">
-            <Asterisk 
-              className={`h-8 w-8 text-gold-400 transition-all duration-500 ${
+            <img 
+              src="/lovable-uploads/c763f5f3-1693-45ce-8d6c-1d107368526d.png" 
+              alt="Bersafar Logo"
+              className={`h-8 w-8 transition-all duration-500 ${
                 showAnimatedElements ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
               }`} 
             />

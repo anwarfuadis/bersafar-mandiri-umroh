@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { User, Phone, Calendar, CheckSquare, Asterisk, Eye, EyeOff } from "lucide-react";
+import { User, Phone, Calendar, Eye, EyeOff } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface RegistrationDialogProps {
   open: boolean;
@@ -23,7 +24,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
     nomorWhatsapp: "",
     password: "",
     estimasiUmroh: "",
-    kebutuhanUmroh: "",
+    kebutuhanUmroh: [] as string[],
   });
   const [showPassword, setShowPassword] = useState(false);
 
@@ -36,10 +37,11 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
   ];
 
   const kebutuhanOptions = [
-    "Paket Lengkap (Visa, Hotel, Tiket, Mutawif)",
-    "Visa + Hotel + Tiket",
-    "Hotel + Tiket saja",
-    "Visa saja",
+    "Tiket Pesawat",
+    "Hotel",
+    "Visa Umroh",
+    "Mutawif",
+    "Handling",
     "Konsultasi saja"
   ];
 
@@ -54,16 +56,29 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  const handleCheckboxChange = (option: string, checked: boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      kebutuhanUmroh: checked 
+        ? [...prev.kebutuhanUmroh, option]
+        : prev.kebutuhanUmroh.filter(item => item !== option)
+    }));
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md mx-auto bg-gradient-to-br from-spiritual-50 via-white to-gold-50/30 border-2 border-gold-200/50 shadow-2xl backdrop-blur-sm">
         <DialogHeader className="text-center pb-6">
           <div className="mx-auto mb-4">
-            <Asterisk className="h-10 w-10 mx-auto mb-2 text-green-700" />
+            <img 
+              src="/lovable-uploads/c763f5f3-1693-45ce-8d6c-1d107368526d.png" 
+              alt="Bersafar Logo"
+              className="h-10 w-10 mx-auto mb-2"
+            />
             <h3 className="text-lg font-sf font-bold text-green-700">Bersafar</h3>
           </div>
           <DialogTitle className="text-2xl font-sf font-bold text-spiritual-800 mb-2">
-            Mulai Perjalanan Umroh Mandiri
+            Pendaftaran Akun
           </DialogTitle>
           <p className="text-spiritual-600 font-sf leading-relaxed">
             Isi form berikut untuk mendapatkan rekomendasi terbaik sesuai kebutuhan Anda
@@ -154,23 +169,22 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
             </div>
 
             <div className="relative">
-              <Label htmlFor="kebutuhanUmroh" className="text-spiritual-700 font-sf font-medium">
+              <Label className="text-spiritual-700 font-sf font-medium">
                 Kebutuhan Umroh
               </Label>
-              <div className="relative mt-1">
-                <CheckSquare className="absolute left-3 top-3 h-4 w-4 text-spiritual-400 z-10" />
-                <Select value={formData.kebutuhanUmroh} onValueChange={(value) => handleInputChange("kebutuhanUmroh", value)}>
-                  <SelectTrigger className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm">
-                    <SelectValue placeholder="Pilih kebutuhan umroh Anda" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {kebutuhanOptions.map((option) => (
-                      <SelectItem key={option} value={option}>
-                        {option}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+              <div className="mt-2 space-y-3">
+                {kebutuhanOptions.map((option) => (
+                  <div key={option} className="flex items-center space-x-2">
+                    <Checkbox
+                      id={option}
+                      checked={formData.kebutuhanUmroh.includes(option)}
+                      onCheckedChange={(checked) => handleCheckboxChange(option, checked as boolean)}
+                    />
+                    <Label htmlFor={option} className="text-sm text-spiritual-700 font-sf">
+                      {option}
+                    </Label>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

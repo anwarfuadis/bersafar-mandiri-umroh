@@ -1,3 +1,4 @@
+
 import { Check } from "lucide-react";
 import { useState } from "react";
 
@@ -5,31 +6,31 @@ const steps = [
   {
     number: 1,
     title: "Persiapkan paspor & vaksin",
-    description: "Pastikan paspor masih berlaku minimal 6 bulan",
+    description: "Pastikan paspor masih berlaku minimal 6 bulan dan lengkapi vaksinasi yang diperlukan seperti vaksin COVID-19 dan vaksin lainnya sesuai ketentuan.",
     image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&crop=center"
   },
   {
     number: 2,
-    title: "Daftar Siskopatuh & urus visa",
-    description: "Daftar di sistem dan ajukan visa umroh",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop&crop=center"
+    title: "Booking tiket & hotel sesuai jadwal",
+    description: "Pilih penerbangan dan akomodasi yang sesuai dengan budget dan preferensi. Booking terlebih dahulu karena diperlukan untuk proses visa.",
+    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=300&fit=crop&crop=center"
   },
   {
     number: 3,
-    title: "Booking tiket & hotel sesuai jadwal",
-    description: "Pilih penerbangan dan akomodasi yang sesuai",
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=300&fit=crop&crop=center"
+    title: "Daftar Siskopatuh & urus visa",
+    description: "Daftar di sistem Siskopatuh Kemenag dan ajukan visa umroh. Proses visa memerlukan bukti booking tiket dan hotel yang telah Anda lakukan.",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop&crop=center"
   },
   {
     number: 4,
     title: "Atur transportasi & itinerary",
-    description: "Rencanakan perjalanan dan transportasi lokal",
+    description: "Rencanakan perjalanan dan transportasi lokal di Arab Saudi. Pilih paket transportasi yang sesuai dengan kebutuhan ibadah Anda.",
     image: "https://images.unsplash.com/photo-1469041797191-50ace28483c3?w=400&h=300&fit=crop&crop=center"
   },
   {
     number: 5,
     title: "Berangkat dan tunaikan ibadah",
-    description: "Mulai perjalanan spiritual menuju Tanah Suci",
+    description: "Mulai perjalanan spiritual menuju Tanah Suci dengan persiapan yang matang. Nikmati pengalaman ibadah umroh mandiri yang berkesan.",
     image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=400&h=300&fit=crop&crop=center"
   }
 ];

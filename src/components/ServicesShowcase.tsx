@@ -22,6 +22,7 @@ const services = [
     rating: 4.9,
     reviews: 127,
     badge: "Paling Populer",
+    route: "/flight-detail",
     features: [
       "Booking tiket PP Jakarta-Jeddah",
       "Pilihan maskapai terpercaya",
@@ -39,6 +40,7 @@ const services = [
     rating: 4.8,
     reviews: 89,
     badge: "Hemat 30%",
+    route: "/hotel-detail",
     features: [
       "Hotel dekat Masjidil Haram",
       "Hotel dekat Masjid Nabawi",
@@ -56,6 +58,7 @@ const services = [
     rating: 5.0,
     reviews: 156,
     badge: "Tercepat",
+    route: "/visa-detail",
     features: [
       "Proses visa 7-14 hari",
       "Dokumen lengkap dibantu",
@@ -73,6 +76,7 @@ const services = [
     rating: 4.9,
     reviews: 203,
     badge: "Berpengalaman",
+    route: "/mutawif-detail",
     features: [
       "Guide berbahasa Indonesia",
       "Berpengalaman 10+ tahun",
@@ -90,6 +94,7 @@ const services = [
     rating: 4.7,
     reviews: 145,
     badge: "Nyaman",
+    route: "/transport-detail",
     features: [
       "Bus AC untuk grup",
       "Taxi untuk kebutuhan pribadi",
@@ -107,6 +112,7 @@ const services = [
     rating: 4.8,
     reviews: 98,
     badge: "Praktis",
+    route: "/airport-handling-detail",
     features: [
       "Bantuan check-in",
       "Porter service",
@@ -124,7 +130,7 @@ const ServicesShowcase = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-sf font-bold text-spiritual-800 mb-6">
-            Kenapa Bersafar?
+            Layanan Bersafar
           </h2>
           <p className="text-lg md:text-xl text-spiritual-600 max-w-3xl mx-auto leading-relaxed">
             Pilih layanan umroh mandiri yang sesuai dengan kebutuhan dan budget Anda
@@ -210,7 +216,7 @@ const ServicesShowcase = () => {
                       </div>
 
                       {/* CTA Button */}
-                      <Link to="/product-detail">
+                      <Link to={service.route}>
                         <Button className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-sf font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                           Lihat Detail <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
