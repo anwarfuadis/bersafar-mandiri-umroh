@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Users, Plane, Clock, MapPin, ArrowRight } from "lucide-react";
+import { Calendar, Users, Plane, Clock, MapPin, ArrowRight, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import StickyHeader from "@/components/StickyHeader";
@@ -88,67 +87,85 @@ const FlightDetail = () => {
           </p>
         </div>
 
-        {/* Booking Form */}
-        <Card className="mb-8 bg-white/80 backdrop-blur-sm border-2 border-spiritual-100">
-          <CardHeader>
-            <CardTitle className="text-2xl font-sf font-bold text-spiritual-800">
-              Cari Penerbangan
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <Label htmlFor="departure-date" className="text-spiritual-700 font-sf font-medium">
-                  Tanggal Keberangkatan
-                </Label>
-                <div className="relative mt-1">
-                  <Calendar className="absolute left-3 top-3 h-4 w-4 text-spiritual-400" />
-                  <Input
-                    id="departure-date"
-                    type="date"
-                    value={selectedDate}
-                    onChange={(e) => setSelectedDate(e.target.value)}
-                    className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400"
-                    min={new Date().toISOString().split('T')[0]}
-                  />
+        {/* Modern Booking Form */}
+        <div className="mb-8 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-spiritual-600/10 to-gold-500/10 rounded-3xl blur-3xl"></div>
+          <Card className="relative bg-white/90 backdrop-blur-lg border-0 shadow-2xl rounded-3xl overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-spiritual-600 via-gold-500 to-spiritual-600"></div>
+            <CardHeader className="pb-4">
+              <div className="flex items-center justify-center space-x-3 mb-2">
+                <div className="p-3 bg-gradient-to-r from-spiritual-600 to-gold-500 rounded-2xl">
+                  <Search className="w-6 h-6 text-white" />
                 </div>
-              </div>
-              
-              <div>
-                <Label htmlFor="passengers" className="text-spiritual-700 font-sf font-medium">
-                  Jumlah Penumpang
-                </Label>
-                <div className="relative mt-1">
-                  <Users className="absolute left-3 top-3 h-4 w-4 text-spiritual-400" />
-                  <Input
-                    id="passengers"
-                    type="number"
-                    min="1"
-                    max="9"
-                    value={passengers}
-                    onChange={(e) => setPassengers(parseInt(e.target.value))}
-                    className="pl-10 border-spiritual-200 focus:border-gold-400 focus:ring-gold-400"
-                  />
-                </div>
-              </div>
-
-              <div className="flex items-end">
-                <Button 
-                  className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-sf font-semibold py-3"
-                  disabled={!selectedDate || isDatePassed(selectedDate)}
-                >
+                <CardTitle className="text-3xl font-sf font-bold bg-gradient-to-r from-spiritual-800 to-gold-600 bg-clip-text text-transparent">
                   Cari Penerbangan
-                </Button>
+                </CardTitle>
               </div>
-            </div>
-          </CardContent>
-        </Card>
+              <p className="text-center text-spiritual-600 font-medium">
+                Temukan penerbangan terbaik untuk perjalanan umroh Anda
+              </p>
+            </CardHeader>
+            <CardContent className="px-8 pb-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="space-y-3">
+                  <Label htmlFor="departure-date" className="text-spiritual-700 font-sf font-semibold text-lg flex items-center space-x-2">
+                    <Calendar className="w-5 h-5 text-gold-500" />
+                    <span>Tanggal Keberangkatan</span>
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="departure-date"
+                      type="date"
+                      value={selectedDate}
+                      onChange={(e) => setSelectedDate(e.target.value)}
+                      className="h-14 text-lg border-2 border-spiritual-200 focus:border-gold-400 focus:ring-2 focus:ring-gold-400/20 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl"
+                      min={new Date().toISOString().split('T')[0]}
+                    />
+                  </div>
+                </div>
+                
+                <div className="space-y-3">
+                  <Label htmlFor="passengers" className="text-spiritual-700 font-sf font-semibold text-lg flex items-center space-x-2">
+                    <Users className="w-5 h-5 text-gold-500" />
+                    <span>Jumlah Penumpang</span>
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="passengers"
+                      type="number"
+                      min="1"
+                      max="9"
+                      value={passengers}
+                      onChange={(e) => setPassengers(parseInt(e.target.value))}
+                      className="h-14 text-lg border-2 border-spiritual-200 focus:border-gold-400 focus:ring-2 focus:ring-gold-400/20 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex items-end">
+                  <Button 
+                    className="w-full h-14 bg-gradient-to-r from-spiritual-600 to-gold-500 hover:from-spiritual-700 hover:to-gold-600 text-white font-sf font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform"
+                    disabled={!selectedDate || isDatePassed(selectedDate)}
+                  >
+                    <Search className="mr-3 h-5 w-5" />
+                    Cari Penerbangan
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Flight Results */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-sf font-bold text-spiritual-800">
-            Penerbangan Tersedia
-          </h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-sf font-bold text-spiritual-800">
+              Penerbangan Tersedia
+            </h2>
+            <Badge className="bg-spiritual-100 text-spiritual-700 px-4 py-2 text-sm font-semibold">
+              {flights.length} opsi tersedia
+            </Badge>
+          </div>
           
           {flights.map((flight) => (
             <Card key={flight.id} className="bg-white/90 backdrop-blur-sm border border-spiritual-100 hover:shadow-lg transition-all duration-300">

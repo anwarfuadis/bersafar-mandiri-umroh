@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Calendar, Users, Star, Wifi, Car, Coffee, MapPin } from "lucide-react";
+import { ArrowLeft, Calendar, Users, Star, Wifi, Car, Coffee, MapPin, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Asterisk } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -10,6 +9,7 @@ import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { format, isPast } from "date-fns";
 import { cn } from "@/lib/utils";
+import StickyHeader from "@/components/StickyHeader";
 
 const HotelDetail = () => {
   const [checkInDate, setCheckInDate] = useState<Date>();
@@ -94,128 +94,167 @@ const HotelDetail = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-sand-50 via-white to-spiritual-50/30">
-      {/* Header */}
-      <header className="bg-spiritual-800 text-white py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center space-x-4">
-            <Link to="/product-detail" className="p-2 hover:bg-spiritual-700 rounded-lg transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-            </Link>
-            <div className="flex items-center space-x-3">
-              <Asterisk className="h-8 w-8 text-gold-400" />
-              <span className="text-xl font-sf font-bold">Bersafar</span>
-            </div>
-            <div className="ml-auto">
-              <h1 className="text-lg font-sf font-semibold">Hotel Makkah</h1>
-            </div>
-          </div>
+      <StickyHeader />
+      
+      {/* Promo Banner */}
+      <div className="bg-gradient-to-r from-gold-500 to-gold-600 text-white py-4 mt-16">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="font-sf font-bold text-lg">
+            🏨 Promo Hotel Spesial! Hemat hingga 25% untuk pemesanan bulan ini! 
+            <span className="ml-2 animate-pulse">🕌</span>
+          </p>
         </div>
-      </header>
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-        {/* Date Selection */}
-        <Card className="mb-6">
-          <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <Calendar className="w-5 h-5" />
-              <span>Pilih Tanggal Menginap</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-col lg:flex-row items-start lg:items-center space-y-4 lg:space-y-0 lg:space-x-4">
-              <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={cn(
-                        "w-[240px] justify-start text-left font-normal",
-                        !checkInDate && "text-muted-foreground"
-                      )}
-                    >
-                      <Calendar className="mr-2 h-4 w-4" />
-                      {checkInDate ? format(checkInDate, "PPP") : "Check-in"}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <CalendarComponent
-                      mode="single"
-                      selected={checkInDate}
-                      onSelect={setCheckInDate}
-                      disabled={isDateDisabled}
-                      initialFocus
-                      className="pointer-events-auto"
-                    />
-                  </PopoverContent>
-                </Popover>
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-sf font-bold text-spiritual-800 mb-4">
+            Hotel Makkah
+          </h1>
+          <p className="text-lg text-spiritual-600 max-w-2xl mx-auto">
+            Pilih hotel terbaik dekat Masjidil Haram untuk kenyamanan ibadah Anda
+          </p>
+        </div>
 
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={cn(
-                        "w-[240px] justify-start text-left font-normal",
-                        !checkOutDate && "text-muted-foreground"
-                      )}
-                    >
-                      <Calendar className="mr-2 h-4 w-4" />
-                      {checkOutDate ? format(checkOutDate, "PPP") : "Check-out"}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <CalendarComponent
-                      mode="single"
-                      selected={checkOutDate}
-                      onSelect={setCheckOutDate}
-                      disabled={(date) => isDateDisabled(date) || (checkInDate && date <= checkInDate)}
-                      initialFocus
-                      className="pointer-events-auto"
-                    />
-                  </PopoverContent>
-                </Popover>
+        {/* Modern Date Selection */}
+        <div className="mb-8 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-spiritual-600/10 to-gold-500/10 rounded-3xl blur-3xl"></div>
+          <Card className="relative bg-white/90 backdrop-blur-lg border-0 shadow-2xl rounded-3xl overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-spiritual-600 via-gold-500 to-spiritual-600"></div>
+            <CardHeader className="pb-4">
+              <div className="flex items-center justify-center space-x-3 mb-2">
+                <div className="p-3 bg-gradient-to-r from-spiritual-600 to-gold-500 rounded-2xl">
+                  <Search className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle className="text-3xl font-sf font-bold bg-gradient-to-r from-spiritual-800 to-gold-600 bg-clip-text text-transparent">
+                  Pilih Tanggal Menginap
+                </CardTitle>
               </div>
-              
-              <div className="flex items-center space-x-2">
-                <Users className="w-4 h-4" />
-                <span>Jumlah Kamar:</span>
-                <div className="flex items-center space-x-2">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => setRoomQuantity(Math.max(1, roomQuantity - 1))}
-                  >
-                    -
-                  </Button>
-                  <span className="w-8 text-center">{roomQuantity}</span>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => setRoomQuantity(roomQuantity + 1)}
-                  >
-                    +
-                  </Button>
+              <p className="text-center text-spiritual-600 font-medium">
+                Temukan hotel terbaik untuk perjalanan umroh Anda
+              </p>
+            </CardHeader>
+            <CardContent className="px-8 pb-8">
+              <div className="flex flex-col lg:flex-row items-start lg:items-center space-y-6 lg:space-y-0 lg:space-x-8">
+                <div className="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-6 flex-1">
+                  <div className="space-y-3 flex-1">
+                    <Label className="text-spiritual-700 font-sf font-semibold text-lg flex items-center space-x-2">
+                      <Calendar className="w-5 h-5 text-gold-500" />
+                      <span>Check-in</span>
+                    </Label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          className={cn(
+                            "w-full h-14 justify-start text-left font-normal text-lg border-2 border-spiritual-200 focus:border-gold-400 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl",
+                            !checkInDate && "text-muted-foreground"
+                          )}
+                        >
+                          <Calendar className="mr-3 h-5 w-5 text-gold-500" />
+                          {checkInDate ? format(checkInDate, "PPP") : "Pilih tanggal check-in"}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <CalendarComponent
+                          mode="single"
+                          selected={checkInDate}
+                          onSelect={setCheckInDate}
+                          disabled={isDateDisabled}
+                          initialFocus
+                          className="pointer-events-auto"
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+
+                  <div className="space-y-3 flex-1">
+                    <Label className="text-spiritual-700 font-sf font-semibold text-lg flex items-center space-x-2">
+                      <Calendar className="w-5 h-5 text-gold-500" />
+                      <span>Check-out</span>
+                    </Label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          className={cn(
+                            "w-full h-14 justify-start text-left font-normal text-lg border-2 border-spiritual-200 focus:border-gold-400 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl",
+                            !checkOutDate && "text-muted-foreground"
+                          )}
+                        >
+                          <Calendar className="mr-3 h-5 w-5 text-gold-500" />
+                          {checkOutDate ? format(checkOutDate, "PPP") : "Pilih tanggal check-out"}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <CalendarComponent
+                          mode="single"
+                          selected={checkOutDate}
+                          onSelect={setCheckOutDate}
+                          disabled={(date) => isDateDisabled(date) || (checkInDate && date <= checkInDate)}
+                          initialFocus
+                          className="pointer-events-auto"
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+                </div>
+                
+                <div className="space-y-3">
+                  <Label className="text-spiritual-700 font-sf font-semibold text-lg flex items-center space-x-2">
+                    <Users className="w-5 h-5 text-gold-500" />
+                    <span>Jumlah Kamar</span>
+                  </Label>
+                  <div className="flex items-center space-x-4 bg-white rounded-2xl border-2 border-spiritual-200 px-6 py-4 shadow-lg">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="rounded-full w-10 h-10 border-2 border-gold-400 text-gold-600 hover:bg-gold-50"
+                      onClick={() => setRoomQuantity(Math.max(1, roomQuantity - 1))}
+                    >
+                      -
+                    </Button>
+                    <span className="w-12 text-center text-xl font-bold text-spiritual-800">{roomQuantity}</span>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="rounded-full w-10 h-10 border-2 border-gold-400 text-gold-600 hover:bg-gold-50"
+                      onClick={() => setRoomQuantity(roomQuantity + 1)}
+                    >
+                      +
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Hotel Options */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-sf font-bold text-spiritual-800">Pilihan Hotel</h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-sf font-bold text-spiritual-800">Pilihan Hotel</h2>
+            {checkInDate && checkOutDate && (
+              <Badge className="bg-spiritual-100 text-spiritual-700 px-4 py-2 text-sm font-semibold">
+                {hotelData.length} hotel tersedia
+              </Badge>
+            )}
+          </div>
           
           {!checkInDate || !checkOutDate ? (
-            <Card>
-              <CardContent className="flex items-center justify-center py-12">
+            <Card className="bg-white/90 backdrop-blur-sm">
+              <CardContent className="flex items-center justify-center py-16">
                 <div className="text-center text-spiritual-600">
-                  <Calendar className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                  <Calendar className="w-16 h-16 mx-auto mb-6 opacity-50" />
+                  <h3 className="text-xl font-sf font-semibold mb-2">Pilih Tanggal Menginap</h3>
                   <p>Silakan pilih tanggal check-in dan check-out untuk melihat hotel yang tersedia</p>
                 </div>
               </CardContent>
             </Card>
           ) : (
             hotelData.map((hotel) => (
-              <Card key={hotel.id} className="overflow-hidden">
+              <Card key={hotel.id} className="overflow-hidden bg-white/90 backdrop-blur-sm border border-spiritual-100 hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-0">
                   <div className="flex flex-col lg:flex-row">
                     {/* Hotel Image */}

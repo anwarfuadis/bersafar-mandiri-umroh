@@ -39,20 +39,33 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
       </div>
 
+      {/* Rain Video Overlay */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/rain-video.mp4" type="video/mp4" />
+        </video>
+      </div>
+
       {/* Content */}
       <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
         <div className="animate-fade-in">
-          {/* Brand Logo - New logo positioned above letter "r" */}
+          {/* Brand Logo - Positioned above the second 'r' */}
           <div className="mb-8" id="hero-brand">
             <div className="relative mb-6">
               <h1 className="text-7xl md:text-8xl lg:text-9xl font-sf font-bold text-white relative inline-block" id="hero-title">
                 Bersafa
-                <span className="relative">
+                <span className="relative inline-block">
                   r
                   <img 
                     src="/lovable-uploads/c763f5f3-1693-45ce-8d6c-1d107368526d.png" 
                     alt="Bersafar Logo"
-                    className="absolute -top-24 md:-top-32 lg:-top-48 left-1/2 transform -translate-x-1/2 w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72" 
+                    className="absolute -top-20 md:-top-28 lg:-top-36 left-1/2 transform -translate-x-1/2 w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32" 
                     id="hero-logo" 
                   />
                 </span>
