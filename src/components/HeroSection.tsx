@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -64,24 +63,15 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Video Background */}
+      {/* Cappadocia Background */}
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/ihram-video.mp4" type="video/mp4" />
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
-            style={{
-              backgroundImage: `url('${destinations[currentSlide].image}')`,
-              transform: `translateY(${scrollY * 0.5}px)`,
-            }}
-          />
-        </video>
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
+          style={{
+            backgroundImage: `url('/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png')`,
+            transform: `translateY(${scrollY * 0.5}px)`,
+          }}
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/40" />
       </div>
 
@@ -98,29 +88,13 @@ const HeroSection = () => {
         </video>
       </div>
 
-      {/* Navigation Menu */}
-      <div className="absolute top-20 left-0 right-0 z-30">
-        <div className="max-w-7xl mx-auto px-6">
-          <nav className="flex justify-center space-x-8">
-            {Object.keys(destinationCategories).map((category) => (
-              <button
-                key={category}
-                className="text-white hover:text-gold-300 font-sf font-medium px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300"
-              >
-                {category}
-              </button>
-            ))}
-          </nav>
-        </div>
-      </div>
-
       {/* Content */}
       <div className="relative z-20 w-full px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-left">
             <div className="animate-fade-in">
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-sf font-bold text-white mb-6 leading-tight">
+              <h1 id="hero-brand" className="text-6xl md:text-7xl lg:text-8xl font-sf font-bold text-white mb-6 leading-tight">
                 A Muslim Journey
                 <br />
                 <span className="text-gold-400">Starts Here</span>
@@ -174,14 +148,6 @@ const HeroSection = () => {
                   )}
                 </div>
               </div>
-
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-12 py-4 text-lg font-sf font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
-                onClick={() => setDialogOpen(true)}
-              >
-                Mulai Perjalanan Halal
-              </Button>
             </div>
           </div>
 

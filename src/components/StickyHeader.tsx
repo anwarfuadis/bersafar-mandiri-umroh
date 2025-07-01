@@ -12,6 +12,8 @@ const StickyHeader = () => {
   const [showAnimatedElements, setShowAnimatedElements] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const destinationCategories = ["Umroh", "Lokal", "Eropa", "USA", "Asia", "Private Trips"];
+
   useEffect(() => {
     function handleScroll() {
       const scrollY = window.scrollY;
@@ -63,7 +65,21 @@ const StickyHeader = () => {
             </span>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation Menu */}
+          <div className={`hidden lg:flex items-center space-x-6 transition-all duration-500 ${
+            showAnimatedElements ? 'translate-y-0 opacity-100' : 'translate-y-[-20px] opacity-0'
+          }`}>
+            {destinationCategories.map((category) => (
+              <button
+                key={category}
+                className="text-white hover:text-gold-300 font-sf font-medium px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-300"
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Desktop Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <Button 
               variant="ghost"
@@ -79,7 +95,7 @@ const StickyHeader = () => {
               }`}
               onClick={() => setDialogOpen(true)}
             >
-              Mulai Perjalananmu
+              Mulai Perjalanan Halal
             </Button>
           </div>
 
@@ -98,9 +114,21 @@ const StickyHeader = () => {
 
         {/* Mobile Menu */}
         <div className={`md:hidden transition-all duration-300 overflow-hidden ${
-          mobileMenuOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
+          mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <div className="px-6 py-4 space-y-4 bg-spiritual-900/95 backdrop-blur-md border-t border-spiritual-600/30">
+            {/* Mobile Navigation Categories */}
+            <div className="space-y-2 border-b border-spiritual-600/30 pb-4">
+              {destinationCategories.map((category) => (
+                <button
+                  key={category}
+                  className="block w-full text-left text-white hover:text-gold-300 font-sf font-medium px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-300"
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+            
             <Button 
               variant="ghost"
               className="w-full text-white hover:text-gold-300 font-sf font-medium justify-start animate-fade-in"
@@ -118,7 +146,7 @@ const StickyHeader = () => {
                 setMobileMenuOpen(false);
               }}
             >
-              Mulai Perjalananmu
+              Mulai Perjalanan Halal
             </Button>
           </div>
         </div>

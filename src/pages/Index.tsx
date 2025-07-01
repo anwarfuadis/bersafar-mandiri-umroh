@@ -2,9 +2,9 @@
 import HeroSection from "@/components/HeroSection";
 import LimitedOffers from "@/components/LimitedOffers";
 import TripPilihan from "@/components/TripPilihan";
-import UmrohStepsSection from "@/components/UmrohStepsSection";
 import StepGuide from "@/components/StepGuide";
-import ServicesShowcase from "@/components/ServicesShowcase";
+import BersafarValues from "@/components/BersafarValues";
+import BersafarSnapshot from "@/components/BersafarSnapshot";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import StickyHeader from "@/components/StickyHeader";
@@ -17,9 +17,9 @@ const Index = () => {
       <HeroSection />
       <LimitedOffers />
       <TripPilihan />
-      <UmrohStepsSection />
       <StepGuide />
-      <ServicesShowcase />
+      <BersafarValues />
+      <BersafarSnapshot />
       <FAQSection />
       <Footer />
       <FloatingCartButton />

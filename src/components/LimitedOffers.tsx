@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -60,94 +59,87 @@ const LimitedOffers = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-spiritual-50 to-gold-50/30">
+    <section className="py-12 bg-gradient-to-br from-spiritual-50 to-gold-50/30">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Header with Countdown */}
-        <div className="text-center mb-12">
-          <Badge className="bg-red-500 text-white mb-4 px-4 py-2 text-sm font-bold animate-pulse">
-            ⚡ LIMITED TIME OFFER
-          </Badge>
-          <h2 className="text-4xl font-sf font-bold text-spiritual-800 mb-4">
-            Penawaran Terbatas
-          </h2>
-          <p className="text-lg text-spiritual-600 mb-8">
-            Jangan sampai terlewat! Promo berakhir dalam:
-          </p>
+        {/* Header */}
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <Badge className="bg-red-500 text-white mb-4 px-4 py-2 text-sm font-bold animate-pulse">
+              ⚡ LIMITED TIME OFFER
+            </Badge>
+            <h2 className="text-3xl font-sf font-bold text-spiritual-800 mb-2">
+              Penawaran Terbatas
+            </h2>
+            <p className="text-lg text-spiritual-600">
+              Jangan sampai terlewat! Promo berakhir dalam:
+            </p>
+          </div>
           
-          {/* Countdown Timer */}
-          <div className="flex justify-center space-x-4 mb-8">
+          {/* Countdown Timer - Moved to Right */}
+          <div className="flex space-x-3">
             {[
               { label: "Hari", value: timeLeft.days },
               { label: "Jam", value: timeLeft.hours },
               { label: "Menit", value: timeLeft.minutes },
               { label: "Detik", value: timeLeft.seconds }
             ].map((item, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-4 min-w-[80px]">
-                <div className="text-3xl font-bold text-spiritual-800">{item.value}</div>
-                <div className="text-sm text-spiritual-600">{item.label}</div>
+              <div key={index} className="bg-white rounded-xl shadow-lg p-3 min-w-[60px] text-center">
+                <div className="text-2xl font-bold text-spiritual-800">{item.value}</div>
+                <div className="text-xs text-spiritual-600">{item.label}</div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Offer Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Offer Cards - Smaller */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {offers.map((offer) => (
-            <Card key={offer.id} className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-gold-200">
+            <Card key={offer.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-gold-200">
               <div className="relative">
                 <img 
                   src={offer.image}
                   alt={offer.title}
-                  className="w-full h-64 object-cover"
+                  className="w-full h-48 object-cover"
                 />
-                <Badge className="absolute top-4 left-4 bg-red-500 text-white font-bold">
+                <Badge className="absolute top-3 left-3 bg-red-500 text-white font-bold text-xs">
                   -{offer.discount}%
                 </Badge>
-                <Badge className="absolute top-4 right-4 bg-gold-500 text-spiritual-900 font-bold">
-                  <Star className="w-4 h-4 mr-1" />
+                <Badge className="absolute top-3 right-3 bg-gold-500 text-spiritual-900 font-bold text-xs">
+                  <Star className="w-3 h-3 mr-1" />
                   {offer.rating}
                 </Badge>
-                <div className="absolute bottom-4 left-4 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
-                  <MapPin className="w-4 h-4 inline mr-1" />
-                  {offer.destination}
-                </div>
               </div>
               
-              <CardContent className="p-6">
-                <h3 className="text-xl font-sf font-bold text-spiritual-800 mb-2">
+              <CardContent className="p-4">
+                <h3 className="text-lg font-sf font-bold text-spiritual-800 mb-2">
                   {offer.title}
                 </h3>
                 
-                <div className="flex items-center mb-3">
-                  <div className="flex items-center text-gold-500 mr-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
-                    ))}
-                  </div>
-                  <span className="text-sm text-spiritual-600">({offer.reviews} ulasan)</span>
+                <div className="flex items-center mb-2">
+                  <MapPin className="w-4 h-4 text-spiritual-600 mr-1" />
+                  <span className="text-sm text-spiritual-600">{offer.destination}</span>
                 </div>
 
-                <div className="mb-4">
-                  <div className="flex items-center space-x-3">
-                    <span className="text-2xl font-bold text-spiritual-800">
-                      Rp {offer.promoPrice.toLocaleString('id-ID')}
+                <div className="mb-3">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xl font-bold text-spiritual-800">
+                      Rp {(offer.promoPrice / 1000000).toFixed(1)}jt
                     </span>
-                    <span className="text-lg text-spiritual-500 line-through">
-                      Rp {offer.originalPrice.toLocaleString('id-ID')}
+                    <span className="text-sm text-spiritual-500 line-through">
+                      Rp {(offer.originalPrice / 1000000).toFixed(1)}jt
                     </span>
                   </div>
-                  <p className="text-sm text-spiritual-600">per orang</p>
                 </div>
 
-                <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-4">
-                  <p className="text-red-600 font-semibold text-sm flex items-center">
-                    <Clock className="w-4 h-4 mr-2" />
+                <div className="bg-red-50 border border-red-200 rounded-lg p-2 mb-3">
+                  <p className="text-red-600 font-semibold text-xs flex items-center">
+                    <Clock className="w-3 h-3 mr-1" />
                     {offer.urgent}
                   </p>
                 </div>
 
-                <Button className="w-full bg-gradient-to-r from-spiritual-600 to-gold-500 hover:from-spiritual-700 hover:to-gold-600 text-white font-sf font-bold py-3 rounded-full">
-                  Pesan Sekarang, Traveling Nanti
+                <Button className="w-full bg-gradient-to-r from-spiritual-600 to-gold-500 hover:from-spiritual-700 hover:to-gold-600 text-white font-sf font-bold py-2 rounded-full text-sm">
+                  Book Now, Travel Later
                 </Button>
               </CardContent>
             </Card>
