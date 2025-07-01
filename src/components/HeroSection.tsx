@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -109,8 +108,8 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-20 w-full px-6 max-w-7xl mx-auto">
-        {/* Hero Menu */}
-        <div className="absolute top-8 left-0 right-0 flex justify-center mb-12">
+        {/* Hero Menu - Moved up 2.5x */}
+        <div className="absolute -top-20 left-0 right-0 flex justify-center mb-12">
           <div className="bg-white/10 backdrop-blur-md rounded-full px-8 py-4 border border-white/20">
             <div className="flex items-center space-x-8">
               {/* Logo */}
