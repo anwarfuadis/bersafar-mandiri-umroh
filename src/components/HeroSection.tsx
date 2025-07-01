@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -32,6 +33,8 @@ const HeroSection = () => {
   const taglineWords = ["Beribadah", "Berpahala", "Berdzikir"];
   const [currentWord, setCurrentWord] = useState(0);
 
+  const menuItems = ["Umroh", "Eropa", "USA", "Asia", "Private Trip"];
+
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
@@ -53,12 +56,28 @@ const HeroSection = () => {
   }, []);
 
   const destinationCategories = {
-    "Umroh": ["Makkah & Madinah", "Paket Umroh Premium", "Umroh Plus Turki"],
-    "Lokal": ["Yogyakarta", "Bandung", "Lombok", "Bali Halal Tour"],
-    "Eropa": ["Turkey", "Bosnia", "Albania", "Andalusia Spanyol"],
-    "USA": ["New York", "California", "Washington DC"],
-    "Asia": ["Malaysia", "Brunei", "Singapura", "Jepang Halal"],
-    "Private Trips": ["Custom Umroh", "Family Trip", "Honeymoon Halal"]
+    "Umroh": [
+      { name: "Makkah & Madinah", image: "/lovable-uploads/f2a9a231-b30a-47e0-9730-5d5276a8aa0d.png" },
+      { name: "Paket Umroh Premium", image: "/lovable-uploads/f2a9a231-b30a-47e0-9730-5d5276a8aa0d.png" },
+      { name: "Umroh Plus Turki", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" }
+    ],
+    "Eropa": [
+      { name: "Turkey", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" },
+      { name: "Bosnia", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" },
+      { name: "Albania", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" }
+    ],
+    "USA": [
+      { name: "New York", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" },
+      { name: "California", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" }
+    ],
+    "Asia": [
+      { name: "Malaysia", image: "/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png" },
+      { name: "Singapura", image: "/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png" }
+    ],
+    "Private Trip": [
+      { name: "Custom Umroh", image: "/lovable-uploads/f2a9a231-b30a-47e0-9730-5d5276a8aa0d.png" },
+      { name: "Family Trip", image: "/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png" }
+    ]
   };
 
   return (
@@ -75,8 +94,8 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/40" />
       </div>
 
-      {/* Rain Video Overlay */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
+      {/* Auto-play Video Overlay */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
         <video
           autoPlay
           loop
@@ -84,13 +103,53 @@ const HeroSection = () => {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/rain-video.mp4" type="video/mp4" />
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
         </video>
       </div>
 
       {/* Content */}
       <div className="relative z-20 w-full px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Hero Menu */}
+        <div className="absolute top-8 left-0 right-0 flex justify-center mb-12">
+          <div className="bg-white/10 backdrop-blur-md rounded-full px-8 py-4 border border-white/20">
+            <div className="flex items-center space-x-8">
+              {/* Logo */}
+              <div className="flex items-center space-x-3">
+                <img 
+                  src="/lovable-uploads/c763f5f3-1693-45ce-8d6c-1d107368526d.png" 
+                  alt="Bersafar Logo"
+                  className="h-8 w-8"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(100%)' }}
+                />
+                <span className="text-xl font-sf font-bold text-white">
+                  Bersafar
+                </span>
+              </div>
+
+              {/* Menu Items */}
+              <div className="hidden md:flex items-center space-x-6">
+                {menuItems.map((item) => (
+                  <button
+                    key={item}
+                    className="text-white hover:text-gold-300 font-sf font-medium px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-300"
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+
+              {/* CTA Button */}
+              <Button 
+                className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-6 py-3 font-sf font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
+                onClick={() => setDialogOpen(true)}
+              >
+                Mulai Bersafar
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-24">
           {/* Left Content */}
           <div className="text-left">
             <div className="animate-fade-in">
@@ -111,7 +170,7 @@ const HeroSection = () => {
               </div>
 
               {/* Search Bar */}
-              <div className="relative mb-8">
+              <div className="relative mb-8 z-50">
                 <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl">
                   <div className="flex items-center space-x-4">
                     <Search className="w-6 h-6 text-spiritual-600" />
@@ -127,18 +186,23 @@ const HeroSection = () => {
                   </div>
 
                   {searchOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-spiritual-100 max-h-80 overflow-y-auto z-50">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-spiritual-100 max-h-80 overflow-y-auto z-[60]">
                       {Object.entries(destinationCategories).map(([category, destinations]) => (
                         <div key={category} className="p-4 border-b border-spiritual-100 last:border-b-0">
                           <h3 className="font-sf font-bold text-spiritual-800 mb-2">{category}</h3>
                           <div className="space-y-1">
                             {destinations.map((dest) => (
                               <button
-                                key={dest}
-                                className="block w-full text-left px-3 py-2 text-spiritual-600 hover:bg-spiritual-50 rounded-lg transition-colors"
+                                key={dest.name}
+                                className="flex items-center w-full text-left px-3 py-2 text-spiritual-600 hover:bg-spiritual-50 rounded-lg transition-colors"
                               >
-                                <MapPin className="w-4 h-4 inline mr-2" />
-                                {dest}
+                                <img 
+                                  src={dest.image} 
+                                  alt={dest.name}
+                                  className="w-8 h-8 rounded object-cover mr-3"
+                                />
+                                <MapPin className="w-4 h-4 mr-2" />
+                                {dest.name}
                               </button>
                             ))}
                           </div>

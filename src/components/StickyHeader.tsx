@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import RegistrationDialog from "@/components/RegistrationDialog";
 import LoginDialog from "@/components/LoginDialog";
 
@@ -9,34 +10,43 @@ const StickyHeader = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
-  const [showAnimatedElements, setShowAnimatedElements] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
-  const destinationCategories = ["Umroh", "Lokal", "Eropa", "USA", "Asia", "Private Trips"];
+  const destinationCategories = ["Umroh", "Eropa", "USA", "Asia", "Private Trip"];
+
+  const destinationData = {
+    "Umroh": [
+      { name: "Makkah & Madinah", image: "/lovable-uploads/f2a9a231-b30a-47e0-9730-5d5276a8aa0d.png" },
+      { name: "Paket Umroh Premium", image: "/lovable-uploads/f2a9a231-b30a-47e0-9730-5d5276a8aa0d.png" }
+    ],
+    "Eropa": [
+      { name: "Turkey", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" },
+      { name: "Bosnia", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" }
+    ],
+    "USA": [
+      { name: "New York", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" },
+      { name: "California", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" }
+    ],
+    "Asia": [
+      { name: "Malaysia", image: "/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png" },
+      { name: "Singapura", image: "/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png" }
+    ],
+    "Private Trip": [
+      { name: "Custom Umroh", image: "/lovable-uploads/f2a9a231-b30a-47e0-9730-5d5276a8aa0d.png" },
+      { name: "Family Trip", image: "/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png" }
+    ]
+  };
 
   useEffect(() => {
     function handleScroll() {
       const scrollY = window.scrollY;
-      // Show header when scrollY > 8px
-      setShowHeader(scrollY > 8);
-      
-      // Show animated elements when passing the hero brand section
-      const heroBrand = document.getElementById('hero-brand');
-      const heroButton = document.getElementById('hero-cta-button');
-      
-      if (heroBrand && heroButton) {
-        const brandRect = heroBrand.getBoundingClientRect();
-        const buttonRect = heroButton.getBoundingClientRect();
-        
-        // Show when brand is above viewport or button is above viewport
-        setShowAnimatedElements(brandRect.bottom < 0 || buttonRect.bottom < 0);
-      }
+      setShowHeader(scrollY > 200);
     }
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Ensure header is visible if dialogOpen or loginOpen is true
   const headerVisible = showHeader || dialogOpen || loginOpen;
 
   return (
@@ -52,23 +62,16 @@ const StickyHeader = () => {
             <img 
               src="/lovable-uploads/c763f5f3-1693-45ce-8d6c-1d107368526d.png" 
               alt="Bersafar Logo"
-              className={`h-8 w-8 transition-all duration-500 ${
-                showAnimatedElements ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
-              }`} 
+              className="h-8 w-8"
+              style={{ filter: 'brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346%) brightness(104%) contrast(97%)' }}
             />
-            <span 
-              className={`text-xl font-sf font-bold text-white transition-all duration-500 ${
-                showAnimatedElements ? 'translate-x-0 opacity-100' : 'translate-x-[-100px] opacity-0'
-              }`}
-            >
+            <span className="text-xl font-sf font-bold text-white">
               Bersafar
             </span>
           </div>
 
           {/* Desktop Navigation Menu */}
-          <div className={`hidden lg:flex items-center space-x-6 transition-all duration-500 ${
-            showAnimatedElements ? 'translate-y-0 opacity-100' : 'translate-y-[-20px] opacity-0'
-          }`}>
+          <div className="hidden lg:flex items-center space-x-6">
             {destinationCategories.map((category) => (
               <button
                 key={category}
@@ -79,23 +82,58 @@ const StickyHeader = () => {
             ))}
           </div>
 
+          {/* Search Bar */}
+          <div className="hidden md:flex relative flex-1 max-w-md mx-8">
+            <div className="relative w-full">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60" />
+              <Input
+                placeholder="Cari destinasi..."
+                className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-gold-400 focus:ring-gold-400"
+                onFocus={() => setSearchOpen(true)}
+                onBlur={() => setTimeout(() => setSearchOpen(false), 200)}
+              />
+              
+              {searchOpen && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-spiritual-100 max-h-80 overflow-y-auto z-[60]">
+                  {Object.entries(destinationData).map(([category, destinations]) => (
+                    <div key={category} className="p-4 border-b border-spiritual-100 last:border-b-0">
+                      <h3 className="font-sf font-bold text-spiritual-800 mb-2">{category}</h3>
+                      <div className="space-y-1">
+                        {destinations.map((dest) => (
+                          <button
+                            key={dest.name}
+                            className="flex items-center w-full text-left px-3 py-2 text-spiritual-600 hover:bg-spiritual-50 rounded-lg transition-colors"
+                          >
+                            <img 
+                              src={dest.image} 
+                              alt={dest.name}
+                              className="w-8 h-8 rounded object-cover mr-3"
+                            />
+                            {dest.name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <Button 
               variant="ghost"
-              className="text-white hover:text-gold-300 font-sf font-medium animate-fade-in"
+              className="text-white hover:text-gold-300 font-sf font-medium"
               onClick={() => setLoginOpen(true)}
             >
               Login
             </Button>
             <Button 
-              size="default" 
-              className={`bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-8 py-3 font-sf font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 border border-gold-400/30 ${
-                showAnimatedElements ? 'translate-y-0 opacity-100' : 'translate-y-[-50px] opacity-0'
-              }`}
+              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-6 py-3 font-sf font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
               onClick={() => setDialogOpen(true)}
             >
-              Mulai Perjalanan Halal
+              Mulai Bersafar
             </Button>
           </div>
 
@@ -117,7 +155,6 @@ const StickyHeader = () => {
           mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <div className="px-6 py-4 space-y-4 bg-spiritual-900/95 backdrop-blur-md border-t border-spiritual-600/30">
-            {/* Mobile Navigation Categories */}
             <div className="space-y-2 border-b border-spiritual-600/30 pb-4">
               {destinationCategories.map((category) => (
                 <button
@@ -131,7 +168,7 @@ const StickyHeader = () => {
             
             <Button 
               variant="ghost"
-              className="w-full text-white hover:text-gold-300 font-sf font-medium justify-start animate-fade-in"
+              className="w-full text-white hover:text-gold-300 font-sf font-medium justify-start"
               onClick={() => {
                 setLoginOpen(true);
                 setMobileMenuOpen(false);
@@ -146,7 +183,7 @@ const StickyHeader = () => {
                 setMobileMenuOpen(false);
               }}
             >
-              Mulai Perjalanan Halal
+              Mulai Bersafar
             </Button>
           </div>
         </div>

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -59,7 +60,7 @@ const LimitedOffers = () => {
   ];
 
   return (
-    <section className="py-12 bg-gradient-to-br from-spiritual-50 to-gold-50/30">
+    <section className="py-12 bg-gradient-to-br from-green-50 to-green-100">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
@@ -75,7 +76,7 @@ const LimitedOffers = () => {
             </p>
           </div>
           
-          {/* Countdown Timer - Moved to Right */}
+          {/* Countdown Timer - Right Side */}
           <div className="flex space-x-3">
             {[
               { label: "Hari", value: timeLeft.days },
@@ -91,7 +92,7 @@ const LimitedOffers = () => {
           </div>
         </div>
 
-        {/* Offer Cards - Smaller */}
+        {/* Offer Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {offers.map((offer) => (
             <Card key={offer.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-gold-200">
