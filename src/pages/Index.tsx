@@ -1,5 +1,7 @@
 
 import HeroSection from "@/components/HeroSection";
+import LimitedOffers from "@/components/LimitedOffers";
+import TripPilihan from "@/components/TripPilihan";
 import UmrohStepsSection from "@/components/UmrohStepsSection";
 import StepGuide from "@/components/StepGuide";
 import ServicesShowcase from "@/components/ServicesShowcase";
@@ -13,6 +15,8 @@ const Index = () => {
     <div className="min-h-screen">
       <StickyHeader />
       <HeroSection />
+      <LimitedOffers />
+      <TripPilihan />
       <UmrohStepsSection />
       <StepGuide />
       <ServicesShowcase />

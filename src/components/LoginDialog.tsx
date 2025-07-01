@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Phone, Lock, Asterisk, Eye, EyeOff } from "lucide-react";
+import { Phone, Lock, Eye, EyeOff } from "lucide-react";
 
 interface LoginDialogProps {
   open: boolean;
@@ -26,7 +26,6 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Login data:", formData);
-    // Handle login here
     onOpenChange(false);
   };
 
@@ -36,10 +35,14 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md mx-auto bg-gradient-to-br from-spiritual-50 via-white to-gold-50/30 border-2 border-gold-200/50 shadow-2xl backdrop-blur-sm">
+      <DialogContent className="sm:max-w-md mx-auto bg-gradient-to-br from-spiritual-50 via-white to-gold-50/30 border-2 border-gold-200/50 shadow-2xl backdrop-blur-sm max-h-[90vh] overflow-y-auto">
         <DialogHeader className="text-center pb-6">
           <div className="mx-auto mb-4">
-            <Asterisk className="h-10 w-10 mx-auto mb-2 text-green-700" />
+            <img 
+              src="/lovable-uploads/c763f5f3-1693-45ce-8d6c-1d107368526d.png" 
+              alt="Bersafar Logo"
+              className="h-10 w-10 mx-auto mb-2"
+            />
             <h3 className="text-lg font-sf font-bold text-green-700">Bersafar</h3>
           </div>
           <DialogTitle className="text-2xl font-sf font-bold text-spiritual-800 mb-2">

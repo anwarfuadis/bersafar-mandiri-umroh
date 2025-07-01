@@ -48,7 +48,6 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Registration data:", formData);
-    // Handle registration here
     onOpenChange(false);
   };
 
@@ -67,7 +66,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md mx-auto bg-gradient-to-br from-spiritual-50 via-white to-gold-50/30 border-2 border-gold-200/50 shadow-2xl backdrop-blur-sm">
+      <DialogContent className="sm:max-w-md mx-auto bg-gradient-to-br from-spiritual-50 via-white to-gold-50/30 border-2 border-gold-200/50 shadow-2xl backdrop-blur-sm max-h-[90vh] overflow-y-auto">
         <DialogHeader className="text-center pb-6">
           <div className="mx-auto mb-4">
             <img 
