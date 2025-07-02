@@ -152,12 +152,6 @@ const HeroSection = () => {
           {/* Left Content */}
           <div className="text-left">
             <div className="animate-fade-in">
-              <h1 id="hero-brand" className="text-6xl md:text-7xl lg:text-8xl font-sf font-bold text-white mb-6 leading-tight">
-                A Muslim Journey
-                <br />
-                <span className="text-gold-400">Starts Here</span>
-              </h1>
-
               <div className="mb-8">
                 <p className="text-2xl md:text-3xl font-sf font-semibold text-white mb-2">
                   Bersafar untuk{" "}
@@ -167,6 +161,12 @@ const HeroSection = () => {
                 </p>
                 <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full"></div>
               </div>
+
+              <h1 id="hero-brand" className="text-6xl md:text-7xl lg:text-8xl font-sf font-bold text-white mb-6 leading-tight">
+                A Muslim Journey
+                <br />
+                <span className="text-gold-400">Starts Here</span>
+              </h1>
 
               {/* Search Bar */}
               <div className="relative mb-8 z-50">
@@ -215,8 +215,8 @@ const HeroSection = () => {
           </div>
 
           {/* Right Content - Destination Showcase */}
-          <div className="relative">
-            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
+          <div className="relative lg:flex lg:justify-center">
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 lg:max-w-md lg:mx-auto">
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-sf font-bold text-white mb-2">Destinasi Populer</h3>
                 <p className="text-white/80">Jelajahi keindahan dunia dengan cara halal</p>

@@ -90,7 +90,7 @@ const BersafarSnapshot = () => {
             Testimoni Jamaah
           </h3>
           <p className="text-lg text-spiritual-600">
-            Dengarkan pengalaman jamaah yang telah bersafar bersama kami
+            Dengarkan pengalaman jamaah yang telah mempercayai perjalanan mereka kepada kami
           </p>
         </div>
 
