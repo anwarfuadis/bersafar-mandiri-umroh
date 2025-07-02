@@ -8,12 +8,6 @@ import FlightDetail from "./pages/FlightDetail";
 import HotelDetail from "./pages/HotelDetail";
 import VisaDetail from "./pages/VisaDetail";
 import MutawifDetail from "./pages/MutawifDetail";
-import TripDetail from "./pages/TripDetail";
-import UmrohDetail from "./pages/UmrohDetail";
-import EropaDetail from "./pages/EropaDetail";
-import USADetail from "./pages/USADetail";
-import AsiaDetail from "./pages/AsiaDetail";
-import PrivateTripDetail from "./pages/PrivateTripDetail";
 import NotFound from "./pages/NotFound";
 import FloatingCartButton from "./components/FloatingCartButton";
 
@@ -30,12 +24,6 @@ const App = () => (
           <Route path="/hotel-detail" element={<HotelDetail />} />
           <Route path="/visa-detail" element={<VisaDetail />} />
           <Route path="/mutawif-detail" element={<MutawifDetail />} />
-          <Route path="/trip-detail/:tripId" element={<TripDetail />} />
-          <Route path="/umroh-detail" element={<UmrohDetail />} />
-          <Route path="/eropa-detail" element={<EropaDetail />} />
-          <Route path="/usa-detail" element={<USADetail />} />
-          <Route path="/asia-detail" element={<AsiaDetail />} />
-          <Route path="/private-trip-detail" element={<PrivateTripDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <FloatingCartButton />

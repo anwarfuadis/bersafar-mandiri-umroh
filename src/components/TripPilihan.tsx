@@ -135,13 +135,6 @@ const TripPilihan = () => {
                     <Users className="w-4 h-4 mr-2" />
                     {trip.groupSize}
                   </div>
-                  <div className="flex items-center text-sm text-spiritual-600">
-                    <MapPin className="w-4 h-4 mr-2" />
-                    Sisa kuota: 12 jamaah
-                  </div>
-                  <div className="bg-blue-50 border border-blue-200 rounded p-2 mt-2">
-                    <p className="text-blue-700 text-xs font-semibold">💡 Join grup = Lebih hemat!</p>
-                  </div>
                 </div>
 
                 {trip.guarantee && (

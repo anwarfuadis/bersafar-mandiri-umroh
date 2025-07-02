@@ -60,16 +60,19 @@ const LimitedOffers = () => {
   ];
 
   return (
-    <section className="py-12 bg-gradient-to-br from-green-700 to-green-800">
+    <section className="py-12 bg-gradient-to-br from-green-50 to-green-100">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h2 className="text-3xl font-sf font-bold text-white mb-2">
+            <Badge className="bg-red-500 text-white mb-4 px-4 py-2 text-sm font-bold animate-pulse">
+              ⚡ LIMITED TIME OFFER
+            </Badge>
+            <h2 className="text-3xl font-sf font-bold text-spiritual-800 mb-2">
               Penawaran Terbatas
             </h2>
-            <p className="text-lg text-white/90">
-              🔥 Buruan! Harga segini gak akan ada lagi!
+            <p className="text-lg text-spiritual-600">
+              Jangan sampai terlewat! Promo berakhir dalam:
             </p>
           </div>
           
@@ -81,9 +84,9 @@ const LimitedOffers = () => {
               { label: "Menit", value: timeLeft.minutes },
               { label: "Detik", value: timeLeft.seconds }
             ].map((item, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-md rounded-xl border border-white/30 p-3 min-w-[60px] text-center">
-                <div className="text-2xl font-bold text-white">{item.value}</div>
-                <div className="text-xs text-white/80">{item.label}</div>
+              <div key={index} className="bg-white rounded-xl shadow-lg p-3 min-w-[60px] text-center">
+                <div className="text-2xl font-bold text-spiritual-800">{item.value}</div>
+                <div className="text-xs text-spiritual-600">{item.label}</div>
               </div>
             ))}
           </div>
@@ -129,12 +132,11 @@ const LimitedOffers = () => {
                   </div>
                 </div>
 
-                <div className="bg-red-100 border-l-4 border-red-500 rounded-lg p-3 mb-3">
-                  <p className="text-red-700 font-bold text-sm flex items-center">
-                    <Clock className="w-4 h-4 mr-2" />
-                    🚨 {offer.urgent}
+                <div className="bg-red-50 border border-red-200 rounded-lg p-2 mb-3">
+                  <p className="text-red-600 font-semibold text-xs flex items-center">
+                    <Clock className="w-3 h-3 mr-1" />
+                    {offer.urgent}
                   </p>
-                  <p className="text-red-600 text-xs mt-1">Jangan sampai menyesal!</p>
                 </div>
 
                 <Button className="w-full bg-gradient-to-r from-spiritual-600 to-gold-500 hover:from-spiritual-700 hover:to-gold-600 text-white font-sf font-bold py-2 rounded-full text-sm">

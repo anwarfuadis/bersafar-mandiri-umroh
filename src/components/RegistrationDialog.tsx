@@ -52,7 +52,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
               src="/lovable-uploads/c763f5f3-1693-45ce-8d6c-1d107368526d.png" 
               alt="Bersafar Logo"
               className="h-10 w-10 mx-auto mb-2"
-              style={{ filter: 'brightness(0) saturate(100%) invert(25%) sepia(94%) saturate(1671%) hue-rotate(90deg) brightness(95%) contrast(90%)' }}
+              style={{ filter: 'brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346%) brightness(104%) contrast(97%)' }}
             />
             <h3 className="text-lg font-sf font-bold text-green-700">Bersafar</h3>
           </div>
