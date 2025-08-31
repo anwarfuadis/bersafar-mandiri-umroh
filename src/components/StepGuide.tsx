@@ -23,7 +23,7 @@ const StepGuide = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-8">
         {/* Header */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-sf font-bold mb-7 text-white text-center drop-shadow">
-          Bersafar bersama kami
+          Panduan Perjalanan Halal
         </h2>
 
         {/* Mobile-friendly Comparison Table */}
