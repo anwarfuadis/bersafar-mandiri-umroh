@@ -5,13 +5,21 @@ import RegistrationDialog from "@/components/RegistrationDialog";
 const HeroSection = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [currentText, setCurrentText] = useState(0);
 
-  const menuItems = ["Umroh", "Eropa", "USA", "Asia", "Private Trip"];
+  const switchingTexts = ["Bersama-sama", "Berpahala", "Bertaqwa"];
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const textInterval = setInterval(() => {
+      setCurrentText((prev) => (prev + 1) % switchingTexts.length);
+    }, 5000);
+    return () => clearInterval(textInterval);
   }, []);
 
   return (
@@ -50,25 +58,13 @@ const HeroSection = () => {
               {/* Logo */}
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/lovable-uploads/5c10e529-f63f-4a40-91fd-f6569ec1bee1.png" 
+                  src="/lovable-uploads/bersafar-logo.png" 
                   alt="Bersafar Logo"
                   className="h-8 w-8"
                 />
                 <span className="text-xl font-sf font-bold text-white">
                   Bersafar
                 </span>
-              </div>
-
-              {/* Menu Items */}
-              <div className="hidden md:flex items-center space-x-6">
-                {menuItems.map((item) => (
-                  <button
-                    key={item}
-                    className="text-white hover:text-gold-300 font-sf font-medium px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-300"
-                  >
-                    {item}
-                  </button>
-                ))}
               </div>
 
               {/* CTA Button */}
@@ -90,7 +86,7 @@ const HeroSection = () => {
                 <br />
                 Perjalanan Bermakna,
                 <br />
-                <span className="text-gold-400">Bersama-sama</span>
+                <span className="text-gold-400 transition-all duration-500">{switchingTexts[currentText]}</span>
               </h1>
             </div>
           </div>

@@ -80,7 +80,7 @@ const CariTemanSafar = () => {
           >
             ← Kembali ke Beranda
           </button>
-          <h1 className="text-4xl font-sf font-bold mb-4">Cari Teman Safar</h1>
+          <h1 className="text-4xl font-sf font-bold mb-4">Teman Safar</h1>
           <p className="text-xl text-blue-100 max-w-3xl">
             Temukan teman perjalanan spiritual yang sesuai dengan preferensi Anda. 
             Bergabunglah dengan jamaah yang telah terverifikasi atau buat grup sendiri.

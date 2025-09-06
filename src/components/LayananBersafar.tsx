@@ -9,35 +9,31 @@ const LayananBersafar = () => {
   const services = [
     {
       id: 1,
-      title: "Cari Teman Safar",
+      title: "Teman Safar",
       description: "Temukan teman perjalanan yang sesuai dengan kriteria Anda. Bergabunglah dengan jamaah yang telah terverifikasi untuk pengalaman spiritual yang berkesan.",
-      icon: Users,
-      features: [
-        "Verifikasi identitas lengkap",
-        "Matching berdasarkan gender/mahram",
-        "Grup travel yang aman",
-        "Panduan etika perjalanan Islami"
-      ],
-      buttonText: "Cari Teman Safar",
+      buttonText: "Teman Safar", 
       buttonAction: () => navigate("/cari-teman-safar"),
-      gradient: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-50"
+      previewCards: [
+        { title: "Umroh Bareng Sister", location: "Makkah • Madinah", date: "15 Jan 2025", slots: "3/8 sister" },
+        { title: "Haji Furoda 2025", location: "Saudi Arabia", date: "Mar 2025", slots: "5/12 jamaah" },
+        { title: "Turkey Adventure", location: "Istanbul • Cappadocia", date: "20 Feb", slots: "2/6 keluarga" },
+        { title: "Malaysia Halal Food", location: "KL • Johor", date: "8 Mar", slots: "4/10 peserta" },
+        { title: "Bosnia Heritage", location: "Sarajevo • Mostar", date: "12 Apr", slots: "1/8 jamaah" }
+      ]
     },
     {
       id: 2,
       title: "Umroh Mandiri",
       description: "Rencanakan perjalanan umroh sesuai keinginan Anda dengan paket fleksibel yang dapat disesuaikan. Dari ekonomi hingga premium, semua tersedia.",
-      icon: MapPin,
-      features: [
-        "Paket dapat disesuaikan",
-        "Pilihan hotel beragam",
-        "Jadwal fleksibel",
-        "Bimbingan manasik lengkap"
-      ],
       buttonText: "Lihat Paket Umroh",
       buttonAction: () => navigate("/umroh-mandiri"),
-      gradient: "from-green-500 to-green-600",
-      bgColor: "bg-green-50"
+      previewCards: [
+        { title: "Umroh Ekonomi", price: "Rp 25.900.000", duration: "9 hari", hotel: "⭐⭐⭐" },
+        { title: "Umroh Plus", price: "Rp 32.500.000", duration: "12 hari", hotel: "⭐⭐⭐⭐" },
+        { title: "Umroh VIP", price: "Rp 45.000.000", duration: "14 hari", hotel: "⭐⭐⭐⭐⭐" },
+        { title: "Umroh Keluarga", price: "Rp 38.900.000", duration: "10 hari", hotel: "⭐⭐⭐⭐" },
+        { title: "Umroh Ramadan", price: "Rp 52.000.000", duration: "15 hari", hotel: "⭐⭐⭐⭐⭐" }
+      ]
     }
   ];
 
@@ -54,57 +50,57 @@ const LayananBersafar = () => {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {services.map((service) => {
-            const IconComponent = service.icon;
-            return (
-              <Card key={service.id} className={`${service.bgColor} border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden`}>
-                <CardContent className="p-8">
-                  <div className="flex items-start space-x-4 mb-6">
-                    <div className={`p-4 rounded-full bg-gradient-to-r ${service.gradient} text-white`}>
-                      <IconComponent className="w-8 h-8" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-sf font-bold text-spiritual-800 mb-2">
-                        {service.title}
-                      </h3>
-                      <p className="text-spiritual-600 leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
+        {/* Services List */}
+        <div className="space-y-8">
+          {services.map((service) => (
+            <div key={service.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <div className="p-8">
+                <div className="flex flex-col lg:flex-row gap-8">
+                  {/* Left Content */}
+                  <div className="lg:w-1/3">
+                    <h3 className="text-3xl font-sf font-bold text-spiritual-800 mb-4">
+                      {service.title}
+                    </h3>
+                    <p className="text-spiritual-600 leading-relaxed mb-6">
+                      {service.description}
+                    </p>
+                    <Button 
+                      onClick={service.buttonAction}
+                      className="bg-gradient-to-r from-spiritual-600 to-spiritual-700 hover:from-spiritual-700 hover:to-spiritual-800 text-white font-sf font-bold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-105"
+                    >
+                      {service.buttonText}
+                    </Button>
                   </div>
-
-                  {/* Features */}
-                  <div className="mb-6">
-                    <h4 className="font-sf font-semibold text-spiritual-700 mb-3">Yang Anda Dapatkan:</h4>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, index) => (
-                        <li key={index} className="flex items-center text-spiritual-600">
-                          <Heart className="w-4 h-4 text-red-500 mr-2 flex-shrink-0" />
-                          <span className="text-sm">{feature}</span>
-                        </li>
+                  
+                  {/* Right Preview Cards */}
+                  <div className="lg:w-2/3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                      {service.previewCards.map((card, index) => (
+                        <div key={index} className="bg-gradient-to-br from-spiritual-50 to-gold-50 rounded-xl p-4 border border-spiritual-100 hover:shadow-md transition-all duration-300 hover:scale-105">
+                          <h4 className="font-sf font-bold text-spiritual-800 mb-2 text-sm">{card.title}</h4>
+                          {service.id === 1 ? (
+                            <>
+                              <p className="text-xs text-spiritual-600 mb-1">{card.location}</p>
+                              <p className="text-xs text-spiritual-600 mb-2">{card.date}</p>
+                              <div className="bg-spiritual-600 text-white px-2 py-1 rounded-full text-xs font-medium inline-block">
+                                {card.slots}
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <p className="text-sm font-bold text-spiritual-700 mb-1">{card.price}</p>
+                              <p className="text-xs text-spiritual-600 mb-1">{card.duration}</p>
+                              <p className="text-xs text-gold-600">{card.hotel}</p>
+                            </>
+                          )}
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
-
-                  {/* CTA Button */}
-                  <Button 
-                    onClick={service.buttonAction}
-                    className={`w-full bg-gradient-to-r ${service.gradient} hover:opacity-90 text-white font-sf font-bold py-4 rounded-xl text-lg transition-all duration-300 hover:scale-105`}
-                  >
-                    {service.buttonText}
-                  </Button>
-
-                  {/* Trust Badge */}
-                  <div className="flex items-center justify-center mt-4 pt-4 border-t border-spiritual-200">
-                    <Shield className="w-4 h-4 text-spiritual-500 mr-2" />
-                    <span className="text-xs text-spiritual-500">Dijamin Aman & Terpercaya</span>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Bottom CTA */}
