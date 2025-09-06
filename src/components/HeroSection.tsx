@@ -1,36 +1,10 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Search, MapPin, Calendar, Users } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import RegistrationDialog from "@/components/RegistrationDialog";
 
 const HeroSection = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [searchOpen, setSearchOpen] = useState(false);
-
-  const destinations = [
-    {
-      name: "Makkah & Madinah",
-      image: "/lovable-uploads/f2a9a231-b30a-47e0-9730-5d5276a8aa0d.png",
-      category: "Umroh"
-    },
-    {
-      name: "Turkey",
-      image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png", 
-      category: "International"
-    },
-    {
-      name: "Yogyakarta",
-      image: "/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png",
-      category: "Local"
-    }
-  ];
-
-  const taglineWords = ["Beribadah", "Berpahala", "Berdzikir"];
-  const [currentWord, setCurrentWord] = useState(0);
 
   const menuItems = ["Umroh", "Eropa", "USA", "Asia", "Private Trip"];
 
@@ -39,45 +13,6 @@ const HeroSection = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    const slideTimer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % destinations.length);
-    }, 4000);
-    return () => clearInterval(slideTimer);
-  }, []);
-
-  useEffect(() => {
-    const wordTimer = setInterval(() => {
-      setCurrentWord((prev) => (prev + 1) % taglineWords.length);
-    }, 2000);
-    return () => clearInterval(wordTimer);
-  }, []);
-
-  const destinationCategories = {
-    "Umroh": [
-      { name: "Makkah & Madinah", image: "/lovable-uploads/f2a9a231-b30a-47e0-9730-5d5276a8aa0d.png" },
-      { name: "Paket Umroh Premium", image: "/lovable-uploads/f2a9a231-b30a-47e0-9730-5d5276a8aa0d.png" },
-      { name: "Umroh Plus Turki", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" }
-    ],
-    "Eropa": [
-      { name: "Turkey", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" },
-      { name: "Bosnia", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" },
-      { name: "Albania", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" }
-    ],
-    "USA": [
-      { name: "New York", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" },
-      { name: "California", image: "/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png" }
-    ],
-    "Asia": [
-      { name: "Malaysia", image: "/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png" },
-      { name: "Singapura", image: "/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png" }
-    ],
-    "Private Trip": [
-      { name: "Custom Umroh", image: "/lovable-uploads/f2a9a231-b30a-47e0-9730-5d5276a8aa0d.png" },
-      { name: "Family Trip", image: "/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png" }
-    ]
-  };
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -115,10 +50,9 @@ const HeroSection = () => {
               {/* Logo */}
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/lovable-uploads/c763f5f3-1693-45ce-8d6c-1d107368526d.png" 
+                  src="/lovable-uploads/5c10e529-f63f-4a40-91fd-f6569ec1bee1.png" 
                   alt="Bersafar Logo"
                   className="h-8 w-8"
-                  style={{ filter: 'brightness(0) saturate(100%) invert(100%)' }}
                 />
                 <span className="text-xl font-sf font-bold text-white">
                   Bersafar
@@ -148,108 +82,16 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-24">
-          {/* Left Content */}
-          <div className="text-left">
+        <div className="flex justify-center items-center mt-24">
+          <div className="text-center">
             <div className="animate-fade-in">
-              <div className="mb-8">
-                <p className="text-2xl md:text-3xl font-sf font-semibold text-white mb-2">
-                  Bersafar untuk{" "}
-                  <span className="text-gold-400 transition-all duration-500">
-                    {taglineWords[currentWord]}
-                  </span>
-                </p>
-                <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full"></div>
-              </div>
-
               <h1 id="hero-brand" className="text-6xl md:text-7xl lg:text-8xl font-sf font-bold text-white mb-6 leading-tight">
-                A Muslim Journey
+                <span className="text-gold-400">Bersafar</span>
                 <br />
-                <span className="text-gold-400">Starts Here</span>
+                Perjalanan Bermakna,
+                <br />
+                <span className="text-gold-400">Bersama-sama</span>
               </h1>
-
-              {/* Search Bar */}
-              <div className="relative mb-8 z-50">
-                <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl">
-                  <div className="flex items-center space-x-4">
-                    <Search className="w-6 h-6 text-spiritual-600" />
-                    <Input
-                      placeholder="Cari destinasi impian Anda..."
-                      className="border-0 bg-transparent text-lg focus:ring-0 placeholder:text-spiritual-500"
-                      onFocus={() => setSearchOpen(true)}
-                      onBlur={() => setTimeout(() => setSearchOpen(false), 200)}
-                    />
-                    <Button className="bg-gradient-to-r from-spiritual-600 to-gold-500 hover:from-spiritual-700 hover:to-gold-600 text-white px-8 py-3 rounded-xl">
-                      Cari
-                    </Button>
-                  </div>
-
-                  {searchOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-spiritual-100 max-h-80 overflow-y-auto z-[60]">
-                      {Object.entries(destinationCategories).map(([category, destinations]) => (
-                        <div key={category} className="p-4 border-b border-spiritual-100 last:border-b-0">
-                          <h3 className="font-sf font-bold text-spiritual-800 mb-2">{category}</h3>
-                          <div className="space-y-1">
-                            {destinations.map((dest) => (
-                              <button
-                                key={dest.name}
-                                className="flex items-center w-full text-left px-3 py-2 text-spiritual-600 hover:bg-spiritual-50 rounded-lg transition-colors"
-                              >
-                                <img 
-                                  src={dest.image} 
-                                  alt={dest.name}
-                                  className="w-8 h-8 rounded object-cover mr-3"
-                                />
-                                <MapPin className="w-4 h-4 mr-2" />
-                                {dest.name}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Content - Destination Showcase */}
-          <div className="relative lg:flex lg:justify-center">
-            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 lg:max-w-md lg:mx-auto">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-sf font-bold text-white mb-2">Destinasi Populer</h3>
-                <p className="text-white/80">Jelajahi keindahan dunia dengan cara halal</p>
-              </div>
-              
-              <div className="relative h-64 rounded-2xl overflow-hidden mb-4">
-                <img 
-                  src={destinations[currentSlide].image}
-                  alt={destinations[currentSlide].name}
-                  className="w-full h-full object-cover transition-all duration-1000"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <Badge className="bg-gold-500 text-spiritual-900 mb-2">
-                    {destinations[currentSlide].category}
-                  </Badge>
-                  <h4 className="text-xl font-sf font-bold text-white">
-                    {destinations[currentSlide].name}
-                  </h4>
-                </div>
-              </div>
-
-              <div className="flex justify-center space-x-2">
-                {destinations.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentSlide ? 'bg-gold-400' : 'bg-white/30'
-                    }`}
-                    onClick={() => setCurrentSlide(index)}
-                  />
-                ))}
-              </div>
             </div>
           </div>
         </div>
