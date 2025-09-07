@@ -101,7 +101,7 @@ const FloatingCartButton: React.FC = () => {
             </span>
           )}
         </div>
-        <span className="ml-2 font-sf font-semibold text-spiritual-700 text-base">
+        <span className="ml-2 font-inter font-semibold text-spiritual-700 text-base">
           Keranjang
         </span>
       </button>

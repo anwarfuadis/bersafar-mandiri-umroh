@@ -39,16 +39,16 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
         <DialogHeader className="text-center pb-6">
           <div className="mx-auto mb-4">
             <img 
-              src="/lovable-uploads/bersafar-logo.png" 
+              src="/lovable-uploads/7e0e96f1-fa3c-412b-ae94-e17bb4a778f4.png" 
               alt="Bersafar Logo"
               className="h-10 w-10 mx-auto mb-2"
             />
-            <h3 className="text-lg font-sf font-bold text-green-700">Bersafar</h3>
+            <h3 className="text-lg font-inter font-bold text-spiritual-800">Bersafar</h3>
           </div>
-          <DialogTitle className="text-2xl font-sf font-bold text-spiritual-800 mb-2">
+          <DialogTitle className="text-2xl font-inter font-bold text-spiritual-800 mb-2">
             Masuk ke Akun Anda
           </DialogTitle>
-          <p className="text-spiritual-600 font-sf leading-relaxed">
+          <p className="text-spiritual-600 font-inter leading-relaxed">
             Selamat datang kembali! Silakan masuk untuk melanjutkan
           </p>
         </DialogHeader>
@@ -56,7 +56,7 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-4">
             <div className="relative">
-              <Label htmlFor="whatsapp" className="text-spiritual-700 font-sf font-medium">
+              <Label htmlFor="whatsapp" className="text-spiritual-700 font-inter font-medium">
                 Nomor WhatsApp
               </Label>
               <div className="relative mt-1">
@@ -74,7 +74,7 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
             </div>
 
             <div className="relative">
-              <Label htmlFor="password" className="text-spiritual-700 font-sf font-medium">
+              <Label htmlFor="password" className="text-spiritual-700 font-inter font-medium">
                 Password
               </Label>
               <div className="relative mt-1">
@@ -102,13 +102,13 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
           <div className="space-y-4 pt-4">
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-sf font-bold py-4 px-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
+              className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-inter font-bold py-4 px-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
             >
               Masuk
             </Button>
             
             <div className="text-center">
-              <p className="text-sm text-spiritual-600 font-sf">
+              <p className="text-sm text-spiritual-600 font-inter">
                 Belum punya akun?{" "}
                 <span className="text-gold-600 hover:underline cursor-pointer font-semibold">Daftar sekarang</span>
               </p>

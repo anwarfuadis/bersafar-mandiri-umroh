@@ -39,7 +39,7 @@ const FAQSection = () => {
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-sf font-light text-spiritual-800 mb-6">
+          <h2 className="text-4xl md:text-5xl font-inter font-light text-spiritual-800 mb-6">
             Pertanyaan <span className="font-medium text-spiritual-600">Umum</span>
           </h2>
           <p className="text-xl text-spiritual-600">

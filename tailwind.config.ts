@@ -74,17 +74,17 @@ export default {
 					500: '#D3C29E'
 				},
 				spiritual: {
-					DEFAULT: '#0A5F38',
-					50: '#E8F5F0',
-					100: '#C7E8D6',
-					200: '#9BD8BB',
-					300: '#6FC8A0',
-					400: '#4FB887',
-					500: '#2FA86E',
-					600: '#0A5F38',
-					700: '#085030',
-					800: '#064128',
-					900: '#043220'
+					DEFAULT: '#1F283B',
+					50: '#f8f9fa',
+					100: '#f1f3f4',
+					200: '#e8eaed',
+					300: '#dadce0',
+					400: '#bdc1c6',
+					500: '#9aa0a6',
+					600: '#5f6368',
+					700: '#3c4043',
+					800: '#202124',
+					900: '#1F283B'
 				},
 				gold: {
 					DEFAULT: '#D4AF37',
@@ -159,7 +159,7 @@ export default {
 				'pulse-gentle': 'pulse-gentle 2s ease-in-out infinite'
 			},
 			fontFamily: {
-				'sf': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'system-ui', 'sans-serif'],
+				'inter': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
 			}
 		}
 	},

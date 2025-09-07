@@ -60,11 +60,11 @@ const StickyHeader = () => {
           {/* Brand Logo */}
           <div className="flex items-center space-x-3">
             <img 
-              src="/lovable-uploads/bersafar-logo.png" 
+              src="/lovable-uploads/7e0e96f1-fa3c-412b-ae94-e17bb4a778f4.png" 
               alt="Bersafar Logo"
               className="h-8 w-8"
             />
-            <span className="text-xl font-sf font-bold text-white">
+            <span className="text-xl font-inter font-bold text-white">
               Bersafar
             </span>
           </div>
@@ -73,13 +73,13 @@ const StickyHeader = () => {
           <div className="hidden md:flex items-center space-x-4">
             <Button 
               variant="ghost"
-              className="text-white hover:text-gold-300 font-sf font-medium"
+              className="text-white hover:text-gold-300 font-inter font-medium"
               onClick={() => setLoginOpen(true)}
             >
               Login
             </Button>
             <Button 
-              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-6 py-3 font-sf font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
+              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-6 py-3 font-inter font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
               onClick={() => setDialogOpen(true)}
             >
               Mulai Bersafar
@@ -106,7 +106,7 @@ const StickyHeader = () => {
           <div className="px-6 py-4 space-y-4 bg-spiritual-900/95 backdrop-blur-md border-t border-spiritual-600/30">
             <Button 
               variant="ghost"
-              className="w-full text-white hover:text-gold-300 font-sf font-medium justify-start"
+              className="w-full text-white hover:text-gold-300 font-inter font-medium justify-start"
               onClick={() => {
                 setLoginOpen(true);
                 setMobileMenuOpen(false);
@@ -115,7 +115,7 @@ const StickyHeader = () => {
               Login
             </Button>
             <Button 
-              className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-sf font-semibold rounded-full shadow-lg"
+              className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-inter font-semibold rounded-full shadow-lg"
               onClick={() => {
                 setDialogOpen(true);
                 setMobileMenuOpen(false);

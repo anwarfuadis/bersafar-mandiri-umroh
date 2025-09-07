@@ -28,7 +28,7 @@ const BersafarValues = () => {
     <section className="py-16 bg-gradient-to-br from-spiritual-50 to-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-sf font-bold text-spiritual-800 mb-4">
+          <h2 className="text-4xl font-inter font-bold text-spiritual-800 mb-4">
             Mengapa Memilih Bersafar?
           </h2>
           <p className="text-xl text-spiritual-600 max-w-3xl mx-auto">
@@ -46,7 +46,7 @@ const BersafarValues = () => {
                   </div>
                 </div>
                 
-                <h3 className="text-2xl font-sf font-bold text-spiritual-800 mb-4">
+                <h3 className="text-2xl font-inter font-bold text-spiritual-800 mb-4">
                   {value.title}
                 </h3>
                 

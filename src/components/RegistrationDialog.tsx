@@ -49,16 +49,16 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
         <DialogHeader className="text-center pb-6">
           <div className="mx-auto mb-4">
             <img 
-              src="/lovable-uploads/bersafar-logo.png" 
+              src="/lovable-uploads/7e0e96f1-fa3c-412b-ae94-e17bb4a778f4.png" 
               alt="Bersafar Logo"
               className="h-10 w-10 mx-auto mb-2"
             />
-            <h3 className="text-lg font-sf font-bold text-green-700">Bersafar</h3>
+            <h3 className="text-lg font-inter font-bold text-spiritual-800">Bersafar</h3>
           </div>
-          <DialogTitle className="text-2xl font-sf font-bold text-spiritual-800 mb-2">
+          <DialogTitle className="text-2xl font-inter font-bold text-spiritual-800 mb-2">
             Mulai Perjalanan Halal Anda
           </DialogTitle>
-          <p className="text-spiritual-600 font-sf leading-relaxed">
+          <p className="text-spiritual-600 font-inter leading-relaxed">
             Daftar sekarang untuk mendapatkan penawaran terbaik dan panduan perjalanan yang sesuai syariah
           </p>
         </DialogHeader>
@@ -66,7 +66,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-4">
             <div className="relative">
-              <Label htmlFor="fullName" className="text-spiritual-700 font-sf font-medium">
+              <Label htmlFor="fullName" className="text-spiritual-700 font-inter font-medium">
                 Nama Lengkap
               </Label>
               <div className="relative mt-1">
@@ -84,7 +84,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
             </div>
 
             <div className="relative">
-              <Label htmlFor="whatsapp" className="text-spiritual-700 font-sf font-medium">
+              <Label htmlFor="whatsapp" className="text-spiritual-700 font-inter font-medium">
                 Nomor WhatsApp
               </Label>
               <div className="relative mt-1">
@@ -102,7 +102,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
             </div>
 
             <div className="relative">
-              <Label htmlFor="email" className="text-spiritual-700 font-sf font-medium">
+              <Label htmlFor="email" className="text-spiritual-700 font-inter font-medium">
                 Email
               </Label>
               <div className="relative mt-1">
@@ -120,7 +120,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
             </div>
 
             <div className="relative">
-              <Label htmlFor="city" className="text-spiritual-700 font-sf font-medium">
+              <Label htmlFor="city" className="text-spiritual-700 font-inter font-medium">
                 Kota
               </Label>
               <div className="relative mt-1">
@@ -138,7 +138,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
             </div>
 
             <div className="relative">
-              <Label htmlFor="birthDate" className="text-spiritual-700 font-sf font-medium">
+              <Label htmlFor="birthDate" className="text-spiritual-700 font-inter font-medium">
                 Tanggal Lahir
               </Label>
               <div className="relative mt-1">
@@ -155,7 +155,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
             </div>
 
             <div className="relative">
-              <Label htmlFor="travelType" className="text-spiritual-700 font-sf font-medium">
+              <Label htmlFor="travelType" className="text-spiritual-700 font-inter font-medium">
                 Jenis Perjalanan
               </Label>
               <div className="relative mt-1">
@@ -176,13 +176,13 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
           <div className="space-y-4 pt-4">
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-sf font-bold py-4 px-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
+              className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-inter font-bold py-4 px-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
             >
               Mulai Perjalanan Saya
             </Button>
             
             <div className="text-center">
-              <p className="text-sm text-spiritual-600 font-sf">
+              <p className="text-sm text-spiritual-600 font-inter">
                 Sudah punya akun?{" "}
                 <span className="text-gold-600 hover:underline cursor-pointer font-semibold">Masuk di sini</span>
               </p>

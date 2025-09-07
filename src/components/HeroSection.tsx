@@ -7,7 +7,7 @@ const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
   const [currentText, setCurrentText] = useState(0);
 
-  const switchingTexts = ["Bersama-sama", "Berpahala", "Bertaqwa"];
+  const switchingTexts = ["Bersama", "Berpahala", "Bertaqwa"];
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -24,29 +24,16 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Cappadocia Background */}
+      {/* Desert Background */}
       <div className="absolute inset-0">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
           style={{
-            backgroundImage: `url('/lovable-uploads/61639d0c-b419-40b0-b566-dec27b88f75e.png')`,
+            backgroundImage: `url('/desert-background.jpg')`,
             transform: `translateY(${scrollY * 0.5}px)`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/40" />
-      </div>
-
-      {/* Auto-play Video Overlay */}
-      <div className="absolute inset-0 opacity-30 pointer-events-none">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-        </video>
       </div>
 
       {/* Content */}
@@ -58,18 +45,18 @@ const HeroSection = () => {
               {/* Logo */}
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/lovable-uploads/bersafar-logo.png" 
+                  src="/lovable-uploads/7e0e96f1-fa3c-412b-ae94-e17bb4a778f4.png" 
                   alt="Bersafar Logo"
                   className="h-8 w-8"
                 />
-                <span className="text-xl font-sf font-bold text-white">
+                <span className="text-xl font-inter font-bold text-white">
                   Bersafar
                 </span>
               </div>
 
               {/* CTA Button */}
               <Button 
-                className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-6 py-3 font-sf font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
+                className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-6 py-3 font-inter font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
                 onClick={() => setDialogOpen(true)}
               >
                 Mulai Bersafar
@@ -81,13 +68,21 @@ const HeroSection = () => {
         <div className="flex justify-center items-center mt-24">
           <div className="text-center">
             <div className="animate-fade-in">
-              <h1 id="hero-brand" className="text-6xl md:text-7xl lg:text-8xl font-sf font-bold text-white mb-6 leading-tight">
+              <h1 id="hero-brand" className="text-6xl md:text-7xl lg:text-8xl font-inter font-bold text-white mb-6 leading-tight">
                 <span className="text-gold-400">Bersafar</span>
                 <br />
                 Perjalanan Bermakna,
                 <br />
                 <span className="text-gold-400 transition-all duration-500">{switchingTexts[currentText]}</span>
               </h1>
+              <div className="mt-8">
+                <Button 
+                  className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-8 py-4 font-inter font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
+                  onClick={() => setDialogOpen(true)}
+                >
+                  Mulai Bersafar
+                </Button>
+              </div>
             </div>
           </div>
         </div>

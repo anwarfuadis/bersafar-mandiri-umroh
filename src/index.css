@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -71,22 +71,22 @@
 }
 
 /* Custom Fonts */
-.font-sf {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+.font-inter {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* Custom Colors */
 :root {
-  --spiritual-50: #f0f9ff;
-  --spiritual-100: #e0f2fe;
-  --spiritual-200: #bae6fd;
-  --spiritual-300: #7dd3fc;
-  --spiritual-400: #38bdf8;
-  --spiritual-500: #0ea5e9;
-  --spiritual-600: #0284c7;
-  --spiritual-700: #0369a1;
-  --spiritual-800: #075985;
-  --spiritual-900: #0c4a6e;
+  --spiritual-50: #f8f9fa;
+  --spiritual-100: #f1f3f4;
+  --spiritual-200: #e8eaed;
+  --spiritual-300: #dadce0;
+  --spiritual-400: #bdc1c6;
+  --spiritual-500: #9aa0a6;
+  --spiritual-600: #5f6368;
+  --spiritual-700: #3c4043;
+  --spiritual-800: #202124;
+  --spiritual-900: #1F283B;
   --gold-400: #fbbf24;
   --gold-500: #f59e0b;
   --gold-600: #d97706;
