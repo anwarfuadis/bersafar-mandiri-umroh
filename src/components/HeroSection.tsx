@@ -27,10 +27,9 @@ const HeroSection = () => {
       {/* Desert Background */}
       <div className="absolute inset-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
           style={{
             backgroundImage: `url('/desert-background.jpg')`,
-            transform: `translateY(${scrollY * 0.5}px)`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/40" />
@@ -68,7 +67,7 @@ const HeroSection = () => {
         <div className="flex justify-center items-center mt-24">
           <div className="text-center">
             <div className="animate-fade-in">
-              <h1 id="hero-brand" className="text-6xl md:text-7xl lg:text-8xl font-inter font-bold text-white mb-6 leading-tight">
+              <h1 id="hero-brand" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-inter font-bold text-white mb-6 leading-tight">
                 <span className="text-gold-400">Bersafar</span>
                 <br />
                 Perjalanan Bermakna,
@@ -77,7 +76,7 @@ const HeroSection = () => {
               </h1>
               <div className="mt-8">
                 <Button 
-                  className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-8 py-4 font-inter font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
+                  className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-12 py-6 font-inter font-bold text-xl rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
                   onClick={() => setDialogOpen(true)}
                 >
                   Mulai Bersafar

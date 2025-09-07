@@ -54,42 +54,52 @@ const LayananBersafar = () => {
           </p>
         </div>
 
-        {/* Services Carousel */}
-        <Carousel className="w-full max-w-6xl mx-auto">
-          <CarouselContent>
-            {services.map((service) => (
-              <CarouselItem key={service.id}>
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                  <div className="p-8">
-                    <div className="flex flex-col lg:flex-row gap-8">
-                      {/* Left Content */}
-                      <div className="lg:w-1/2">
-                        <div className="mb-6">
-                          <img 
-                            src={service.image} 
-                            alt={service.title}
-                            className="w-full h-64 object-cover rounded-xl"
-                          />
-                        </div>
-                        <h3 className="text-3xl font-inter font-bold text-spiritual-800 mb-4">
-                          {service.title}
-                        </h3>
-                        <p className="text-spiritual-600 leading-relaxed mb-6">
-                          {service.description}
-                        </p>
-                        <Button 
-                          onClick={service.buttonAction}
-                          className="bg-gradient-to-r from-spiritual-600 to-spiritual-700 hover:from-spiritual-700 hover:to-spiritual-800 text-white font-inter font-bold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-105"
-                        >
-                          {service.buttonText}
-                        </Button>
-                      </div>
-                      
-                      {/* Right Preview Cards */}
-                      <div className="lg:w-1/2">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          {service.previewCards.map((card, index) => (
-                            <div key={index} className="bg-gradient-to-br from-spiritual-50 to-gold-50 rounded-xl p-4 border border-spiritual-100 hover:shadow-md transition-all duration-300 hover:scale-105">
+        {/* Services List */}
+        <div className="space-y-16">
+          {services.map((service) => (
+            <div key={service.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <div className="p-8">
+                <div className="flex flex-col lg:flex-row gap-8">
+                  {/* Left Content */}
+                  <div className="lg:w-1/2">
+                    <div className="mb-6">
+                      <img 
+                        src={service.image} 
+                        alt={service.title}
+                        className="w-full h-64 object-cover rounded-xl"
+                      />
+                    </div>
+                    <h3 className="text-3xl font-inter font-bold text-spiritual-800 mb-4">
+                      {service.title}
+                    </h3>
+                    <p className="text-spiritual-600 leading-relaxed mb-6">
+                      {service.description}
+                    </p>
+                    <Button 
+                      onClick={service.buttonAction}
+                      className="bg-gradient-to-r from-spiritual-600 to-spiritual-700 hover:from-spiritual-700 hover:to-spiritual-800 text-white font-inter font-bold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-105"
+                    >
+                      {service.buttonText}
+                    </Button>
+                  </div>
+                  
+                  {/* Right Preview Cards Carousel */}
+                  <div className="lg:w-1/2">
+                    <Carousel className="w-full">
+                      <CarouselContent className="-ml-2 md:-ml-4">
+                        {service.previewCards.map((card, index) => (
+                          <CarouselItem key={index} className="pl-2 md:pl-4 basis-3/4 md:basis-1/3">
+                            <div className="bg-gradient-to-br from-spiritual-50 to-gold-50 rounded-xl p-4 border border-spiritual-100 hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer h-full">
+                              {service.id === 1 && (
+                                <div className="w-full h-20 bg-gradient-to-br from-spiritual-100 to-spiritual-200 rounded-lg mb-3 flex items-center justify-center">
+                                  <span className="text-2xl">🕌</span>
+                                </div>
+                              )}
+                              {service.id === 2 && (
+                                <div className="w-full h-20 bg-gradient-to-br from-gold-100 to-gold-200 rounded-lg mb-3 flex items-center justify-center">
+                                  <span className="text-2xl">⭐</span>
+                                </div>
+                              )}
                               <h4 className="font-inter font-bold text-spiritual-800 mb-2 text-sm">{card.title}</h4>
                               {service.id === 1 ? (
                                 <>
@@ -107,18 +117,27 @@ const LayananBersafar = () => {
                                 </>
                               )}
                             </div>
-                          ))}
-                        </div>
-                      </div>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious className="left-2" />
+                      <CarouselNext className="right-2" />
+                    </Carousel>
+                    <div className="text-center mt-4">
+                      <Button 
+                        variant="outline"
+                        onClick={service.buttonAction}
+                        className="text-spiritual-600 hover:text-spiritual-700 border-spiritual-300 hover:bg-spiritual-50"
+                      >
+                        Lihat Semua
+                      </Button>
                     </div>
                   </div>
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-4" />
-          <CarouselNext className="right-4" />
-        </Carousel>
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Bottom CTA */}
         <div className="text-center mt-12">
