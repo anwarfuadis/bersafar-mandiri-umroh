@@ -1,155 +1,276 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { useNavigate } from "react-router-dom";
-import temanSafarImg from "@/assets/teman-safar-illustration.jpg";
-import umrohImg from "@/assets/umroh-illustration.jpg";
+import { MapPin, Calendar, Star } from "lucide-react";
 
 const LayananBersafar = () => {
-  const navigate = useNavigate();
-
-  const services = [
+  const temanSafarPackages = [
     {
       id: 1,
-      title: "Teman Safar",
-      description: "Temukan teman perjalanan yang sesuai dengan kriteria Anda. Bergabunglah dengan jamaah yang telah terverifikasi untuk pengalaman spiritual yang berkesan.",
-      buttonText: "Teman Safar",
-      buttonAction: () => navigate("/cari-teman-safar"),
-      image: temanSafarImg,
-      previewCards: [
-        { title: "Umroh Bareng Sister", location: "Makkah • Madinah", date: "15 Jan 2025", slots: "3/8 sister" },
-        { title: "Haji Furoda 2025", location: "Saudi Arabia", date: "Mar 2025", slots: "5/12 jamaah" },
-        { title: "Turkey Adventure", location: "Istanbul • Cappadocia", date: "20 Feb", slots: "2/6 keluarga" },
-        { title: "Malaysia Halal Food", location: "KL • Johor", date: "8 Mar", slots: "4/10 peserta" },
-        { title: "Bosnia Heritage", location: "Sarajevo • Mostar", date: "12 Apr", slots: "1/8 jamaah" }
-      ]
+      title: "Turkey Autumn",
+      location: "Istanbul & Cappadocia",
+      duration: "8 Hari 7 Malam",
+      price: "Rp 18.500.000",
+      image: "/lovable-uploads/c763f5f3-1693-45ce-8d6c-1d107368526d.png",
+      participants: "12 orang",
+      highlights: ["Balloon ride", "Blue Mosque", "Bosphorus cruise"]
     },
     {
       id: 2,
-      title: "Umroh Mandiri",
-      description: "Rencanakan perjalanan umroh sesuai keinginan Anda dengan paket fleksibel yang dapat disesuaikan. Dari ekonomi hingga premium, semua tersedia.",
-      buttonText: "Lihat Paket Umroh",
-      buttonAction: () => navigate("/umroh-mandiri"),
-      image: umrohImg,
-      previewCards: [
-        { title: "Umroh Ekonomi", price: "Rp 25.900.000", duration: "9 hari", hotel: "⭐⭐⭐" },
-        { title: "Umroh Plus", price: "Rp 32.500.000", duration: "12 hari", hotel: "⭐⭐⭐⭐" },
-        { title: "Umroh VIP", price: "Rp 45.000.000", duration: "14 hari", hotel: "⭐⭐⭐⭐⭐" },
-        { title: "Umroh Keluarga", price: "Rp 38.900.000", duration: "10 hari", hotel: "⭐⭐⭐⭐" },
-        { title: "Umroh Ramadan", price: "Rp 52.000.000", duration: "15 hari", hotel: "⭐⭐⭐⭐⭐" }
-      ]
+      title: "Japan Sakura",
+      location: "Tokyo & Kyoto",
+      duration: "7 Hari 6 Malam", 
+      price: "Rp 25.000.000",
+      image: "/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png",
+      participants: "15 orang",
+      highlights: ["Cherry blossoms", "Mount Fuji", "Traditional temples"]
+    },
+    {
+      id: 3,
+      title: "Morocco Adventure",
+      location: "Marrakech & Casablanca",
+      duration: "9 Hari 8 Malam",
+      price: "Rp 22.000.000", 
+      image: "/lovable-uploads/0447b7fb-94d7-470d-84ff-72fa7f50a25f.png",
+      participants: "10 orang",
+      highlights: ["Sahara desert", "Atlas mountains", "Medina tours"]
+    },
+    {
+      id: 4,
+      title: "Egypt Heritage",
+      location: "Cairo & Luxor",
+      duration: "6 Hari 5 Malam",
+      price: "Rp 20.500.000",
+      image: "/lovable-uploads/5c10e529-f63f-4a40-91fd-f6569ec1bee1.png", 
+      participants: "12 orang",
+      highlights: ["Pyramids", "Nile cruise", "Valley of Kings"]
+    },
+    {
+      id: 5,
+      title: "Dubai Luxury",
+      location: "Dubai & Abu Dhabi", 
+      duration: "5 Hari 4 Malam",
+      price: "Rp 15.000.000",
+      image: "/assets/teman-safar-illustration.jpg",
+      participants: "8 orang",
+      highlights: ["Burj Khalifa", "Desert safari", "Gold souk"]
+    }
+  ];
+
+  const umrohPackages = [
+    {
+      title: "Umroh Ekonomi",
+      price: "Rp 18.500.000",
+      duration: "9 Hari",
+      airline: "Garuda Indonesia",
+      hotel: "Hotel Bintang 3",
+      image: "/assets/umroh-illustration.jpg",
+      features: ["Visa", "Tiket", "Hotel", "Muthawif"]
+    },
+    {
+      title: "Umroh Plus",
+      price: "Rp 25.900.000", 
+      duration: "12 Hari",
+      airline: "Saudi Airlines",
+      hotel: "Hotel Bintang 4",
+      image: "/assets/umroh-illustration.jpg",
+      features: ["Visa", "Tiket", "Hotel", "Muthawif", "City Tour"]
+    },
+    {
+      title: "Umroh VIP",
+      price: "Rp 35.000.000",
+      duration: "14 Hari", 
+      airline: "Emirates",
+      hotel: "Hotel Bintang 5",
+      image: "/assets/umroh-illustration.jpg",
+      features: ["Visa", "Tiket", "Hotel", "Muthawif", "City Tour", "Ziarah"]
+    },
+    {
+      title: "Umroh Keluarga",
+      price: "Rp 28.900.000",
+      duration: "10 Hari",
+      airline: "Qatar Airways", 
+      hotel: "Hotel Bintang 4",
+      image: "/assets/umroh-illustration.jpg",
+      features: ["Visa", "Tiket", "Hotel", "Muthawif", "Family Room"]
+    },
+    {
+      title: "Umroh Ramadan",
+      price: "Rp 42.000.000",
+      duration: "15 Hari",
+      airline: "Turkish Airlines",
+      hotel: "Hotel Bintang 5", 
+      image: "/assets/umroh-illustration.jpg",
+      features: ["Visa", "Tiket", "Hotel", "Muthawif", "Special Iftar"]
     }
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-spiritual-50 to-gold-50">
+    <section className="py-16 bg-gradient-to-br from-white to-islamic-50 islamic-pattern-overlay">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-inter font-bold text-spiritual-800 mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-inter font-bold text-spiritual-800 mb-6">
             Layanan Bersafar
           </h2>
-          <p className="text-lg text-spiritual-600 max-w-3xl mx-auto">
-            Kami memahami kebutuhan unik setiap perjalanan spiritual Anda. Pilih layanan yang sesuai dengan kebutuhan dan preferensi Anda.
+          <p className="text-xl text-spiritual-600 max-w-3xl mx-auto">
+            Temukan pengalaman perjalanan spiritual yang tak terlupakan dengan layanan terpercaya kami
           </p>
         </div>
 
-        {/* Services List */}
-        <div className="space-y-16">
-          {services.map((service) => (
-            <div key={service.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <div className="p-8">
-                <div className="flex flex-col lg:flex-row gap-8">
-                  {/* Left Content */}
-                  <div className="lg:w-1/2">
-                    <div className="mb-6">
-                      <img 
-                        src={service.image} 
-                        alt={service.title}
-                        className="w-full h-64 object-cover rounded-xl"
-                      />
-                    </div>
-                    <h3 className="text-3xl font-inter font-bold text-spiritual-800 mb-4">
-                      {service.title}
-                    </h3>
-                    <p className="text-spiritual-600 leading-relaxed mb-6">
-                      {service.description}
-                    </p>
-                    <Button 
-                      onClick={service.buttonAction}
-                      className="bg-gradient-to-r from-spiritual-600 to-spiritual-700 hover:from-spiritual-700 hover:to-spiritual-800 text-white font-inter font-bold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-105"
-                    >
-                      {service.buttonText}
-                    </Button>
-                  </div>
-                  
-                  {/* Right Preview Cards Carousel */}
-                  <div className="lg:w-1/2">
-                    <Carousel className="w-full">
-                      <CarouselContent className="-ml-2 md:-ml-4">
-                        {service.previewCards.map((card, index) => (
-                          <CarouselItem key={index} className="pl-2 md:pl-4 basis-3/4 md:basis-1/3">
-                            <div className="bg-gradient-to-br from-spiritual-50 to-gold-50 rounded-xl p-4 border border-spiritual-100 hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer h-full">
-                              {service.id === 1 && (
-                                <div className="w-full h-20 bg-gradient-to-br from-spiritual-100 to-spiritual-200 rounded-lg mb-3 flex items-center justify-center">
-                                  <span className="text-2xl">🕌</span>
-                                </div>
-                              )}
-                              {service.id === 2 && (
-                                <div className="w-full h-20 bg-gradient-to-br from-gold-100 to-gold-200 rounded-lg mb-3 flex items-center justify-center">
-                                  <span className="text-2xl">⭐</span>
-                                </div>
-                              )}
-                              <h4 className="font-inter font-bold text-spiritual-800 mb-2 text-sm">{card.title}</h4>
-                              {service.id === 1 ? (
-                                <>
-                                  <p className="text-xs text-spiritual-600 mb-1">{card.location}</p>
-                                  <p className="text-xs text-spiritual-600 mb-2">{card.date}</p>
-                                  <div className="bg-spiritual-600 text-white px-2 py-1 rounded-full text-xs font-medium inline-block">
-                                    {card.slots}
-                                  </div>
-                                </>
-                              ) : (
-                                <>
-                                  <p className="text-sm font-bold text-spiritual-700 mb-1">{card.price}</p>
-                                  <p className="text-xs text-spiritual-600 mb-1">{card.duration}</p>
-                                  <p className="text-xs text-gold-600">{card.hotel}</p>
-                                </>
-                              )}
-                            </div>
-                          </CarouselItem>
-                        ))}
-                      </CarouselContent>
-                      <CarouselPrevious className="left-2" />
-                      <CarouselNext className="right-2" />
-                    </Carousel>
-                    <div className="text-center mt-4">
-                      <Button 
-                        variant="outline"
-                        onClick={service.buttonAction}
-                        className="text-spiritual-600 hover:text-spiritual-700 border-spiritual-300 hover:bg-spiritual-50"
-                      >
-                        Lihat Semua
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+        {/* Teman Safar Section */}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-inter font-bold text-spiritual-800 mb-4">
+              Teman Safar
+            </h3>
+            <p className="text-lg text-spiritual-600 max-w-2xl mx-auto">
+              Bergabunglah dengan jamaah lain dalam perjalanan berkesan ke destinasi halal pilihan
+            </p>
+          </div>
+
+          <div className="relative">
+            <Carousel
+              opts={{
+                align: "start",
+                slidesToScroll: 1,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {temanSafarPackages.map((pkg) => (
+                  <CarouselItem key={pkg.id} className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-[28.5%]">
+                    <Card className="group hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-spiritual-100 hover:border-islamic-primary overflow-hidden h-full">
+                      <div className="relative h-64 overflow-hidden">
+                        <img 
+                          src={pkg.image}
+                          alt={pkg.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                        <div className="absolute top-4 right-4 bg-islamic-primary text-white px-3 py-2 rounded-full text-sm font-semibold shadow-lg">
+                          {pkg.participants}
+                        </div>
+                      </div>
+                      <CardContent className="p-8">
+                        <h4 className="text-2xl font-inter font-bold text-spiritual-800 mb-3">
+                          {pkg.title}
+                        </h4>
+                        <p className="text-spiritual-600 mb-3 flex items-center text-base">
+                          <MapPin className="w-5 h-5 mr-2" />
+                          {pkg.location}
+                        </p>
+                        <p className="text-spiritual-600 mb-4 flex items-center text-base">
+                          <Calendar className="w-5 h-5 mr-2" />
+                          {pkg.duration}
+                        </p>
+                        <div className="mb-6">
+                          <p className="text-3xl font-bold text-islamic-primary mb-3">{pkg.price}</p>
+                          <div className="flex flex-wrap gap-2">
+                            {pkg.highlights.map((highlight, index) => (
+                              <span key={index} className="bg-islamic-100 text-islamic-dark px-3 py-2 rounded-full text-sm font-medium">
+                                {highlight}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <Button className="w-full bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white font-semibold rounded-full py-3 text-base">
+                          Bergabung Sekarang
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-12" />
+              <CarouselNext className="hidden md:flex -right-12" />
+            </Carousel>
+          </div>
+          
+          <div className="text-center mt-8">
+            <Button 
+              className="bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white font-semibold rounded-full px-8 py-3 text-base"
+              onClick={() => window.location.href = '/teman-safar'}
+            >
+              Lihat Semua Teman Safar
+            </Button>
+          </div>
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-12">
-          <p className="text-spiritual-600 mb-4">
-            Masih bingung memilih? Tim kami siap membantu Anda
-          </p>
-          <Button 
-            variant="outline" 
-            className="border-spiritual-300 text-spiritual-700 hover:bg-spiritual-100 font-inter font-medium px-8 py-3"
-          >
-            Konsultasi Gratis
-          </Button>
+        {/* Umroh Mandiri Section */}
+        <div>
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-inter font-bold text-spiritual-800 mb-4">
+              Umroh Mandiri
+            </h3>
+            <p className="text-lg text-spiritual-600 max-w-2xl mx-auto">
+              Atur perjalanan umroh sesuai kebutuhan dan budget Anda dengan fleksibilitas penuh
+            </p>
+          </div>
+
+          <div className="relative">
+            <Carousel
+              opts={{
+                align: "start",
+                slidesToScroll: 1,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {umrohPackages.map((pkg, index) => (
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-[28.5%]">
+                    <Card className="group hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-spiritual-100 hover:border-islamic-primary overflow-hidden h-full">
+                      <div className="relative h-64 overflow-hidden">
+                        <img 
+                          src={pkg.image}
+                          alt={pkg.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                        <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-2 rounded-full text-sm font-semibold shadow-lg">
+                          {pkg.duration}
+                        </div>
+                      </div>
+                      <CardContent className="p-8">
+                        <h4 className="text-2xl font-inter font-bold text-spiritual-800 mb-3">
+                          {pkg.title}
+                        </h4>
+                        <p className="text-spiritual-600 mb-3 flex items-center text-base">
+                          <MapPin className="w-5 h-5 mr-2" />
+                          {pkg.airline}
+                        </p>
+                        <p className="text-spiritual-600 mb-4 flex items-center text-base">
+                          <Star className="w-5 h-5 mr-2" />
+                          {pkg.hotel}
+                        </p>
+                        <div className="mb-6">
+                          <p className="text-3xl font-bold text-green-600 mb-3">{pkg.price}</p>
+                          <div className="flex flex-wrap gap-2">
+                            {pkg.features.map((feature, featureIndex) => (
+                              <span key={featureIndex} className="bg-green-100 text-green-700 px-3 py-2 rounded-full text-sm font-medium">
+                                {feature}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <Button className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-full py-3 text-base">
+                          Pilih Paket
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-12" />
+              <CarouselNext className="hidden md:flex -right-12" />
+            </Carousel>
+          </div>
+          
+          <div className="text-center mt-8">
+            <Button 
+              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-full px-8 py-3 text-base"
+              onClick={() => window.location.href = '/umroh-mandiri'}
+            >
+              Lihat Semua Umroh Mandiri
+            </Button>
+          </div>
         </div>
       </div>
     </section>

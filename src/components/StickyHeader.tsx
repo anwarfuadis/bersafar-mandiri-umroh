@@ -59,11 +59,11 @@ const StickyHeader = () => {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Brand Logo */}
           <div className="flex items-center space-x-3">
-            <img 
-              src="/lovable-uploads/7e0e96f1-fa3c-412b-ae94-e17bb4a778f4.png" 
-              alt="Bersafar Logo"
-              className="h-8 w-8"
-            />
+          <img 
+            src="/lovable-uploads/272925e1-b602-43c2-b45f-ca66db286237.png" 
+            alt="Bersafar Logo"
+            className="h-8 w-8"
+          />
             <span className="text-xl font-inter font-bold text-white">
               Bersafar
             </span>

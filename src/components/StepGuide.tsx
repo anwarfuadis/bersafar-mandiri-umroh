@@ -22,7 +22,7 @@ const StepGuide = () => {
       </div>
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-8">
         {/* Header */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-sf font-bold mb-7 text-white text-center drop-shadow">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-inter font-bold mb-7 text-white text-center drop-shadow">
           Panduan Perjalanan Halal
         </h2>
 
@@ -211,7 +211,7 @@ const StepGuide = () => {
 
         <div className="mt-12 text-center">
           <Button 
-            className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-bold text-base py-6 px-8 rounded-full hover:scale-105 transition-all duration-300 shadow-2xl"
+            className="bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white font-bold text-base py-6 px-8 rounded-full hover:scale-105 transition-all duration-300 shadow-2xl"
           >
             Mulai Umroh Mandiri <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

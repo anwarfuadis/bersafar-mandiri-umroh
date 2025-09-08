@@ -24,15 +24,18 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Desert Background */}
+      {/* Islamic Geometric Background */}
       <div className="absolute inset-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('/desert-background.jpg')`,
+            backgroundImage: `url('/islamic-geometric-bg.jpg')`,
+            transform: `translateY(${scrollY * 0.5}px)`,
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/40" />
+        <div className="absolute inset-0 islamic-pattern opacity-60" />
+        <div className="absolute inset-0 islamic-pattern-overlay opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-br from-spiritual-900/70 via-spiritual-800/50 to-spiritual-900/80" />
       </div>
 
       {/* Content */}
@@ -44,9 +47,9 @@ const HeroSection = () => {
               {/* Logo */}
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/lovable-uploads/7e0e96f1-fa3c-412b-ae94-e17bb4a778f4.png" 
+                  src="/lovable-uploads/272925e1-b602-43c2-b45f-ca66db286237.png" 
                   alt="Bersafar Logo"
-                  className="h-8 w-8"
+                  className="h-8 w-8 brightness-0 invert"
                 />
                 <span className="text-xl font-inter font-bold text-white">
                   Bersafar
@@ -55,7 +58,7 @@ const HeroSection = () => {
 
               {/* CTA Button */}
               <Button 
-                className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-6 py-3 font-inter font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
+                className="bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white px-6 py-3 font-inter font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-islamic-light/30"
                 onClick={() => setDialogOpen(true)}
               >
                 Mulai Bersafar
@@ -67,16 +70,24 @@ const HeroSection = () => {
         <div className="flex justify-center items-center mt-24">
           <div className="text-center">
             <div className="animate-fade-in">
-              <h1 id="hero-brand" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-inter font-bold text-white mb-6 leading-tight">
-                <span className="text-gold-400">Bersafar</span>
+              {/* Logo in hero section */}
+              <div className="mb-8 flex justify-center">
+                <img 
+                  src="/lovable-uploads/272925e1-b602-43c2-b45f-ca66db286237.png" 
+                  alt="Bersafar Logo"
+                  className="h-20 w-20 brightness-0 invert"
+                />
+              </div>
+              <h1 id="hero-brand" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-inter font-bold text-white mb-6 leading-tight">
+                <span className="text-islamic-primary">Bersafar</span>
                 <br />
                 Perjalanan Bermakna,
                 <br />
-                <span className="text-gold-400 transition-all duration-500">{switchingTexts[currentText]}</span>
+                <span className="text-islamic-primary transition-all duration-500">{switchingTexts[currentText]}</span>
               </h1>
               <div className="mt-8">
                 <Button 
-                  className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-12 py-6 font-inter font-bold text-xl rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
+                  className="bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white px-16 py-8 font-inter font-bold text-2xl rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 border border-islamic-light/30"
                   onClick={() => setDialogOpen(true)}
                 >
                   Mulai Bersafar
