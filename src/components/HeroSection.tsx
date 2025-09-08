@@ -30,11 +30,21 @@ const HeroSection = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url('/islamic-geometric-bg.jpg')`,
-            transform: `translateY(${scrollY * 0.5}px)`,
+            transform: `translateY(${scrollY * 0.3}px)`,
           }}
         />
-        <div className="absolute inset-0 islamic-pattern opacity-60" />
-        <div className="absolute inset-0 islamic-pattern-overlay opacity-40" />
+        <div 
+          className="absolute inset-0 hero-islamic-pattern opacity-60" 
+          style={{
+            transform: `translateY(${scrollY * 0.1}px)`,
+          }}
+        />
+        <div 
+          className="absolute inset-0 hero-islamic-overlay opacity-40"
+          style={{
+            transform: `translateY(${scrollY * 0.2}px)`,
+          }}
+        />
         <div className="absolute inset-0 bg-gradient-to-br from-spiritual-900/70 via-spiritual-800/50 to-spiritual-900/80" />
       </div>
 
@@ -87,7 +97,7 @@ const HeroSection = () => {
               </h1>
               <div className="mt-8">
                 <Button 
-                  className="bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white px-16 py-8 font-inter font-bold text-2xl rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 border border-islamic-light/30"
+                  className="bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white px-8 py-4 font-inter font-bold text-lg rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 border border-islamic-light/30"
                   onClick={() => setDialogOpen(true)}
                 >
                   Mulai Bersafar

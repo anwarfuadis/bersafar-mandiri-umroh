@@ -106,7 +106,7 @@ const LayananBersafar = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-white to-islamic-50 islamic-pattern-overlay">
+    <section className="py-16 bg-gradient-to-br from-white to-islamic-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-inter font-bold text-spiritual-800 mb-6">

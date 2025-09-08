@@ -10,7 +10,7 @@ import FloatingCartButton from "@/components/FloatingCartButton";
 
 const Index = () => {
   return (
-    <div className="min-h-screen islamic-pattern">
+    <div className="min-h-screen">
       <StickyHeader />
       <HeroSection />
       <LayananBersafar />

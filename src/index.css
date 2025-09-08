@@ -98,16 +98,15 @@
 }
 
 /* Islamic Geometric Patterns */
-.islamic-pattern {
+.hero-islamic-pattern {
   background-image: 
     radial-gradient(circle at 25% 25%, rgba(225, 189, 124, 0.1) 2px, transparent 2px),
     radial-gradient(circle at 75% 75%, rgba(225, 189, 124, 0.05) 1px, transparent 1px),
     linear-gradient(45deg, transparent 30%, rgba(225, 189, 124, 0.03) 30%, rgba(225, 189, 124, 0.03) 70%, transparent 70%);
   background-size: 60px 60px, 40px 40px, 120px 120px;
-  animation: patternFloat 20s ease-in-out infinite;
 }
 
-.islamic-pattern-overlay {
+.hero-islamic-overlay {
   background: 
     radial-gradient(ellipse at center, rgba(225, 189, 124, 0.08) 0%, transparent 70%),
     conic-gradient(from 0deg at 50% 50%, 
@@ -120,15 +119,16 @@
       rgba(225, 189, 124, 0.1) 360deg
     );
   background-size: 100% 100%, 200px 200px;
-  animation: patternRotate 30s linear infinite;
+}
+
+.islamic-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(225, 189, 124, 0.05) 1px, transparent 1px),
+    linear-gradient(45deg, transparent 30%, rgba(225, 189, 124, 0.02) 30%, rgba(225, 189, 124, 0.02) 70%, transparent 70%);
+  background-size: 40px 40px, 80px 80px;
 }
 
 @keyframes patternFloat {
   0%, 100% { transform: translateY(0px) scale(1); }
   50% { transform: translateY(-10px) scale(1.02); }
-}
-
-@keyframes patternRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }

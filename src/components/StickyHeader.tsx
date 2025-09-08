@@ -73,13 +73,13 @@ const StickyHeader = () => {
           <div className="hidden md:flex items-center space-x-4">
             <Button 
               variant="ghost"
-              className="text-white hover:text-gold-300 font-inter font-medium"
+              className="text-white hover:text-islamic-primary font-inter font-medium"
               onClick={() => setLoginOpen(true)}
             >
               Login
             </Button>
             <Button 
-              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 px-6 py-3 font-inter font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gold-400/30"
+              className="bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white px-6 py-3 font-inter font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-islamic-light/30"
               onClick={() => setDialogOpen(true)}
             >
               Mulai Bersafar
@@ -106,7 +106,7 @@ const StickyHeader = () => {
           <div className="px-6 py-4 space-y-4 bg-spiritual-900/95 backdrop-blur-md border-t border-spiritual-600/30">
             <Button 
               variant="ghost"
-              className="w-full text-white hover:text-gold-300 font-inter font-medium justify-start"
+              className="w-full text-white hover:text-islamic-primary font-inter font-medium justify-start"
               onClick={() => {
                 setLoginOpen(true);
                 setMobileMenuOpen(false);
@@ -115,7 +115,7 @@ const StickyHeader = () => {
               Login
             </Button>
             <Button 
-              className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-spiritual-900 font-inter font-semibold rounded-full shadow-lg"
+              className="w-full bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white font-inter font-semibold rounded-full shadow-lg"
               onClick={() => {
                 setDialogOpen(true);
                 setMobileMenuOpen(false);
