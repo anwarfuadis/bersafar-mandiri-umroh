@@ -97,49 +97,28 @@
   --teal-600: #0d9488;
 }
 
-/* Islamic Geometric Patterns with Parallax */
-.hero-islamic-pattern {
+/* Bersafar Geometric Patterns */
+.hero-bersafar-pattern {
   background-image: 
-    /* Star Pattern */
-    radial-gradient(circle at 20% 80%, rgba(29, 181, 132, 0.15) 2px, transparent 3px),
-    radial-gradient(circle at 80% 20%, rgba(29, 181, 132, 0.1) 1.5px, transparent 2px),
-    radial-gradient(circle at 40% 40%, rgba(29, 181, 132, 0.08) 1px, transparent 1.5px),
-    /* Geometric Lines */
-    linear-gradient(30deg, transparent 48%, rgba(29, 181, 132, 0.06) 49%, rgba(29, 181, 132, 0.06) 51%, transparent 52%),
-    linear-gradient(150deg, transparent 48%, rgba(29, 181, 132, 0.04) 49%, rgba(29, 181, 132, 0.04) 51%, transparent 52%),
-    /* Octagonal Pattern */
-    conic-gradient(from 0deg at 25% 25%, 
-      rgba(29, 181, 132, 0.08) 0deg, transparent 45deg, 
-      rgba(29, 181, 132, 0.05) 90deg, transparent 135deg,
-      rgba(29, 181, 132, 0.08) 180deg, transparent 225deg,
-      rgba(29, 181, 132, 0.05) 270deg, transparent 315deg, 
-      rgba(29, 181, 132, 0.08) 360deg
-    );
-  background-size: 120px 120px, 80px 80px, 40px 40px, 160px 160px, 160px 160px, 200px 200px;
-  animation: islamicPatternFloat 20s ease-in-out infinite;
+    radial-gradient(circle at 25% 25%, rgba(29, 181, 132, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(29, 181, 132, 0.05) 1px, transparent 1px),
+    linear-gradient(45deg, transparent 30%, rgba(29, 181, 132, 0.03) 30%, rgba(29, 181, 132, 0.03) 70%, transparent 70%);
+  background-size: 60px 60px, 40px 40px, 120px 120px;
 }
 
-.hero-islamic-overlay {
+.hero-bersafar-overlay {
   background: 
-    radial-gradient(ellipse 800px 600px at 50% 20%, rgba(29, 181, 132, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse 600px 400px at 20% 80%, rgba(29, 181, 132, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse 400px 300px at 80% 70%, rgba(29, 181, 132, 0.06) 0%, transparent 50%);
-  background-size: 100% 100%;
-}
-
-@keyframes islamicPatternFloat {
-  0%, 100% { 
-    transform: translateY(0px) translateX(0px) scale(1);
-  }
-  25% { 
-    transform: translateY(-20px) translateX(10px) scale(1.02);
-  }
-  50% { 
-    transform: translateY(-10px) translateX(-15px) scale(0.98);
-  }
-  75% { 
-    transform: translateY(-30px) translateX(5px) scale(1.01);
-  }
+    radial-gradient(ellipse at center, rgba(29, 181, 132, 0.08) 0%, transparent 70%),
+    conic-gradient(from 0deg at 50% 50%, 
+      rgba(29, 181, 132, 0.1) 0deg, 
+      transparent 60deg, 
+      rgba(29, 181, 132, 0.05) 120deg, 
+      transparent 180deg, 
+      rgba(29, 181, 132, 0.1) 240deg, 
+      transparent 300deg, 
+      rgba(29, 181, 132, 0.1) 360deg
+    );
+  background-size: 100% 100%, 200px 200px;
 }
 
 .bersafar-pattern {

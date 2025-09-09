@@ -24,28 +24,28 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Islamic Geometric Background with Parallax */}
+      {/* Islamic Geometric Background */}
       <div className="absolute inset-0">
-        {/* Base gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-bersafar-800 via-bersafar-900 to-spiritual-900" />
-        
-        {/* Islamic geometric patterns with different parallax speeds */}
         <div 
-          className="absolute inset-0 hero-islamic-pattern opacity-80" 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            transform: `translateY(${scrollY * 0.1}px) translateX(${scrollY * 0.05}px)`,
+            backgroundImage: `url('/islamic-geometric-bg.jpg')`,
+            transform: `translateY(${scrollY * 0.3}px)`,
           }}
         />
         <div 
-          className="absolute inset-0 hero-islamic-overlay opacity-60"
+          className="absolute inset-0 hero-bersafar-pattern opacity-60" 
           style={{
-            transform: `translateY(${scrollY * 0.15}px)`,
+            transform: `translateY(${scrollY * 0.1}px)`,
           }}
         />
-        
-        {/* Overlay gradients for depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-bersafar-900/40 via-transparent to-bersafar-800/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-bersafar-900/60 via-transparent to-transparent" />
+        <div 
+          className="absolute inset-0 hero-bersafar-overlay opacity-40"
+          style={{
+            transform: `translateY(${scrollY * 0.2}px)`,
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-spiritual-900/70 via-spiritual-800/50 to-spiritual-900/80" />
       </div>
 
       {/* Content */}
@@ -57,9 +57,10 @@ const HeroSection = () => {
               {/* Logo */}
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/lovable-uploads/bersafar-logo-cropped.png" 
+                  src="/lovable-uploads/01cfa612-00a1-432c-8b1f-bd3f4f650ae9.png" 
                   alt="Bersafar Logo"
-                  className="h-10 w-auto"
+                  className="h-8 w-8"
+                  style={{ filter: 'brightness(0) invert(1)' }}
                 />
                 <span className="text-xl font-poppins font-bold text-white">
                   Bersafar
@@ -83,9 +84,10 @@ const HeroSection = () => {
               {/* Logo in hero section */}
               <div className="mb-8 flex justify-center">
                 <img 
-                  src="/lovable-uploads/bersafar-logo-cropped.png" 
+                  src="/lovable-uploads/01cfa612-00a1-432c-8b1f-bd3f4f650ae9.png" 
                   alt="Bersafar Logo"
-                  className="h-24 w-auto"
+                  className="h-20 w-20"
+                  style={{ filter: 'brightness(0) invert(1)' }}
                 />
               </div>
               <h1 id="hero-brand" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6 leading-tight">

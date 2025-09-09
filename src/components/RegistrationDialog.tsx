@@ -49,9 +49,9 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
         <DialogHeader className="text-center pb-6">
           <div className="mx-auto mb-4">
             <img 
-              src="/lovable-uploads/bersafar-logo-cropped.png" 
+              src="/lovable-uploads/272925e1-b602-43c2-b45f-ca66db286237.png" 
               alt="Bersafar Logo"
-              className="h-14 w-auto mx-auto mb-2"
+              className="h-10 w-10 mx-auto mb-2"
             />
             <h3 className="text-lg font-inter font-bold text-spiritual-800">Bersafar</h3>
           </div>
@@ -176,7 +176,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
           <div className="space-y-4 pt-4">
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-bersafar-primary to-bersafar-secondary hover:from-bersafar-secondary hover:to-bersafar-dark text-white font-poppins font-bold py-4 px-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-bersafar-light/30"
+              className="w-full bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white font-inter font-bold py-4 px-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-islamic-light/30"
             >
               Mulai Perjalanan Saya
             </Button>
@@ -184,7 +184,7 @@ const RegistrationDialog = ({ open, onOpenChange }: RegistrationDialogProps) => 
             <div className="text-center">
               <p className="text-sm text-spiritual-600 font-inter">
                 Sudah punya akun?{" "}
-                <span className="text-bersafar-accent hover:underline cursor-pointer font-semibold">Masuk di sini</span>
+                <span className="text-islamic-accent hover:underline cursor-pointer font-semibold">Masuk di sini</span>
               </p>
             </div>
           </div>
