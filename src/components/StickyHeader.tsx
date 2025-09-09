@@ -60,10 +60,9 @@ const StickyHeader = () => {
           {/* Brand Logo */}
           <div className="flex items-center space-x-3">
           <img 
-            src="/lovable-uploads/01cfa612-00a1-432c-8b1f-bd3f4f650ae9.png" 
+            src="/lovable-uploads/bersafar-logo-cropped.png" 
             alt="Bersafar Logo"
-            className="h-8 w-8"
-            style={{ filter: 'brightness(0) invert(1)' }}
+            className="h-8 w-auto"
           />
             <span className="text-xl font-poppins font-bold text-white">
               Bersafar
