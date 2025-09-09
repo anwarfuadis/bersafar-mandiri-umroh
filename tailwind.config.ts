@@ -98,22 +98,22 @@ export default {
 					'800': '#826135',
 					'900': '#6b4f2e',
 				},
-				islamic: {
-					'50': '#fef9f0',
-					'100': '#fef3e2',
-					'200': '#fce7c6',
-					'300': '#F2D19C',
-					'400': '#E1BD7C',
-					'500': '#D4A862',
-					'600': '#B8954D',
-					'700': '#9e7c3e',
-					'800': '#826135',
-					'900': '#6b4f2e',
-					primary: '#E1BD7C',
-					secondary: '#D4A862',
-					dark: '#B8954D',
-					light: '#F2D19C',
-					accent: '#C8A05A',
+				bersafar: {
+					'50': '#f0fdfa',
+					'100': '#ccfbf1',
+					'200': '#99f6e4',
+					'300': '#5eead4',
+					'400': '#2dd4bf',
+					'500': '#1DB584',
+					'600': '#16a085',
+					'700': '#138f7a',
+					'800': '#0f766e',
+					'900': '#134e4a',
+					primary: '#1DB584',
+					secondary: '#16a085',
+					dark: '#138f7a',
+					light: '#48d4aa',
+					accent: '#0d9488',
 				},
 			},
 			borderRadius: {
@@ -175,7 +175,8 @@ export default {
 				'pulse-gentle': 'pulse-gentle 2s ease-in-out infinite'
 			},
 			fontFamily: {
-				'inter': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+				sans: ["Poppins", "system-ui", "sans-serif"],
+				poppins: ["Poppins", "system-ui", "sans-serif"],
 			}
 		}
 	},

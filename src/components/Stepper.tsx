@@ -20,7 +20,7 @@ export default function Stepper({ step, setStep, labels }: StepperProps) {
             className={cn(
               "flex items-center justify-center h-9 w-9 rounded-full border-2 text-base font-semibold transition-all",
               step === idx + 1
-                ? "bg-gold-500 text-white border-gold-500 shadow-lg"
+                ? "bg-bersafar-primary text-white border-bersafar-primary shadow-lg"
                 : step > idx + 1
                 ? "bg-green-500 text-white border-green-500"
                 : "bg-slate-100 text-gray-500 border-gray-300"
@@ -32,7 +32,7 @@ export default function Stepper({ step, setStep, labels }: StepperProps) {
             className={cn(
               "text-xs font-semibold mt-2 text-center max-w-[80px]",
               step === idx + 1
-                ? "text-gold-700"
+                ? "text-bersafar-600"
                 : step > idx + 1
                 ? "text-green-600"
                 : "text-gray-400"

@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -63,68 +63,68 @@
 
 @layer base {
   * {
-    @apply border-border font-inter;
+    @apply border-border font-poppins;
   }
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground font-poppins;
   }
 }
 
 /* Custom Fonts */
-.font-inter {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+.font-poppins {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Custom Colors - Islamic Theme */
+/* Custom Colors - Bersafar Teal Theme */
 :root {
-  --spiritual-50: #f8f9fa;
-  --spiritual-100: #f1f3f4;
-  --spiritual-200: #e8eaed;
-  --spiritual-300: #dadce0;
-  --spiritual-400: #bdc1c6;
-  --spiritual-500: #9aa0a6;
-  --spiritual-600: #5f6368;
-  --spiritual-700: #3c4043;
-  --spiritual-800: #202124;
-  --spiritual-900: #1F283B;
-  --islamic-primary: #E1BD7C;
-  --islamic-secondary: #D4A862;
-  --islamic-dark: #B8954D;
-  --islamic-light: #F2D19C;
-  --islamic-accent: #C8A05A;
-  --gold-400: #E1BD7C;
-  --gold-500: #D4A862;
-  --gold-600: #B8954D;
+  --spiritual-50: #f0fdfa;
+  --spiritual-100: #ccfbf1;
+  --spiritual-200: #99f6e4;
+  --spiritual-300: #5eead4;
+  --spiritual-400: #2dd4bf;
+  --spiritual-500: #14b8a6;
+  --spiritual-600: #0d9488;
+  --spiritual-700: #0f766e;
+  --spiritual-800: #115e59;
+  --spiritual-900: #134e4a;
+  --bersafar-primary: #1DB584;
+  --bersafar-secondary: #16a085;
+  --bersafar-dark: #138f7a;
+  --bersafar-light: #48d4aa;
+  --bersafar-accent: #0d9488;
+  --teal-400: #2dd4bf;
+  --teal-500: #14b8a6;
+  --teal-600: #0d9488;
 }
 
-/* Islamic Geometric Patterns */
-.hero-islamic-pattern {
+/* Bersafar Geometric Patterns */
+.hero-bersafar-pattern {
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(225, 189, 124, 0.1) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, rgba(225, 189, 124, 0.05) 1px, transparent 1px),
-    linear-gradient(45deg, transparent 30%, rgba(225, 189, 124, 0.03) 30%, rgba(225, 189, 124, 0.03) 70%, transparent 70%);
+    radial-gradient(circle at 25% 25%, rgba(29, 181, 132, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(29, 181, 132, 0.05) 1px, transparent 1px),
+    linear-gradient(45deg, transparent 30%, rgba(29, 181, 132, 0.03) 30%, rgba(29, 181, 132, 0.03) 70%, transparent 70%);
   background-size: 60px 60px, 40px 40px, 120px 120px;
 }
 
-.hero-islamic-overlay {
+.hero-bersafar-overlay {
   background: 
-    radial-gradient(ellipse at center, rgba(225, 189, 124, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse at center, rgba(29, 181, 132, 0.08) 0%, transparent 70%),
     conic-gradient(from 0deg at 50% 50%, 
-      rgba(225, 189, 124, 0.1) 0deg, 
+      rgba(29, 181, 132, 0.1) 0deg, 
       transparent 60deg, 
-      rgba(225, 189, 124, 0.05) 120deg, 
+      rgba(29, 181, 132, 0.05) 120deg, 
       transparent 180deg, 
-      rgba(225, 189, 124, 0.1) 240deg, 
+      rgba(29, 181, 132, 0.1) 240deg, 
       transparent 300deg, 
-      rgba(225, 189, 124, 0.1) 360deg
+      rgba(29, 181, 132, 0.1) 360deg
     );
   background-size: 100% 100%, 200px 200px;
 }
 
-.islamic-pattern {
+.bersafar-pattern {
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(225, 189, 124, 0.05) 1px, transparent 1px),
-    linear-gradient(45deg, transparent 30%, rgba(225, 189, 124, 0.02) 30%, rgba(225, 189, 124, 0.02) 70%, transparent 70%);
+    radial-gradient(circle at 25% 25%, rgba(29, 181, 132, 0.05) 1px, transparent 1px),
+    linear-gradient(45deg, transparent 30%, rgba(29, 181, 132, 0.02) 30%, rgba(29, 181, 132, 0.02) 70%, transparent 70%);
   background-size: 40px 40px, 80px 80px;
 }
 

@@ -34,13 +34,13 @@ const HeroSection = () => {
           }}
         />
         <div 
-          className="absolute inset-0 hero-islamic-pattern opacity-60" 
+          className="absolute inset-0 hero-bersafar-pattern opacity-60" 
           style={{
             transform: `translateY(${scrollY * 0.1}px)`,
           }}
         />
         <div 
-          className="absolute inset-0 hero-islamic-overlay opacity-40"
+          className="absolute inset-0 hero-bersafar-overlay opacity-40"
           style={{
             transform: `translateY(${scrollY * 0.2}px)`,
           }}
@@ -57,18 +57,19 @@ const HeroSection = () => {
               {/* Logo */}
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/lovable-uploads/272925e1-b602-43c2-b45f-ca66db286237.png" 
+                  src="/lovable-uploads/01cfa612-00a1-432c-8b1f-bd3f4f650ae9.png" 
                   alt="Bersafar Logo"
-                  className="h-8 w-8 brightness-0 invert"
+                  className="h-8 w-8"
+                  style={{ filter: 'brightness(0) invert(1)' }}
                 />
-                <span className="text-xl font-inter font-bold text-white">
+                <span className="text-xl font-poppins font-bold text-white">
                   Bersafar
                 </span>
               </div>
 
               {/* CTA Button */}
               <Button 
-                className="bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white px-6 py-3 font-inter font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-islamic-light/30"
+                className="bg-gradient-to-r from-bersafar-primary to-bersafar-secondary hover:from-bersafar-secondary hover:to-bersafar-dark text-white px-6 py-3 font-poppins font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-bersafar-light/30"
                 onClick={() => setDialogOpen(true)}
               >
                 Mulai Bersafar
@@ -83,21 +84,22 @@ const HeroSection = () => {
               {/* Logo in hero section */}
               <div className="mb-8 flex justify-center">
                 <img 
-                  src="/lovable-uploads/272925e1-b602-43c2-b45f-ca66db286237.png" 
+                  src="/lovable-uploads/01cfa612-00a1-432c-8b1f-bd3f4f650ae9.png" 
                   alt="Bersafar Logo"
-                  className="h-20 w-20 brightness-0 invert"
+                  className="h-20 w-20"
+                  style={{ filter: 'brightness(0) invert(1)' }}
                 />
               </div>
-              <h1 id="hero-brand" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-inter font-bold text-white mb-6 leading-tight">
-                <span className="text-islamic-primary">Bersafar</span>
+              <h1 id="hero-brand" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6 leading-tight">
+                <span className="text-bersafar-primary">Bersafar</span>
                 <br />
                 Perjalanan Bermakna,
                 <br />
-                <span className="text-islamic-primary transition-all duration-500">{switchingTexts[currentText]}</span>
+                <span className="text-bersafar-primary transition-all duration-500">{switchingTexts[currentText]}</span>
               </h1>
               <div className="mt-8">
                 <Button 
-                  className="bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white px-8 py-4 font-inter font-bold text-lg rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 border border-islamic-light/30"
+                  className="bg-gradient-to-r from-bersafar-primary to-bersafar-secondary hover:from-bersafar-secondary hover:to-bersafar-dark text-white px-8 py-4 font-poppins font-bold text-lg rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 border border-bersafar-light/30"
                   onClick={() => setDialogOpen(true)}
                 >
                   Mulai Bersafar
