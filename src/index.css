@@ -75,56 +75,56 @@
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Custom Colors - Bersafar Teal Theme */
+/* Custom Colors - Bersafar Theme */
 :root {
-  --spiritual-50: #f0fdfa;
-  --spiritual-100: #ccfbf1;
-  --spiritual-200: #99f6e4;
-  --spiritual-300: #5eead4;
-  --spiritual-400: #2dd4bf;
-  --spiritual-500: #14b8a6;
-  --spiritual-600: #0d9488;
-  --spiritual-700: #0f766e;
-  --spiritual-800: #115e59;
-  --spiritual-900: #134e4a;
-  --bersafar-primary: #1DB584;
-  --bersafar-secondary: #16a085;
-  --bersafar-dark: #138f7a;
-  --bersafar-light: #48d4aa;
-  --bersafar-accent: #0d9488;
-  --teal-400: #2dd4bf;
-  --teal-500: #14b8a6;
-  --teal-600: #0d9488;
+  --spiritual-50: #ffffff;
+  --spiritual-100: #cff7ee;
+  --spiritual-200: #cff7ee;
+  --spiritual-300: #cff7ee;
+  --spiritual-400: #007275;
+  --spiritual-500: #007275;
+  --spiritual-600: #007275;
+  --spiritual-700: #007275;
+  --spiritual-800: #007275;
+  --spiritual-900: #007275;
+  --bersafar-primary: #007275;
+  --bersafar-secondary: #007275;
+  --bersafar-dark: #007275;
+  --bersafar-light: #cff7ee;
+  --bersafar-accent: #007275;
+  --teal-400: #007275;
+  --teal-500: #007275;
+  --teal-600: #007275;
 }
 
 /* Bersafar Geometric Patterns */
 .hero-bersafar-pattern {
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(29, 181, 132, 0.1) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, rgba(29, 181, 132, 0.05) 1px, transparent 1px),
-    linear-gradient(45deg, transparent 30%, rgba(29, 181, 132, 0.03) 30%, rgba(29, 181, 132, 0.03) 70%, transparent 70%);
+    radial-gradient(circle at 25% 25%, rgba(0, 114, 117, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(0, 114, 117, 0.05) 1px, transparent 1px),
+    linear-gradient(45deg, transparent 30%, rgba(0, 114, 117, 0.03) 30%, rgba(0, 114, 117, 0.03) 70%, transparent 70%);
   background-size: 60px 60px, 40px 40px, 120px 120px;
 }
 
 .hero-bersafar-overlay {
   background: 
-    radial-gradient(ellipse at center, rgba(29, 181, 132, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse at center, rgba(0, 114, 117, 0.08) 0%, transparent 70%),
     conic-gradient(from 0deg at 50% 50%, 
-      rgba(29, 181, 132, 0.1) 0deg, 
+      rgba(0, 114, 117, 0.1) 0deg, 
       transparent 60deg, 
-      rgba(29, 181, 132, 0.05) 120deg, 
+      rgba(0, 114, 117, 0.05) 120deg, 
       transparent 180deg, 
-      rgba(29, 181, 132, 0.1) 240deg, 
+      rgba(0, 114, 117, 0.1) 240deg, 
       transparent 300deg, 
-      rgba(29, 181, 132, 0.1) 360deg
+      rgba(0, 114, 117, 0.1) 360deg
     );
   background-size: 100% 100%, 200px 200px;
 }
 
 .bersafar-pattern {
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(29, 181, 132, 0.05) 1px, transparent 1px),
-    linear-gradient(45deg, transparent 30%, rgba(29, 181, 132, 0.02) 30%, rgba(29, 181, 132, 0.02) 70%, transparent 70%);
+    radial-gradient(circle at 25% 25%, rgba(0, 114, 117, 0.05) 1px, transparent 1px),
+    linear-gradient(45deg, transparent 30%, rgba(0, 114, 117, 0.02) 30%, rgba(0, 114, 117, 0.02) 70%, transparent 70%);
   background-size: 40px 40px, 80px 80px;
 }
 
