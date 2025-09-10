@@ -45,15 +45,15 @@ const StickyHeader = () => {
   return (
     <>
       <header 
-        className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md border-b border-gray-200 transition-all duration-300"
+        className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md border-b border-gray-200"
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Brand Logo */}
           <div className="flex items-center space-x-3">
           <img 
-            src="/lovable-uploads/01cfa612-00a1-432c-8b1f-bd3f4f650ae9.png" 
+            src="/lovable-uploads/bersafar-logo-new.png" 
             alt="Bersafar Logo"
-            className="h-8 w-8"
+            className="h-8 w-8 brightness-0 invert"
           />
             <span className="text-xl font-poppins font-bold text-bersafar-primary">
               Bersafar
