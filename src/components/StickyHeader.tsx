@@ -9,7 +9,7 @@ import LoginDialog from "@/components/LoginDialog";
 const StickyHeader = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
-  const [showHeader, setShowHeader] = useState(true);
+  const [showHeader, setShowHeader] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -38,24 +38,34 @@ const StickyHeader = () => {
     ]
   };
 
-  // Header is always visible now
+  useEffect(() => {
+    function handleScroll() {
+      const scrollY = window.scrollY;
+      setShowHeader(scrollY > 200);
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const headerVisible = showHeader || dialogOpen || loginOpen;
 
   return (
     <>
       <header 
-        className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md border-b border-gray-200"
+        className={`fixed top-0 left-0 right-0 z-50 bg-spiritual-800/95 backdrop-blur-md border-b border-spiritual-600/30 transition-all duration-300
+          ${headerVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'}
+        `}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Brand Logo */}
           <div className="flex items-center space-x-3">
           <img 
-            src="/lovable-uploads/bersafar-logo-new.png" 
+            src="/lovable-uploads/01cfa612-00a1-432c-8b1f-bd3f4f650ae9.png" 
             alt="Bersafar Logo"
-            className="h-8 w-8 brightness-0 invert"
+            className="h-8 w-8"
+            style={{ filter: 'brightness(0) invert(1)' }}
           />
-            <span className="text-xl font-poppins font-bold text-bersafar-primary">
+            <span className="text-xl font-poppins font-bold text-white">
               Bersafar
             </span>
           </div>
@@ -64,13 +74,13 @@ const StickyHeader = () => {
           <div className="hidden md:flex items-center space-x-4">
             <Button 
               variant="ghost"
-              className="text-bersafar-primary hover:text-bersafar-primary/80 font-poppins font-medium"
+              className="text-white hover:text-bersafar-primary font-poppins font-medium"
               onClick={() => setLoginOpen(true)}
             >
               Login
             </Button>
             <Button 
-              className="bg-bersafar-primary hover:bg-bersafar-primary/90 text-white px-6 py-3 font-poppins font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-gradient-to-r from-bersafar-primary to-bersafar-secondary hover:from-bersafar-secondary hover:to-bersafar-dark text-white px-6 py-3 font-poppins font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-bersafar-light/30"
               onClick={() => setDialogOpen(true)}
             >
               Mulai Bersafar
@@ -82,7 +92,7 @@ const StickyHeader = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="text-bersafar-primary"
+              className="text-white"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -94,10 +104,10 @@ const StickyHeader = () => {
         <div className={`md:hidden transition-all duration-300 overflow-hidden ${
           mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <div className="px-6 py-4 space-y-4 bg-white border-t border-gray-200">
+          <div className="px-6 py-4 space-y-4 bg-spiritual-900/95 backdrop-blur-md border-t border-spiritual-600/30">
             <Button 
               variant="ghost"
-              className="w-full text-bersafar-primary hover:text-bersafar-primary/80 font-poppins font-medium justify-start"
+              className="w-full text-white hover:text-bersafar-primary font-poppins font-medium justify-start"
               onClick={() => {
                 setLoginOpen(true);
                 setMobileMenuOpen(false);
@@ -106,7 +116,7 @@ const StickyHeader = () => {
               Login
             </Button>
             <Button 
-              className="w-full bg-bersafar-primary hover:bg-bersafar-primary/90 text-white font-poppins font-semibold rounded-lg shadow-lg"
+              className="w-full bg-gradient-to-r from-bersafar-primary to-bersafar-secondary hover:from-bersafar-secondary hover:to-bersafar-dark text-white font-poppins font-semibold rounded-full shadow-lg"
               onClick={() => {
                 setDialogOpen(true);
                 setMobileMenuOpen(false);

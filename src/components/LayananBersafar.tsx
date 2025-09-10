@@ -187,7 +187,7 @@ const LayananBersafar = () => {
           
           <div className="text-center mt-8">
             <Button 
-              className="bg-bersafar-primary hover:bg-bersafar-primary/90 text-white font-semibold rounded-lg px-8 py-3 text-base"
+              className="bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white font-semibold rounded-full px-8 py-3 text-base"
               onClick={() => window.location.href = '/teman-safar'}
             >
               Lihat Semua Teman Safar

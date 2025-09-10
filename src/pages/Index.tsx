@@ -10,17 +10,15 @@ import FloatingCartButton from "@/components/FloatingCartButton";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <StickyHeader />
-      <div className="pt-20">
-        <HeroSection />
-        <LayananBersafar />
-        <TripPilihan />
-        <StepGuide />
-        <FAQSection />
-        <Footer />
-        <FloatingCartButton />
-      </div>
+      <HeroSection />
+      <LayananBersafar />
+      <TripPilihan />
+      <StepGuide />
+      <FAQSection />
+      <Footer />
+      <FloatingCartButton />
     </div>
   );
 };
