@@ -11,12 +11,12 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-blue-700 via-blue-800 to-blue-900">
+    <footer className="relative overflow-hidden bg-bersafar-darker">
       {/* Parallax desert horizon */}
       <div className="absolute inset-0 opacity-20" style={{
         transform: `translateY(${scrollY * 0.2}px)`
       }}>
-        <div className="absolute bottom-0 w-full h-64 bg-gradient-to-t from-blue-900 via-blue-700 to-transparent"></div>
+        <div className="absolute bottom-0 w-full h-64 bg-gradient-to-t from-bersafar-darker via-bersafar-dark to-transparent"></div>
         <div className="absolute bottom-16 left-10 w-16 h-16 bg-gold-400 rounded-full opacity-50"></div>
         <div className="absolute bottom-32 right-20 w-12 h-12 bg-gold-300 rounded-full opacity-40"></div>
       </div>
@@ -27,7 +27,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <h3 className="text-3xl font-sf font-bold text-white mb-4">
-              Bersafar
+              bersafar
             </h3>
             <p className="text-white/80 font-sf leading-relaxed mb-6">
               Platform Umroh Mandiri pertama di Indonesia. Pilih layanan yang kamu butuhkan, skip yang tidak.
@@ -112,7 +112,7 @@ const Footer = () => {
         <div className="border-t border-white/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-white/80 font-sf text-sm">
-              © 2024 Bersafar. Semua hak cipta dilindungi.
+              © 2024 bersafar. Semua hak cipta dilindungi.
             </div>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-white/80 font-sf hover:text-white transition-colors">

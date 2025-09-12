@@ -12,7 +12,7 @@ const StepGuide = () => {
   }, []);
 
   return (
-    <section className="relative py-16 md:py-28 overflow-hidden bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800">
+    <section className="relative py-16 md:py-28 overflow-hidden bg-bersafar-darker">
       <div className="absolute inset-0 opacity-15 pointer-events-none">
         {/* Decorative glowing circle */}
         <div className="absolute top-10 left-10 w-24 h-24 bg-gradient-to-br from-gold-300 to-gold-400 rounded-full blur-xl"></div>
@@ -38,7 +38,7 @@ const StepGuide = () => {
                     <th className="py-6 px-6 text-left text-gold-200 text-lg bg-gradient-to-r from-green-400/30 to-green-500/30 border-l-2 border-green-300/50">
                       <div className="flex items-center">
                         <span className="text-xl">🎯</span>
-                        <span className="ml-2 font-bold">Umroh Mandiri (Bersafar)</span>
+                          <span className="ml-2 font-bold">Umroh Mandiri (bersafar)</span>
                       </div>
                     </th>
                     <th className="py-6 px-6 text-left text-sand-200 text-lg">Umroh via Travel Agent</th>
@@ -128,7 +128,7 @@ const StepGuide = () => {
                       <th className="py-4 px-3 text-left text-gold-200 text-sm bg-gradient-to-r from-green-400/30 to-green-500/30 border-l-2 border-green-300/50">
                         <div className="flex items-center">
                           <span className="text-base">🎯</span>
-                          <span className="ml-2 font-bold">Umroh Mandiri (Bersafar)</span>
+                          <span className="ml-2 font-bold">Umroh Mandiri (bersafar)</span>
                         </div>
                       </th>
                       <th className="py-4 px-3 text-left text-sand-200 text-sm">Umroh via Travel Agent</th>
@@ -211,7 +211,9 @@ const StepGuide = () => {
 
         <div className="mt-12 text-center">
           <Button 
-            className="bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white font-bold text-base py-6 px-8 rounded-full hover:scale-105 transition-all duration-300 shadow-2xl"
+            variant="bersafar"
+            size="lg"
+            className="font-bold text-base py-6 px-8"
           >
             Mulai Umroh Mandiri <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

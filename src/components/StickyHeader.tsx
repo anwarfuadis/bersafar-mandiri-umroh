@@ -54,9 +54,9 @@ const StickyHeader = () => {
             className="h-8 w-8"
             style={{ filter: 'brightness(0) invert(1)' }}
           />
-            <span className="text-xl font-poppins font-bold text-white">
-              Bersafar
-            </span>
+              <span className="text-xl font-poppins font-bold text-white">
+                bersafar
+              </span>
           </div>
 
           {/* Desktop Buttons */}
@@ -71,9 +71,9 @@ const StickyHeader = () => {
             <Button 
               className="bg-gradient-to-r from-bersafar-primary to-bersafar-secondary hover:from-bersafar-secondary hover:to-bersafar-dark text-white px-6 py-3 font-poppins font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-bersafar-light/30"
               onClick={() => setDialogOpen(true)}
-            >
-              Mulai Bersafar
-            </Button>
+              >
+                Mulai bersafar
+              </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -110,9 +110,9 @@ const StickyHeader = () => {
                 setDialogOpen(true);
                 setMobileMenuOpen(false);
               }}
-            >
-              Mulai Bersafar
-            </Button>
+              >
+                Mulai bersafar
+              </Button>
           </div>
         </div>
       </header>

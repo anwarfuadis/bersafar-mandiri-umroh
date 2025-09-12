@@ -40,10 +40,10 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
           <div className="mx-auto mb-4">
             <img 
               src="/lovable-uploads/ff926b80-f947-409f-9bb1-b0ad45ba1c17.png" 
-              alt="Bersafar Logo"
+              alt="bersafar Logo"
               className="h-10 w-10 mx-auto mb-2"
             />
-            <h3 className="text-lg font-inter font-bold text-spiritual-800">Bersafar</h3>
+            <h3 className="text-lg font-inter font-bold text-spiritual-800">bersafar</h3>
           </div>
           <DialogTitle className="text-2xl font-inter font-bold text-spiritual-800 mb-2">
             Masuk ke Akun Anda
@@ -102,7 +102,9 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
           <div className="space-y-4 pt-4">
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white font-inter font-bold py-4 px-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-islamic-light/30"
+              variant="bersafar"
+              size="lg"
+              className="w-full font-inter font-bold py-4 px-6"
             >
               Masuk
             </Button>
@@ -110,7 +112,7 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
             <div className="text-center">
               <p className="text-sm text-spiritual-600 font-inter">
                 Belum punya akun?{" "}
-                <span className="text-islamic-accent hover:underline cursor-pointer font-semibold">Daftar sekarang</span>
+                <span className="text-bersafar-accent hover:underline cursor-pointer font-semibold">Daftar sekarang</span>
               </p>
             </div>
           </div>

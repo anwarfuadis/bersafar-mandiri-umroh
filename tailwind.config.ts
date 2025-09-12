@@ -112,6 +112,7 @@ export default {
 					primary: '#1DB584',
 					secondary: '#16a085',
 					dark: '#138f7a',
+					darker: '#0d6b5c',
 					light: '#48d4aa',
 					accent: '#0d9488',
 				},
