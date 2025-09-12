@@ -38,23 +38,12 @@ const StickyHeader = () => {
     ]
   };
 
-  useEffect(() => {
-    function handleScroll() {
-      const scrollY = window.scrollY;
-      setShowHeader(scrollY > 200);
-    }
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const headerVisible = showHeader || dialogOpen || loginOpen;
+  // Header is always visible now
 
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 right-0 z-50 bg-spiritual-800/95 backdrop-blur-md border-b border-spiritual-600/30 transition-all duration-300
-          ${headerVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'}
-        `}
+        className="fixed top-0 left-0 right-0 z-50 bg-[#007275] border-b border-[#007275]/30 transition-all duration-300"
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Brand Logo */}
