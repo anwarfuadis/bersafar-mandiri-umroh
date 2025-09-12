@@ -57,7 +57,7 @@ const HeroSection = () => {
               {/* Logo */}
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/lovable-uploads/01cfa612-00a1-432c-8b1f-bd3f4f650ae9.png" 
+                  src="/lovable-uploads/ff926b80-f947-409f-9bb1-b0ad45ba1c17.png" 
                   alt="Bersafar Logo"
                   className="h-8 w-8"
                   style={{ filter: 'brightness(0) invert(1)' }}
@@ -84,10 +84,9 @@ const HeroSection = () => {
               {/* Logo in hero section */}
               <div className="mb-8 flex justify-center">
                 <img 
-                  src="/lovable-uploads/01cfa612-00a1-432c-8b1f-bd3f4f650ae9.png" 
+                  src="/lovable-uploads/ff926b80-f947-409f-9bb1-b0ad45ba1c17.png" 
                   alt="Bersafar Logo"
                   className="h-20 w-20"
-                  style={{ filter: 'brightness(0) invert(1)' }}
                 />
               </div>
               <h1 id="hero-brand" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6 leading-tight">

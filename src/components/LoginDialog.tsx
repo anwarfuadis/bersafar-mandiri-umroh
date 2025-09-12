@@ -39,7 +39,7 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
         <DialogHeader className="text-center pb-6">
           <div className="mx-auto mb-4">
             <img 
-              src="/lovable-uploads/272925e1-b602-43c2-b45f-ca66db286237.png" 
+              src="/lovable-uploads/ff926b80-f947-409f-9bb1-b0ad45ba1c17.png" 
               alt="Bersafar Logo"
               className="h-10 w-10 mx-auto mb-2"
             />
