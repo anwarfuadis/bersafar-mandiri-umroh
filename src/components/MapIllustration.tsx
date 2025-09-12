@@ -1,122 +1,87 @@
 import { useState, useEffect } from "react";
 
 const MapIllustration = () => {
-  const [planePosition, setPlanePosition] = useState({ x: 10, y: 60 });
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const animatePlane = () => {
-      const duration = 8000; // 8 seconds for full animation
-      const startTime = Date.now();
-      
-      const animate = () => {
-        const elapsed = Date.now() - startTime;
-        const progress = (elapsed % duration) / duration;
-        
-        // Create a curved path from point A to point B
-        const startX = 10;
-        const startY = 60;
-        const endX = 85;
-        const endY = 25;
-        
-        // Add curve to the path
-        const midX = 50;
-        const midY = 15;
-        
-        let x, y;
-        if (progress < 0.5) {
-          // First half: A to middle
-          const t = progress * 2;
-          x = startX + (midX - startX) * t;
-          y = startY + (midY - startY) * t;
-        } else {
-          // Second half: middle to B
-          const t = (progress - 0.5) * 2;
-          x = midX + (endX - midX) * t;
-          y = midY + (endY - midY) * t;
-        }
-        
-        setPlanePosition({ x, y });
-        requestAnimationFrame(animate);
-      };
-      
-      animate();
-    };
-
-    animatePlane();
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="relative w-full h-full bg-gradient-to-br from-blue-50 to-teal-50 rounded-2xl overflow-hidden shadow-lg">
-      {/* Background Map Elements */}
-      <div className="absolute inset-0">
-        {/* Continents/Islands */}
-        <div className="absolute top-16 left-8 w-20 h-12 bg-green-200 rounded-full opacity-60"></div>
-        <div className="absolute top-32 right-12 w-16 h-10 bg-green-200 rounded-lg opacity-60"></div>
-        <div className="absolute bottom-20 left-16 w-24 h-8 bg-green-200 rounded-full opacity-60"></div>
-        <div className="absolute bottom-32 right-8 w-18 h-14 bg-green-200 rounded-lg opacity-60"></div>
-        
-        {/* Water/Ocean patterns */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-20 w-32 h-1 bg-blue-300 rounded-full"></div>
-          <div className="absolute top-40 right-20 w-28 h-1 bg-blue-300 rounded-full"></div>
-          <div className="absolute bottom-40 left-12 w-24 h-1 bg-blue-300 rounded-full"></div>
-        </div>
-      </div>
-
-      {/* Point A */}
-      <div className="absolute" style={{ left: '10%', top: '60%' }}>
-        <div className="relative">
-          <div className="w-4 h-4 bg-red-500 rounded-full animate-pulse"></div>
-          <div className="absolute -top-8 -left-2 text-xs font-bold text-red-600">A</div>
-        </div>
-      </div>
-
-      {/* Point B */}
-      <div className="absolute" style={{ left: '85%', top: '25%' }}>
-        <div className="relative">
-          <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
-          <div className="absolute -top-8 -left-2 text-xs font-bold text-green-600">B</div>
-        </div>
-      </div>
-
-      {/* Flight Path */}
-      <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
-        <defs>
-          <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#ef4444" stopOpacity="0.6" />
-            <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#10b981" stopOpacity="0.6" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M 10% 60% Q 50% 15% 85% 25%"
-          stroke="url(#pathGradient)"
-          strokeWidth="2"
-          fill="none"
-          strokeDasharray="5,5"
-          className="opacity-70"
-        />
-      </svg>
-
-      {/* Animated Plane */}
+    <div className="relative w-full h-full overflow-hidden">
+      {/* Parallax Background Map */}
       <div 
-        className="absolute transition-all duration-100 ease-linear"
-        style={{ 
-          left: `${planePosition.x}%`, 
-          top: `${planePosition.y}%`,
-          transform: 'translate(-50%, -50%)',
-          zIndex: 2
-        }}
+        className="absolute inset-0 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl"
+        style={{ transform: `translateY(${scrollY * 0.1}px)` }}
       >
-        <div className="text-2xl transform -rotate-12">
-          ✈️
+        {/* Pastel Map Elements */}
+        <div className="absolute inset-0">
+          {/* Continents in pastel colors */}
+          <div className="absolute top-12 left-6 w-24 h-16 bg-emerald-200/70 rounded-full transform rotate-12"></div>
+          <div className="absolute top-28 right-10 w-20 h-12 bg-rose-200/70 rounded-lg transform -rotate-6"></div>
+          <div className="absolute bottom-24 left-12 w-28 h-10 bg-amber-200/70 rounded-full transform rotate-3"></div>
+          <div className="absolute bottom-16 right-6 w-22 h-18 bg-purple-200/70 rounded-lg transform -rotate-12"></div>
+          <div className="absolute top-1/3 left-1/3 w-16 h-12 bg-teal-200/70 rounded-full transform rotate-45"></div>
+          
+          {/* Ocean waves in soft blue */}
+          <svg className="absolute inset-0 w-full h-full opacity-30">
+            <path d="M0,200 Q200,180 400,200 T800,200" stroke="#93C5FD" strokeWidth="2" fill="none" />
+            <path d="M0,220 Q250,200 500,220 T1000,220" stroke="#BFDBFE" strokeWidth="1.5" fill="none" />
+            <path d="M0,240 Q150,225 300,240 T600,240" stroke="#DBEAFE" strokeWidth="1" fill="none" />
+          </svg>
         </div>
       </div>
 
-      {/* Decorative Clouds */}
-      <div className="absolute top-8 right-16 text-2xl opacity-60">☁️</div>
-      <div className="absolute top-24 left-24 text-xl opacity-40">☁️</div>
-      <div className="absolute bottom-16 right-32 text-lg opacity-50">☁️</div>
+      {/* Parallax Geometric Shapes */}
+      <div 
+        className="absolute inset-0"
+        style={{ transform: `translateY(${scrollY * 0.15}px)` }}
+      >
+        {/* Floating geometric shapes */}
+        <div className="absolute top-8 right-12 w-8 h-8 bg-blue-300/40 rotate-45 rounded-sm animate-pulse"></div>
+        <div className="absolute top-32 left-16 w-6 h-6 bg-cyan-300/40 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute bottom-20 right-20 w-10 h-10 bg-teal-300/40 rotate-12 rounded-sm animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-40 left-8 w-4 h-4 bg-sky-300/40 rounded-full animate-bounce" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute top-1/2 right-1/4 w-7 h-7 bg-indigo-300/40 rotate-30 rounded-sm animate-pulse" style={{ animationDelay: '2s' }}></div>
+      </div>
+
+      {/* Static Route Points */}
+      <div className="relative z-10">
+        {/* Point A */}
+        <div className="absolute" style={{ left: '15%', top: '65%' }}>
+          <div className="relative">
+            <div className="w-4 h-4 bg-emerald-500 rounded-full shadow-lg"></div>
+            <div className="absolute -top-8 -left-2 text-xs font-semibold text-emerald-700">Makkah</div>
+          </div>
+        </div>
+
+        {/* Point B */}
+        <div className="absolute" style={{ left: '80%', top: '30%' }}>
+          <div className="relative">
+            <div className="w-4 h-4 bg-blue-500 rounded-full shadow-lg"></div>
+            <div className="absolute -top-8 -left-4 text-xs font-semibold text-blue-700">Jakarta</div>
+          </div>
+        </div>
+
+        {/* Dotted Path */}
+        <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
+          <path
+            d="M 15% 65% Q 50% 20% 80% 30%"
+            stroke="#0EA5E9"
+            strokeWidth="2"
+            fill="none"
+            strokeDasharray="8,6"
+            className="opacity-60"
+          />
+        </svg>
+      </div>
+
+      {/* Floating Icons */}
+      <div className="absolute top-6 left-8 text-xl opacity-50">🕌</div>
+      <div className="absolute bottom-8 right-12 text-lg opacity-60">🌙</div>
+      <div className="absolute top-1/3 left-1/2 text-sm opacity-40">⭐</div>
     </div>
   );
 };

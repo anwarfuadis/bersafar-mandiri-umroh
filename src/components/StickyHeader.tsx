@@ -43,7 +43,7 @@ const StickyHeader = () => {
   return (
     <>
       <header 
-        className="fixed top-0 left-0 right-0 z-50 bg-[#007275] border-b border-[#007275]/30 transition-all duration-300"
+        className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#007275]/80 to-[#005a5d]/80 backdrop-blur-md border-b border-[#007275]/20 transition-all duration-300"
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Brand Logo */}

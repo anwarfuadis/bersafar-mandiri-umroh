@@ -12,7 +12,7 @@ const StepGuide = () => {
   }, []);
 
   return (
-    <section className="relative py-16 md:py-28 overflow-hidden bg-gradient-to-br from-spiritual-700 via-spiritual-600 to-spiritual-800">
+    <section className="relative py-16 md:py-28 overflow-hidden bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800">
       <div className="absolute inset-0 opacity-15 pointer-events-none">
         {/* Decorative glowing circle */}
         <div className="absolute top-10 left-10 w-24 h-24 bg-gradient-to-br from-gold-300 to-gold-400 rounded-full blur-xl"></div>

@@ -11,12 +11,12 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-spiritual-700 via-spiritual-800 to-spiritual-900">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-blue-700 via-blue-800 to-blue-900">
       {/* Parallax desert horizon */}
       <div className="absolute inset-0 opacity-20" style={{
         transform: `translateY(${scrollY * 0.2}px)`
       }}>
-        <div className="absolute bottom-0 w-full h-64 bg-gradient-to-t from-spiritual-900 via-spiritual-700 to-transparent"></div>
+        <div className="absolute bottom-0 w-full h-64 bg-gradient-to-t from-blue-900 via-blue-700 to-transparent"></div>
         <div className="absolute bottom-16 left-10 w-16 h-16 bg-gold-400 rounded-full opacity-50"></div>
         <div className="absolute bottom-32 right-20 w-12 h-12 bg-gold-300 rounded-full opacity-40"></div>
       </div>
