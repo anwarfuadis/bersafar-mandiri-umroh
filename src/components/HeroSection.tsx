@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import RegistrationDialog from "@/components/RegistrationDialog";
 import IslamicGeometricBackground from "@/components/IslamicGeometricBackground";
+import heroSpiritual from "@/assets/hero-spiritual-background.jpg";
 
 const HeroSection = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -24,9 +25,20 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden islamic-geometric-bg pt-20">
-      {/* Islamic Geometric Background */}
-      <IslamicGeometricBackground />
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
+      {/* Parallax Spiritual Background */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        style={{ 
+          backgroundImage: `url(${heroSpiritual})`,
+          transform: `translateY(${scrollY * 0.3}px)`
+        }}
+      />
+      
+      {/* Islamic Geometric Background with parallax */}
+      <div style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
+        <IslamicGeometricBackground />
+      </div>
       
       {/* Content */}
       <div className="relative z-20 w-full px-6 max-w-7xl mx-auto">
@@ -37,24 +49,22 @@ const HeroSection = () => {
               {/* Logo */}
               <div className="mb-8">
                 <img 
-                  src="/lovable-uploads/ff926b80-f947-409f-9bb1-b0ad45ba1c17.png" 
+                  src="/lovable-uploads/bersafar-logo.png" 
                   alt="bersafar Logo"
                   className="h-16 w-16"
                 />
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-poppins font-bold text-bersafar-primary mb-6 leading-tight">
-                Perjalanan Bermakna,
-                <br />
-                <span className="transition-all duration-500">{switchingTexts[currentText]}</span>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-poppins font-bold text-gray-800 mb-6 leading-tight">
+                Perjalanan Bermakna, <span className="text-bersafar-primary/60 transition-all duration-500">{switchingTexts[currentText]}</span>
               </h1>
-              <p className="text-lg text-bersafar-primary/80 mb-8 font-poppins">
+              <p className="text-lg text-gray-600 mb-8 font-poppins">
                 Temukan pengalaman perjalanan spiritual yang tak terlupakan
               </p>
               <div>
                 <Button 
                   variant="bersafar"
                   size="lg"
-                  className="px-12 py-6 font-poppins font-bold text-xl"
+                  className="px-16 py-8 font-poppins font-bold text-2xl"
                   onClick={() => setDialogOpen(true)}
                 >
                   Mulai bersafar

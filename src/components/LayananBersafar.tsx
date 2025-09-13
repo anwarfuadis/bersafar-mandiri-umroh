@@ -1,7 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { MapPin, Calendar, Star } from "lucide-react";
+import { MapPin, Calendar, Star, Users, Clock } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const LayananBersafar = () => {
   const temanSafarPackages = [
@@ -12,7 +13,16 @@ const LayananBersafar = () => {
       duration: "8 Hari 7 Malam",
       price: "Rp 18.500.000",
       image: "/lovable-uploads/c763f5f3-1693-45ce-8d6c-1d107368526d.png",
-      participants: "12 orang",
+      participants: 12,
+      maxParticipants: 15,
+      departureDate: "15 Nov 2024",
+      daysLeft: 28,
+      joinedUsers: [
+        { name: "Ahmad", avatar: "https://i.pravatar.cc/40?img=1" },
+        { name: "Siti", avatar: "https://i.pravatar.cc/40?img=2" },
+        { name: "Budi", avatar: "https://i.pravatar.cc/40?img=3" },
+        { name: "Rina", avatar: "https://i.pravatar.cc/40?img=4" }
+      ],
       highlights: ["Balloon ride", "Blue Mosque", "Bosphorus cruise"]
     },
     {
@@ -22,7 +32,15 @@ const LayananBersafar = () => {
       duration: "7 Hari 6 Malam", 
       price: "Rp 25.000.000",
       image: "/lovable-uploads/63832728-ca03-48f5-b3da-6f48771475d8.png",
-      participants: "15 orang",
+      participants: 15,
+      maxParticipants: 20,
+      departureDate: "25 Mar 2024",
+      daysLeft: 45,
+      joinedUsers: [
+        { name: "Yuki", avatar: "https://i.pravatar.cc/40?img=5" },
+        { name: "Maria", avatar: "https://i.pravatar.cc/40?img=6" },
+        { name: "Hasan", avatar: "https://i.pravatar.cc/40?img=7" }
+      ],
       highlights: ["Cherry blossoms", "Mount Fuji", "Traditional temples"]
     },
     {
@@ -32,7 +50,14 @@ const LayananBersafar = () => {
       duration: "9 Hari 8 Malam",
       price: "Rp 22.000.000", 
       image: "/lovable-uploads/0447b7fb-94d7-470d-84ff-72fa7f50a25f.png",
-      participants: "10 orang",
+      participants: 10,
+      maxParticipants: 12,
+      departureDate: "8 Dec 2024",
+      daysLeft: 12,
+      joinedUsers: [
+        { name: "Omar", avatar: "https://i.pravatar.cc/40?img=8" },
+        { name: "Laila", avatar: "https://i.pravatar.cc/40?img=9" }
+      ],
       highlights: ["Sahara desert", "Atlas mountains", "Medina tours"]
     },
     {
@@ -42,7 +67,15 @@ const LayananBersafar = () => {
       duration: "6 Hari 5 Malam",
       price: "Rp 20.500.000",
       image: "/lovable-uploads/5c10e529-f63f-4a40-91fd-f6569ec1bee1.png", 
-      participants: "12 orang",
+      participants: 12,
+      maxParticipants: 16,
+      departureDate: "20 Jan 2024",
+      daysLeft: 55,
+      joinedUsers: [
+        { name: "Cleopatra", avatar: "https://i.pravatar.cc/40?img=10" },
+        { name: "Hassan", avatar: "https://i.pravatar.cc/40?img=11" },
+        { name: "Nour", avatar: "https://i.pravatar.cc/40?img=12" }
+      ],
       highlights: ["Pyramids", "Nile cruise", "Valley of Kings"]
     },
     {
@@ -52,7 +85,14 @@ const LayananBersafar = () => {
       duration: "5 Hari 4 Malam",
       price: "Rp 15.000.000",
       image: "/assets/teman-safar-illustration.jpg",
-      participants: "8 orang",
+      participants: 8,
+      maxParticipants: 10,
+      departureDate: "5 Feb 2024",
+      daysLeft: 35,
+      joinedUsers: [
+        { name: "Ahmed", avatar: "https://i.pravatar.cc/40?img=13" },
+        { name: "Fatima", avatar: "https://i.pravatar.cc/40?img=14" }
+      ],
       highlights: ["Burj Khalifa", "Desert safari", "Gold souk"]
     }
   ];
@@ -119,75 +159,95 @@ const LayananBersafar = () => {
 
         {/* Teman Safar Section */}
         <div className="mb-20">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-inter font-bold text-spiritual-800 mb-4">
-              Teman Safar
-            </h3>
-            <p className="text-lg text-spiritual-600 max-w-2xl mx-auto">
-              Bergabunglah dengan jamaah lain dalam perjalanan berkesan ke destinasi halal pilihan
-            </p>
-          </div>
+          <div className="grid grid-cols-12 gap-8 items-center">
+            {/* Left side - Title */}
+            <div className="col-span-12 lg:col-span-3">
+              <h3 className="text-3xl md:text-4xl font-inter font-bold text-spiritual-800 mb-4">
+                Teman Safar
+              </h3>
+              <p className="text-lg text-spiritual-600">
+                Bergabunglah dengan jamaah lain dalam perjalanan berkesan ke destinasi halal pilihan
+              </p>
+            </div>
 
-          <div className="relative">
-            <Carousel
-              opts={{
-                align: "start",
-                slidesToScroll: 1,
-              }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-2 md:-ml-4">
-                {temanSafarPackages.map((pkg) => (
-                  <CarouselItem key={pkg.id} className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-[28.5%]">
-                    <Card className="group hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-spiritual-100 hover:border-islamic-primary overflow-hidden h-full">
-                      <div className="relative h-64 overflow-hidden">
-                        <img 
-                          src={pkg.image}
-                          alt={pkg.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                        <div className="absolute top-4 right-4 bg-islamic-primary text-white px-3 py-2 rounded-full text-sm font-semibold shadow-lg">
-                          {pkg.participants}
-                        </div>
-                      </div>
-                      <CardContent className="p-8">
-                        <h4 className="text-2xl font-inter font-bold text-spiritual-800 mb-3">
-                          {pkg.title}
-                        </h4>
-                        <p className="text-spiritual-600 mb-3 flex items-center text-base">
-                          <MapPin className="w-5 h-5 mr-2" />
-                          {pkg.location}
-                        </p>
-                        <p className="text-spiritual-600 mb-4 flex items-center text-base">
-                          <Calendar className="w-5 h-5 mr-2" />
-                          {pkg.duration}
-                        </p>
-                        <div className="mb-6">
-                          <p className="text-3xl font-bold text-islamic-primary mb-3">{pkg.price}</p>
-                          <div className="flex flex-wrap gap-2">
-                            {pkg.highlights.map((highlight, index) => (
-                              <span key={index} className="bg-islamic-100 text-islamic-dark px-3 py-2 rounded-full text-sm font-medium">
-                                {highlight}
-                              </span>
-                            ))}
+            {/* Right side - Carousel */}
+            <div className="col-span-12 lg:col-span-9">
+              <Carousel
+                opts={{
+                  align: "start",
+                  slidesToScroll: 1,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-2 md:-ml-4">
+                  {temanSafarPackages.map((pkg) => (
+                    <CarouselItem key={pkg.id} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                      <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border border-spiritual-100 hover:border-islamic-primary overflow-hidden h-full">
+                        <div className="relative h-48 overflow-hidden">
+                          <img 
+                            src={pkg.image}
+                            alt={pkg.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          />
+                          <div className="absolute top-3 right-3 bg-red-500 text-white px-2 py-1 rounded-lg text-xs font-bold">
+                            {pkg.daysLeft} hari lagi
                           </div>
                         </div>
-                        <Button className="w-full bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white font-semibold rounded-full py-3 text-base">
-                          Bergabung Sekarang
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-12" />
-              <CarouselNext className="hidden md:flex -right-12" />
-            </Carousel>
+                        <CardContent className="p-4">
+                          <h4 className="text-lg font-inter font-bold text-spiritual-800 mb-2">
+                            {pkg.title}
+                          </h4>
+                          <div className="space-y-2 mb-4">
+                            <p className="text-spiritual-600 flex items-center text-sm">
+                              <MapPin className="w-4 h-4 mr-2" />
+                              {pkg.location}
+                            </p>
+                            <p className="text-spiritual-600 flex items-center text-sm">
+                              <Calendar className="w-4 h-4 mr-2" />
+                              {pkg.departureDate}
+                            </p>
+                            <div className="flex items-center text-sm text-spiritual-600">
+                              <Users className="w-4 h-4 mr-2" />
+                              <span>{pkg.participants}/{pkg.maxParticipants} peserta</span>
+                            </div>
+                          </div>
+                          
+                          {/* Joined Users Avatars */}
+                          <div className="flex items-center mb-4">
+                            <div className="flex -space-x-2">
+                              {pkg.joinedUsers.slice(0, 3).map((user, index) => (
+                                <Avatar key={index} className="w-8 h-8 border-2 border-white">
+                                  <AvatarImage src={user.avatar} alt={user.name} />
+                                  <AvatarFallback className="text-xs">{user.name.charAt(0)}</AvatarFallback>
+                                </Avatar>
+                              ))}
+                              {pkg.joinedUsers.length > 3 && (
+                                <div className="w-8 h-8 bg-gray-200 rounded-full border-2 border-white flex items-center justify-center">
+                                  <span className="text-xs text-gray-600">+{pkg.joinedUsers.length - 3}</span>
+                                </div>
+                              )}
+                            </div>
+                            <span className="ml-2 text-xs text-spiritual-600">bergabung</span>
+                          </div>
+
+                          <p className="text-xl font-bold text-islamic-primary mb-3">{pkg.price}</p>
+                          <Button variant="bersafar" className="w-full text-sm py-2">
+                            Bergabung Sekarang
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="hidden md:flex -left-12" />
+                <CarouselNext className="hidden md:flex -right-12" />
+              </Carousel>
+            </div>
           </div>
           
           <div className="text-center mt-8">
             <Button 
-              className="bg-gradient-to-r from-islamic-primary to-islamic-secondary hover:from-islamic-secondary hover:to-islamic-dark text-white font-semibold rounded-full px-8 py-3 text-base"
+              variant="bersafar"
               onClick={() => window.location.href = '/teman-safar'}
             >
               Lihat Semua Teman Safar
@@ -197,75 +257,79 @@ const LayananBersafar = () => {
 
         {/* Umroh Mandiri Section */}
         <div>
-          <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-inter font-bold text-spiritual-800 mb-4">
-              Umroh Mandiri
-            </h3>
-            <p className="text-lg text-spiritual-600 max-w-2xl mx-auto">
-              Atur perjalanan umroh sesuai kebutuhan dan budget Anda dengan fleksibilitas penuh
-            </p>
-          </div>
+          <div className="grid grid-cols-12 gap-8 items-center">
+            {/* Left side - Title */}
+            <div className="col-span-12 lg:col-span-3">
+              <h3 className="text-3xl md:text-4xl font-inter font-bold text-spiritual-800 mb-4">
+                Umroh Mandiri
+              </h3>
+              <p className="text-lg text-spiritual-600">
+                Atur perjalanan umroh sesuai kebutuhan dan budget Anda dengan fleksibilitas penuh
+              </p>
+            </div>
 
-          <div className="relative">
-            <Carousel
-              opts={{
-                align: "start",
-                slidesToScroll: 1,
-              }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-2 md:-ml-4">
-                {umrohPackages.map((pkg, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-[28.5%]">
-                    <Card className="group hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-spiritual-100 hover:border-islamic-primary overflow-hidden h-full">
-                      <div className="relative h-64 overflow-hidden">
-                        <img 
-                          src={pkg.image}
-                          alt={pkg.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                        <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-2 rounded-full text-sm font-semibold shadow-lg">
-                          {pkg.duration}
+            {/* Right side - Carousel */}
+            <div className="col-span-12 lg:col-span-9">
+              <Carousel
+                opts={{
+                  align: "start",
+                  slidesToScroll: 1,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-2 md:-ml-4">
+                  {umrohPackages.map((pkg, index) => (
+                    <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                      <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border border-spiritual-100 hover:border-islamic-primary overflow-hidden h-full">
+                        <div className="relative h-48 overflow-hidden">
+                          <img 
+                            src={pkg.image}
+                            alt={pkg.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          />
+                          <div className="absolute top-3 right-3 bg-bersafar-primary text-white px-2 py-1 rounded-lg text-xs font-bold">
+                            {pkg.duration}
+                          </div>
                         </div>
-                      </div>
-                      <CardContent className="p-8">
-                        <h4 className="text-2xl font-inter font-bold text-spiritual-800 mb-3">
-                          {pkg.title}
-                        </h4>
-                        <p className="text-spiritual-600 mb-3 flex items-center text-base">
-                          <MapPin className="w-5 h-5 mr-2" />
-                          {pkg.airline}
-                        </p>
-                        <p className="text-spiritual-600 mb-4 flex items-center text-base">
-                          <Star className="w-5 h-5 mr-2" />
-                          {pkg.hotel}
-                        </p>
-                        <div className="mb-6">
-                          <p className="text-3xl font-bold text-green-600 mb-3">{pkg.price}</p>
-                          <div className="flex flex-wrap gap-2">
-                            {pkg.features.map((feature, featureIndex) => (
-                              <span key={featureIndex} className="bg-green-100 text-green-700 px-3 py-2 rounded-full text-sm font-medium">
+                        <CardContent className="p-4">
+                          <h4 className="text-lg font-inter font-bold text-spiritual-800 mb-2">
+                            {pkg.title}
+                          </h4>
+                          <div className="space-y-2 mb-4">
+                            <p className="text-spiritual-600 flex items-center text-sm">
+                              <MapPin className="w-4 h-4 mr-2" />
+                              {pkg.airline}
+                            </p>
+                            <p className="text-spiritual-600 flex items-center text-sm">
+                              <Star className="w-4 h-4 mr-2" />
+                              {pkg.hotel}
+                            </p>
+                          </div>
+                          <p className="text-xl font-bold text-bersafar-primary mb-3">{pkg.price}</p>
+                          <div className="flex flex-wrap gap-1 mb-3">
+                            {pkg.features.slice(0, 3).map((feature, featureIndex) => (
+                              <span key={featureIndex} className="bg-bersafar-primary/10 text-bersafar-primary px-2 py-1 rounded text-xs font-medium">
                                 {feature}
                               </span>
                             ))}
                           </div>
-                        </div>
-                        <Button className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-full py-3 text-base">
-                          Pilih Paket
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-12" />
-              <CarouselNext className="hidden md:flex -right-12" />
-            </Carousel>
+                          <Button variant="bersafar" className="w-full text-sm py-2">
+                            Pilih Paket
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="hidden md:flex -left-12" />
+                <CarouselNext className="hidden md:flex -right-12" />
+              </Carousel>
+            </div>
           </div>
           
           <div className="text-center mt-8">
             <Button 
-              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-full px-8 py-3 text-base"
+              variant="bersafar"
               onClick={() => window.location.href = '/umroh-mandiri'}
             >
               Lihat Semua Umroh Mandiri
